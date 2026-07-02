@@ -1,0 +1,2431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0e0e0e">
+<title>Elegant Haven — Survey V4.3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0e0e0e; --s1:#191919; --s2:#212121; --s3:#2a2a2a; --s4:#333;
+  --border:#303030; --gold:#c9a96e; --gold2:#e8c98e; --gold-dim:#7a6741;
+  --text:#f0ede6; --muted:#888; --dim:#444;
+  --green:#5cb87a; --red:#e05555; --red-soft:#a83b3b;
+  --blue:#6496dc; --r:8px;
+}
+* { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+html, body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; -webkit-font-smoothing:antialiased; }
+body { padding-bottom:88px; }
+
+/* Header */
+.hdr { background:var(--s1); border-bottom:1px solid var(--border); padding:10px 12px; display:flex; align-items:center; gap:8px; position:sticky; top:0; z-index:100; }
+.hdr-title { font-family:'Syne',sans-serif; font-size:12px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--gold); flex:1; }
+.hdr-ver { font-family:'DM Mono',monospace; font-size:10px; color:var(--dim); background:var(--s3); padding:3px 7px; border-radius:4px; }
+.icon-btn { width:36px; height:36px; border:1px solid var(--border); border-radius:6px; background:var(--s3); color:var(--muted); font-size:16px; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.icon-btn:active { background:var(--s2); transform:scale(0.95); }
+
+/* Mode toggle */
+.mode-bar { display:flex; background:var(--s2); border-bottom:1px solid var(--border); position:sticky; top:55px; z-index:99; }
+.mode-tab { flex:1; padding:11px; font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); cursor:pointer; background:transparent; border:none; border-bottom:2px solid transparent; transition:all .15s; }
+.mode-tab.active { color:var(--gold); border-bottom-color:var(--gold); background:rgba(201,169,110,.05); }
+
+.main { padding:10px 10px 16px; }
+
+/* Client info card */
+.client-card { background:var(--s1); border:1px solid var(--border); border-radius:var(--r); margin-bottom:10px; padding:12px; }
+.client-card .ctitle { font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+.ctitle-sub { font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-top:14px; margin-bottom:8px; }
+.client-grid { display:grid; grid-template-columns:1fr; gap:8px; }
+.client-grid textarea { background:var(--s3); border:1px solid var(--border); border-radius:6px; padding:10px 12px; font-family:'DM Sans',sans-serif; font-size:14px; color:var(--text); outline:none; resize:vertical; min-height:60px; line-height:1.4; }
+.client-grid textarea:focus { border-color:var(--gold); }
+.client-grid textarea::placeholder { color:var(--dim); font-style:italic; }
+.tony-card { border-color:var(--gold-dim); }
+.tony-card textarea, .tony-card input.tony-num-inp { background:var(--s3); border:1px solid var(--border); border-radius:6px; padding:10px 12px; font-family:'DM Sans',sans-serif; font-size:14px; color:var(--text); outline:none; resize:vertical; line-height:1.4; width:100%; }
+.tony-card textarea:focus, .tony-card input.tony-num-inp:focus { border-color:var(--gold); }
+.tony-card textarea::placeholder, .tony-card input.tony-num-inp::placeholder { color:var(--dim); font-style:italic; }
+.tony-card input.tony-num-inp { -moz-appearance:textfield; }
+.tony-card input.tony-num-inp::-webkit-outer-spin-button, .tony-card input.tony-num-inp::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
+.ceiling-row { display:flex; align-items:center; gap:10px; padding:10px 0; cursor:pointer; font-size:14px; }
+.ceiling-check { width:22px; height:22px; border:1.5px solid var(--dim); border-radius:5px; flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:all .12s; }
+.ceiling-check.checked { background:var(--gold); border-color:var(--gold); }
+.ceiling-check.checked::after { content:'✓'; color:#111; font-size:14px; font-weight:800; }
+.slider-row { display:flex; align-items:center; gap:14px; padding:6px 0; }
+.winprob-slider { flex:1; -webkit-appearance:none; appearance:none; height:6px; background:var(--s3); border-radius:999px; outline:none; }
+.winprob-slider::-webkit-slider-thumb { -webkit-appearance:none; appearance:none; width:24px; height:24px; border-radius:50%; background:var(--gold); border:none; cursor:pointer; }
+.winprob-slider::-moz-range-thumb { width:24px; height:24px; border-radius:50%; background:var(--gold); border:none; cursor:pointer; }
+.winprob-val { font-family:'DM Mono',monospace; font-size:14px; color:var(--gold); font-weight:600; min-width:48px; text-align:right; }
+
+/* Chips */
+.chip-row { display:flex; flex-wrap:wrap; gap:6px; }
+.chip { padding:8px 12px; background:var(--s3); border:1px solid var(--border); border-radius:999px; font-family:'DM Sans',sans-serif; font-size:13px; color:var(--text); cursor:pointer; transition:all .12s; -webkit-appearance:none; }
+.chip:active { transform:scale(0.96); }
+.chip.selected { background:var(--gold); color:#111; border-color:var(--gold); font-weight:600; }
+
+/* Wall picker */
+.wall-row { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.wall-label { font-size:12px; color:var(--text); width:78px; flex-shrink:0; font-family:'DM Mono',monospace; }
+.wall-nums { display:flex; flex-wrap:wrap; gap:4px; flex:1; }
+.wall-btn { width:34px; height:34px; padding:0; background:var(--s3); border:1px solid var(--border); border-radius:6px; font-family:'DM Mono',monospace; font-size:13px; color:var(--text); cursor:pointer; -webkit-appearance:none; transition:all .12s; }
+.wall-btn:active { transform:scale(0.92); }
+.wall-btn.selected { background:var(--gold); color:#111; border-color:var(--gold); font-weight:700; }
+.chip-hint { font-family:'DM Mono',monospace; font-size:10px; color:var(--dim); margin-top:8px; font-style:italic; }
+
+/* Section */
+.section { background:var(--s1); border:1px solid var(--border); border-radius:var(--r); margin-bottom:10px; overflow:hidden; }
+.section.has-ticks { border-color:var(--gold-dim); }
+.sec-hdr { padding:13px 12px; display:flex; align-items:center; gap:8px; cursor:pointer; user-select:none; min-height:50px; }
+.sec-hdr:active { background:var(--s2); }
+.sec-arrow { font-size:10px; color:var(--dim); transition:transform .2s; flex-shrink:0; width:14px; text-align:center; }
+.section.open .sec-arrow { transform:rotate(90deg); }
+.sec-name { font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--gold); flex:1; line-height:1.1; }
+.sec-meta { display:flex; align-items:center; gap:8px; flex-shrink:0; }
+.sec-count { font-family:'DM Mono',monospace; font-size:11px; color:var(--muted); }
+.sec-count.has { color:var(--green); font-weight:600; }
+.sec-dot { width:8px; height:8px; border-radius:50%; background:var(--gold); display:none; }
+.section.has-ticks .sec-dot { display:block; }
+.sec-actions { display:flex; gap:4px; }
+.sec-del-btn { width:32px; height:32px; border:1px solid var(--border); border-radius:5px; background:var(--s3); color:var(--muted); font-size:14px; cursor:pointer; }
+.sec-del-btn:active { background:var(--red-soft); color:#fff; border-color:var(--red-soft); }
+.sec-del-btn.confirming { background:var(--red); color:#fff; border-color:var(--red); }
+
+.sec-body { display:none; border-top:1px solid var(--border); }
+.section.open .sec-body { display:block; }
+
+.subsec-title { padding:9px 14px; font-family:'DM Mono',monospace; font-size:10px; font-weight:400; letter-spacing:.03em; text-transform:uppercase; color:var(--muted); background:rgba(0,0,0,.25); border-bottom:1px solid rgba(48,48,48,.5); cursor:pointer; display:flex; align-items:center; gap:8px; user-select:none; }
+.subsec-title:active { background:rgba(0,0,0,.4); }
+.subsec-arrow { font-size:8px; color:var(--dim); transition:transform .15s; width:10px; flex-shrink:0; }
+.subsec-title.open .subsec-arrow { transform:rotate(90deg); }
+.subsec-title .subsec-name { flex:1; }
+.subsec-title .subsec-count { font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); }
+.subsec-title.has .subsec-count { color:var(--green); font-weight:600; }
+.subsec-title.open .subsec-name { color:var(--gold); }
+.subsec-content { display:none; }
+.subsec-content.open { display:block; }
+body[data-mode="edit"] .subsec-content { display:block; }
+body[data-mode="edit"] .subsec-title { cursor:default; padding-right:6px; }
+body[data-mode="edit"] .subsec-arrow { display:none; }
+body[data-mode="edit"] .subsec-count { display:none; }
+
+/* Sub-group edit controls (V4.2) — only in edit mode */
+.sub-edit-controls { display:none; margin-left:auto; gap:4px; }
+body[data-mode="edit"] .sub-edit-controls { display:inline-flex; }
+.sub-edit-btn { width:26px; height:26px; padding:0; border:1px solid var(--border); border-radius:4px; background:var(--s3); color:var(--muted); font-size:12px; cursor:pointer; }
+.sub-edit-btn:active { background:var(--gold); color:#111; }
+.sub-edit-btn.del { color:var(--red-soft); }
+.sub-edit-btn.del:active { background:var(--red-soft); color:#fff; }
+.sub-name-input { flex:1; background:var(--s2); border:1px solid var(--gold-dim); border-radius:4px; padding:4px 8px; color:var(--fg); font-family:'DM Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.06em; }
+.add-sub-row { display:none; padding:10px 14px; background:rgba(0,0,0,.15); border-top:1px dashed var(--border); }
+body[data-mode="edit"] .add-sub-row { display:flex; gap:6px; }
+.add-sub-inp { flex:1; background:var(--s2); border:1px solid var(--border); border-radius:5px; padding:8px 10px; color:var(--fg); font-size:12px; }
+.add-sub-btn { background:var(--gold); color:#111; border:0; border-radius:5px; padding:8px 14px; font-weight:600; font-size:11px; cursor:pointer; white-space:nowrap; }
+
+/* Collapsible cards (Client, Tony) */
+.client-card.collapsible .ctitle { cursor:pointer; display:flex; align-items:center; gap:8px; user-select:none; }
+.client-card.collapsible .ctitle:active { opacity:0.7; }
+.client-card.collapsible .ctitle .card-arrow { font-size:10px; color:var(--gold-dim); transition:transform .15s; width:12px; flex-shrink:0; }
+.client-card.collapsible.open .ctitle .card-arrow { transform:rotate(90deg); }
+.client-card .card-content { display:none; }
+.client-card.collapsible.open .card-content { display:block; }
+.client-card:not(.collapsible) .card-content { display:block; }
+
+/* Use mode row */
+.opt-row { display:flex; align-items:center; padding:0 12px; min-height:46px; border-bottom:1px solid rgba(48,48,48,.4); gap:10px; cursor:pointer; }
+.opt-row:last-of-type { border-bottom:none; }
+.opt-row:active { background:var(--s2); }
+.opt-row.ticked { background:rgba(201,169,110,.06); }
+.opt-row.ticked:active { background:rgba(201,169,110,.12); }
+.opt-check { width:22px; height:22px; border:1.5px solid var(--dim); border-radius:5px; flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:all .12s; }
+.opt-row.ticked .opt-check { background:var(--gold); border-color:var(--gold); }
+.opt-row.ticked .opt-check::after { content:'✓'; color:#111; font-size:14px; font-weight:800; }
+.opt-label { flex:1; font-size:14px; color:var(--text); line-height:1.35; padding:8px 0; }
+.opt-row.ticked .opt-label { color:var(--gold2); font-weight:500; }
+
+/* Notes textarea */
+.notes-block { padding:10px 12px 12px; background:rgba(0,0,0,.18); border-top:1px solid rgba(48,48,48,.5); }
+.notes-label { font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); margin-bottom:6px; letter-spacing:.05em; }
+.notes-area { width:100%; min-height:60px; background:var(--s3); border:1px solid var(--border); border-radius:6px; padding:9px 11px; font-family:'DM Sans',sans-serif; font-size:13px; color:var(--text); outline:none; resize:vertical; line-height:1.45; }
+.notes-area:focus { border-color:var(--gold); }
+.notes-area::placeholder { color:var(--dim); font-style:italic; }
+
+/* Edit mode row */
+.edit-row { display:flex; align-items:center; padding:0 8px 0 12px; min-height:48px; border-bottom:1px solid rgba(48,48,48,.4); gap:6px; }
+.edit-row:last-of-type { border-bottom:none; }
+.edit-text { flex:1; font-size:14px; color:var(--text); outline:none; background:transparent; border:1px solid transparent; font-family:'DM Sans',sans-serif; padding:6px 8px; border-radius:4px; min-width:0; }
+.edit-text:focus { border-color:var(--gold); background:var(--s3); color:var(--gold); }
+.opt-actions { display:flex; gap:4px; flex-shrink:0; }
+.act-btn { width:34px; height:34px; padding:0; border:1px solid var(--border); border-radius:6px; background:var(--s3); color:var(--muted); font-size:14px; cursor:pointer; -webkit-appearance:none; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:'DM Sans',sans-serif; }
+.act-btn:active { transform:scale(0.92); }
+.act-btn.del { color:var(--muted); }
+.act-btn.del.confirming { background:var(--red); color:#fff; border-color:var(--red); font-weight:800; animation: pulse 0.6s ease-in-out infinite; }
+.act-btn.hd { color:var(--muted); font-family:'DM Mono',monospace; font-size:10px; font-weight:700; letter-spacing:.05em; }
+.act-btn.hd.on { background:var(--gold); color:#111; border-color:var(--gold); }
+.opt-row .hd-marker { width:7px; height:7px; border-radius:50%; background:var(--gold); flex-shrink:0; opacity:0; transition:opacity .15s; margin-right:-2px; }
+.opt-row.has-hd .hd-marker { opacity:1; }
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.7; } }
+
+.add-row { padding:10px 12px; display:flex; gap:8px; background:rgba(0,0,0,.15); border-top:1px solid rgba(48,48,48,.4); }
+.add-inp { flex:1; background:var(--s3); border:1px solid var(--border); border-radius:6px; padding:10px 12px; font-family:'DM Sans',sans-serif; font-size:14px; color:var(--text); outline:none; }
+.add-inp:focus { border-color:var(--gold); }
+.add-inp::placeholder { color:var(--dim); }
+.add-btn { padding:10px 14px; background:var(--gold); border:none; border-radius:6px; font-family:'Syne',sans-serif; font-size:12px; font-weight:700; letter-spacing:.05em; color:#111; cursor:pointer; }
+.add-btn:active { opacity:.8; }
+
+.add-section { padding:10px 12px; display:flex; gap:8px; background:var(--s1); border:1px dashed var(--border); border-radius:var(--r); margin-bottom:10px; }
+.add-section .add-inp { background:var(--s3); }
+
+/* Shower-area-2 add button */
+.add-sa-btn { width:100%; padding:10px; margin-bottom:10px; background:transparent; border:1px dashed var(--gold-dim); border-radius:var(--r); color:var(--gold); font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; }
+.add-sa-btn:active { background:rgba(201,169,110,.08); }
+
+/* Bottom action bar */
+.cbar { position:fixed; bottom:0; left:0; right:0; background:var(--s1); border-top:1px solid var(--border); padding:10px 10px; display:flex; gap:8px; z-index:200; box-shadow:0 -4px 16px rgba(0,0,0,.3); }
+.cbar-btn { flex:1; padding:13px 10px; border:none; border-radius:var(--r); font-family:'Syne',sans-serif; font-size:12px; font-weight:700; letter-spacing:.05em; cursor:pointer; }
+.cbar-btn.gold { background:var(--gold); color:#111; }
+.cbar-btn.outline { background:transparent; border:1px solid var(--border); color:var(--muted); }
+.cbar-btn.ok { background:var(--green); color:#111; }
+.cbar-btn:active { opacity:.85; }
+
+/* Modal */
+.modal-bg { position:fixed; inset:0; background:rgba(0,0,0,.7); z-index:300; display:none; align-items:flex-end; justify-content:center; padding:0; }
+.modal-bg.open { display:flex; }
+.modal { background:var(--s1); border:1px solid var(--border); border-radius:14px 14px 0 0; padding:18px 16px 16px; max-height:90vh; overflow:auto; width:100%; max-width:640px; }
+@media (min-width:680px) { .modal-bg { align-items:center; padding:20px; } .modal { border-radius:14px; max-height:80vh; } }
+.modal-title { font-family:'Syne',sans-serif; font-size:13px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; }
+.modal-close { background:none; border:none; color:var(--muted); font-size:24px; cursor:pointer; padding:0; width:32px; height:32px; }
+.modal-text { background:var(--bg); border:1px solid var(--border); border-radius:6px; padding:12px; font-family:'DM Mono',monospace; font-size:12px; line-height:1.5; color:var(--text); white-space:pre-wrap; max-height:50vh; overflow:auto; margin-bottom:12px; }
+.gen-tabs { display:flex; gap:0; margin-bottom:10px; border-bottom:1px solid var(--border); }
+.gen-tab { padding:9px 14px; font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); cursor:pointer; background:transparent; border:none; border-bottom:2px solid transparent; transition:all .15s; }
+.gen-tab.active { color:var(--gold); border-bottom-color:var(--gold); }
+.modal-hint { font-size:12px; color:var(--muted); margin-bottom:10px; font-style:italic; line-height:1.5; }
+.modal-actions { display:flex; gap:8px; }
+.modal-btn { flex:1; padding:12px; border:none; border-radius:6px; font-family:'Syne',sans-serif; font-size:12px; font-weight:700; letter-spacing:.05em; cursor:pointer; background:var(--gold); color:#111; }
+.modal-btn.outline { background:transparent; border:1px solid var(--border); color:var(--muted); }
+.settings-row { padding:14px 0; border-bottom:1px solid var(--border); }
+.settings-row:last-child { border-bottom:none; }
+.settings-label { font-size:14px; color:var(--text); margin-bottom:4px; font-weight:500; }
+.settings-desc { font-size:12px; color:var(--muted); line-height:1.5; margin-bottom:10px; }
+.settings-btn { padding:9px 14px; border:1px solid var(--border); border-radius:6px; background:var(--s3); color:var(--text); font-family:'DM Sans',sans-serif; font-size:13px; cursor:pointer; }
+.settings-btn.danger { color:var(--red); border-color:var(--red); }
+
+/* Toast */
+.toast { position:fixed; bottom:96px; left:50%; transform:translateX(-50%); background:var(--green); color:#111; padding:11px 18px; border-radius:8px; font-family:'Syne',sans-serif; font-size:12px; font-weight:700; letter-spacing:.05em; z-index:400; opacity:0; pointer-events:none; transition:opacity .2s; box-shadow:0 4px 16px rgba(0,0,0,.4); }
+.toast.show { opacity:1; }
+
+/* Mode-based visibility */
+body[data-mode="use"] .edit-only { display:none !important; }
+body[data-mode="edit"] .use-only { display:none !important; }
+</style>
+</head>
+<body data-mode="use">
+
+<div class="hdr">
+  <div class="hdr-title">Elegant Haven · Survey</div>
+  <div class="hdr-ver">V4.3</div>
+  <button class="icon-btn" onclick="openSettings()" title="Settings">⚙</button>
+</div>
+
+<div class="mode-bar">
+  <button class="mode-tab active" data-mode="use" onclick="setMode('use')">Use (tick)</button>
+  <button class="mode-tab" data-mode="edit" onclick="setMode('edit')">Edit (manage)</button>
+</div>
+
+<div class="main">
+
+  <!-- CLIENT INFO -->
+  <div class="client-card collapsible open use-only" id="client_card">
+    <div class="ctitle" onclick="toggleCard('client_card')">
+      <span class="card-arrow">▶</span>
+      <span>Client</span>
+    </div>
+    <div class="card-content">
+    <div class="client-grid">
+      <textarea id="ci_nameaddr" placeholder="Name &#13;&#10;Address &#13;&#10;Phone (optional)" rows="3"></textarea>
+    </div>
+
+    <div class="ctitle-sub">Property type</div>
+    <div class="chip-row" id="prop_type_row">
+      <button class="chip" data-val="house">House</button>
+      <button class="chip" data-val="flat-house">Flat in house</button>
+      <button class="chip" data-val="flat-block">Flat in block</button>
+      <button class="chip" data-val="council">Council</button>
+    </div>
+
+    <div class="ctitle-sub">Wall construction (up to 5 walls)</div>
+    <div id="wall_picker"></div>
+    <div class="chip-hint">Wall 1 = door wall. From inside, looking in: Wall 2 = left, Wall 3 = opposite door, Wall 4 = right. Continue counter-clockwise for non-square rooms.</div>
+
+    <div class="ctitle-sub">Style</div>
+    <div class="chip-row" id="style_row">
+      <button class="chip" data-val="modern">Modern</button>
+      <button class="chip" data-val="traditional">Traditional</button>
+      <button class="chip" data-val="mixed">Mixed</button>
+    </div>
+
+    <div class="ctitle-sub">Finishes</div>
+    <div class="chip-row" id="finishes_row">
+      <button class="chip" data-val="chrome">Chrome</button>
+      <button class="chip" data-val="black">Black</button>
+      <button class="chip" data-val="gold">Gold</button>
+      <button class="chip" data-val="other">Other</button>
+    </div>
+    <textarea id="finishes_other" placeholder="Specify (e.g. brushed nickel, gunmetal, mixed…)" rows="1" style="margin-top:8px; display:none;"></textarea>
+    </div>
+  </div>
+
+  <div id="main"></div>
+
+  <!-- SALES HANDOFF BLOCK (FOR TONY) — use mode only -->
+  <div class="client-card tony-card collapsible use-only" id="tony_card">
+    <div class="ctitle" onclick="toggleCard('tony_card')">
+      <span class="card-arrow">▶</span>
+      <span>Tony</span>
+    </div>
+    <div class="card-content">
+
+    <div class="ctitle-sub">Completion</div>
+    <div class="chip-row" id="tony_completion_row">
+      <button class="chip" data-val="flexible">Flexible</button>
+      <button class="chip" data-val="urgent">Urgent</button>
+    </div>
+    <textarea id="tony_completion_date" placeholder="Specific date / window (optional)" rows="1" style="margin-top:8px;"></textarea>
+
+    <div class="ctitle-sub">Best time to call</div>
+    <div class="chip-row" id="tony_call_row">
+      <button class="chip" data-val="morning">Morning</button>
+      <button class="chip" data-val="afternoon">Afternoon</button>
+      <button class="chip" data-val="after5">After 5pm</button>
+      <button class="chip" data-val="anytime">Anytime</button>
+      <button class="chip" data-val="weekends">Weekends only</button>
+    </div>
+    <textarea id="tony_call_notes" placeholder="Free notes (optional, e.g. 'Tue before 3pm')" rows="1" style="margin-top:8px;"></textarea>
+
+    <div class="ctitle-sub">Parking</div>
+    <div class="chip-row" id="tony_parking_row">
+      <button class="chip" data-val="free">Free parking</button>
+      <button class="chip" data-val="permit">Permit needed</button>
+      <button class="chip" data-val="none">No parking</button>
+    </div>
+
+    <div class="ctitle-sub">Personality (0–10)</div>
+    <input type="number" id="tony_personality" min="0" max="10" step="1" placeholder="e.g. 7" class="tony-num-inp">
+
+    <div class="ctitle-sub">Win probability</div>
+    <div class="slider-row">
+      <input type="range" id="tony_winprob_slider" min="0" max="100" step="5" value="0" class="winprob-slider">
+      <div class="winprob-val" id="tony_winprob_val">—</div>
+    </div>
+
+    <div class="ctitle-sub">Suggested price</div>
+    <div class="chip-row" id="tony_price_row">
+      <button class="chip" data-val="6k+">£6k+</button>
+      <button class="chip" data-val="7k+">£7k+</button>
+      <button class="chip" data-val="8k+">£8k+</button>
+      <button class="chip" data-val="10k+">£10k+</button>
+      <button class="chip" data-val="12k+">£12k+</button>
+      <button class="chip" data-val="15k+">£15k+</button>
+    </div>
+    <textarea id="tony_price_notes" placeholder="Free notes (optional, e.g. '£18.5k' or '£9-11k range')" rows="1" style="margin-top:8px;"></textarea>
+
+    <div class="ctitle-sub">Photos</div>
+    <label class="ceiling-row">
+      <span class="ceiling-check" id="tony_ceiling_check"></span>
+      <span>Ceiling photo taken (under bathroom + target room)</span>
+    </label>
+    <label class="ceiling-row">
+      <span class="ceiling-check" id="tony_other_photos_check"></span>
+      <span>Other photos taken</span>
+    </label>
+    <textarea id="tony_ceiling_notes" placeholder="Photo notes (what's photographed, condition observed, etc.)" rows="2"></textarea>
+    </div>
+  </div>
+
+  <div class="add-section edit-only">
+    <input class="add-inp" id="newSectionInp" placeholder="Add new section…" onkeydown="if(event.key==='Enter'){addSection();this.blur();}">
+    <button class="add-btn" onclick="addSection()">+ Section</button>
+  </div>
+
+</div>
+
+<!-- Bottom bar — USE mode -->
+<div class="cbar use-only">
+  <button class="cbar-btn outline" onclick="newSurvey()">+ New</button>
+  <button class="cbar-btn outline" data-expand-btn onclick="toggleExpandAll()">Expand all</button>
+  <button class="cbar-btn gold" onclick="openGenerate()">Generate ▶</button>
+</div>
+
+<!-- Bottom bar — EDIT mode -->
+<div class="cbar edit-only">
+  <button class="cbar-btn outline" onclick="setMode('use')">← Done</button>
+  <button class="cbar-btn outline" onclick="openExportList()">Export list</button>
+  <button class="cbar-btn gold" data-expand-btn onclick="toggleExpandAll()">Expand all</button>
+</div>
+
+<!-- Modals -->
+<div class="modal-bg" id="genModal">
+  <div class="modal">
+    <div class="modal-title">
+      <span>Generated output</span>
+      <button class="modal-close" onclick="closeGenerate()">×</button>
+    </div>
+    <div class="modal-hint">Three sections: Full · Hidden · Tony. Copy once, paste & segment in WhatsApp.</div>
+    <div class="modal-text" id="genText"></div>
+    <div class="modal-actions">
+      <button class="modal-btn outline" onclick="closeGenerate()">Close</button>
+      <button class="modal-btn outline" id="shareBtn" onclick="shareGen()">Share</button>
+      <button class="modal-btn" onclick="copyGen()">Copy</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="exportModal">
+  <div class="modal">
+    <div class="modal-title">
+      <span>Full list export</span>
+      <button class="modal-close" onclick="closeExportList()">×</button>
+    </div>
+    <div class="modal-text" id="exportText"></div>
+    <div class="modal-actions">
+      <button class="modal-btn outline" onclick="closeExportList()">Close</button>
+      <button class="modal-btn" onclick="copyExport()">Copy</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="settingsModal">
+  <div class="modal">
+    <div class="modal-title">
+      <span>Settings</span>
+      <button class="modal-close" onclick="closeSettings()">×</button>
+    </div>
+    <div class="settings-row">
+      <div class="settings-label">Save current list as backup</div>
+      <div class="settings-desc">Downloads a JSON file with your full master list and additions.</div>
+      <button class="settings-btn" onclick="downloadBackup()">Download backup</button>
+    </div>
+    <div class="settings-row">
+      <div class="settings-label">Restore from backup</div>
+      <div class="settings-desc">Upload a previously saved V3.2 JSON backup. Replaces the current list.</div>
+      <input type="file" id="restoreFile" accept="application/json" style="display:none" onchange="restoreBackup(event)">
+      <button class="settings-btn" onclick="document.getElementById('restoreFile').click()">Choose file…</button>
+    </div>
+    <div class="settings-row">
+      <div class="settings-label">Reset Hidden Detail tags to defaults</div>
+      <div class="settings-desc">Re-applies the standard Hidden Detail tagging (~40 items: underfloor heating, LED, dual fuel pipework, mirror electric, smart toilet, etc.). Existing tags will be cleared first.</div>
+      <button class="settings-btn" onclick="resetHdTags()">Reset HD tags…</button>
+    </div>
+    <div class="settings-row">
+      <div class="settings-label" style="color:var(--red)">Reset list to factory defaults</div>
+      <div class="settings-desc">DANGER: erases everything you've added/changed. Returns to the original V3.2 list. Cannot be undone.</div>
+      <button class="settings-btn danger" onclick="resetToDefaults()">Reset everything…</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+
+/* ============================================================
+   HIDDEN DETAILS DEFAULTS
+   Items in this list get auto-tagged as Hidden Detail on first load
+   (or when user resets HD tags). Surveyor can untag/re-tag any item.
+   ============================================================ */
+const HD_DEFAULTS = [
+  // Subceiling with insulation
+  'Subceiling with insulation / soundproofing fill',
+  // Underfloor heating
+  'Electric mat — standard thermostat',
+  'Electric mat — wifi/app controlled',
+  // Shower area — Niche LED
+  'Tiled niche with LED',
+  'Prefab niche with LED',
+  // Shower area — Boxing/services
+  'With insulation / soundproofing fill',
+  // Shower area — Concealed valve & controls
+  'Concealed',
+  'Away from water (side)',
+  'Under overhead',
+  // Toilet — Smart/electric needs
+  'Smart toilet (e.g. TOTO)',
+  'Standard + smart seat',
+  // Toilet — Cistern box (all hidden structure)
+  'Half-height',
+  'Full-height to ceiling',
+  'Prefab pre-walled panel',
+  // Toilet — Soil pipe work that creates hidden routing
+  'Reroute through floor',
+  'Reroute through wall',
+  'Drilling required (new soil run)',
+  'Boxing around exposed soil pipe',
+  // Toilet — Bidet attachment (needs cold feed)
+  'Shower bidet attachment',
+  // Hidden LED strips
+  'Under-toilet LED strip',
+  'Under-vanity LED strip',
+  // Mirror — electrical
+  'Electric (illuminated)',
+  'Recessed (recess work auto-derived)',
+  'Side lights — 2 separate fixtures next to mirror',
+  'New wiring',
+  // Heated towel rail — fuel determines hidden services
+  'Water-fed (central heating)',
+  'Electric',
+  'Dual fuel',
+  // Heated towel rail — pipe/wiring conversions
+  'Pipe conversion floor → wall',
+  'Pipe conversion wall → floor',
+  'Add pipework',
+  'Add wiring',
+  // Heated towel rail — recess
+  'Wall recess (so door does not hit it)',
+  // Extractor fan — new installs (drilling + wiring)
+  'New installation — ceiling',
+  'New installation — wall',
+  'New installation — window',
+  'Linked to lights (triggers with lights)',
+  'Separate switch (independent control)',
+  'Standalone — humidistat / timer / PIR',
+  'Through wall',
+  'Through ceiling',
+  'Through window cassette',
+  // Pull cord (electrical work in walls)
+  'Yes — tiled wall (wiring only)',
+  'Yes — painted wall (wiring + making good)',
+  'Hide trunked cable in ceiling chase + make good',
+  // Electrical scope
+  'Split 1 circuit to 2',
+  'Merge 2 circuits to 1'
+];
+
+/* ============================================================
+   V3.2 MASTER DATA — fixture-driven with conditional sub-sections
+   ============================================================ */
+const DEFAULT_DATA = [
+  { name:"LAYOUT", core:true, note:"Select one", items:[
+    "Same","Relocation","Bath to shower","Shower to bath",
+    "Shower to toilet","Toilet to shower",
+    "Split bathroom → 2 bathrooms","Split bathroom → bathroom + WC",
+    "Merge WC","Extension","New build (en-suite)","Bedroom to bathroom"
+  ]},
+  { name:"DEMOLITION", core:true, items:[
+    "Full strip out",
+    "Full strip out + partition wall removal",
+    "None (already demolished)"
+  ]},
+  { name:"BUILDING WORKS", core:true, note:"Slim — only structural items", subs:[
+    { name:"Walls & Ceilings", items:[
+      "New partition wall","Nib wall",
+      "Subceiling / ceiling drop",
+      "Subceiling with insulation / soundproofing fill"
+    ]},
+    { name:"Floor", items:[
+      "Sub-floor repair (leak damage)","Floor levelling",
+      "Platform / raised floor (non-shower)"
+    ]},
+    { name:"Doors", items:[
+      "New door opening","Block existing (redundant) opening",
+      "Relocate door","Resize door",
+      "Change door swing left↔right","Change door swing in↔out",
+      "Pocket door","Sliding non-pocket door","Folding door"
+    ]},
+    { name:"Other", items:[
+      "Skirtings","Covings","Access panel",
+      "Making good (universal)",
+      "Convert shower to cupboard / opposite",
+      "Storage build (washing machine / tumble dryer)"
+    ]}
+  ]},
+  { name:"PLUMBING", core:true, note:"Scope only — per-fixture pipework moved", subs:[
+    { name:"Scope", items:[
+      "Same-layout plumbing (test, adjust, reconnect)",
+      "Re-plumbing for layout change",
+      "Capping / decommission"
+    ]},
+    { name:"Global pumps & drainage", items:[
+      "Booster pump","Macerator","Wet room drainage"
+    ]}
+  ]},
+  { name:"ELECTRICAL", core:true, note:"Scope + global only", subs:[
+    { name:"Scope", items:[
+      "Same-layout (test, adjust, reconnect)",
+      "Re-wiring for layout change"
+    ]},
+    { name:"Main light", items:[
+      "No change",
+      "Replace single (like for like)",
+      "Single → spotlights","Spotlights → single",
+      "Single to single LED"
+    ]},
+    { name:"Pull cord conversion", items:[
+      "Yes — tiled wall (wiring only)",
+      "Yes — painted wall (wiring + making good)",
+      "Hide trunked cable in ceiling chase + making good",
+      "No"
+    ]},
+    { name:"Circuit", items:[
+      "Same circuit",
+      "Split 1 circuit to 2",
+      "Merge 2 circuits to 1"
+    ]},
+    { name:"Underfloor heating", items:[
+      "Electric mat — standard thermostat",
+      "Electric mat — wifi/app controlled"
+    ]}
+  ]},
+  { name:"WATERPROOFING", core:true, note:"Select one", items:[
+    "Shower area only","Full bathroom"
+  ]},
+  { name:"TILING", core:true, subs:[
+    { name:"Walls — finish type", items:[
+      "Tiles","Panels","Paint","Wallpaper","Marble / stone slabs"
+    ]},
+    { name:"Walls — coverage", items:[
+      "Shower area only","Mid height (part walls)",
+      "Full height (floor to ceiling)","Same as existing"
+    ]},
+    { name:"Tile category (affects pricing)", items:[
+      "Standard — machine-cuttable (porcelain, ceramic)",
+      "Premium — flex-cut required (marble, stone-effect)"
+    ]},
+    { name:"Pattern", items:[
+      "Horizontal","Vertical","Herringbone",
+      "Straight / brick bond","Diagonal",
+      "Large format","Mixed pattern"
+    ]},
+    { name:"Floor — finish type", items:[
+      "Tiles (machine-cut)",
+      "Stone / marble (flex-cut)",
+      "Vinyl","LVT (Luxury Vinyl Tile)",
+      "Wood","Carpet"
+    ]}
+  ]},
+  { name:"SHOWER AREA 1", core:true, repeatable:true, subs:[
+    { name:"Type", items:[
+      { text:"Bathtub", group:"bath" },
+      { text:"Enclosure", group:"enclosure" },
+      { text:"Walk-in shower", group:"walkin" }
+    ]},
+    { name:"Floor", showFor:["enclosure","walkin"], items:[
+      "Tray (acrylic / stone resin)",
+      "Tiled floor — wet room formation (platform + drain + fall)"
+    ]},
+    { name:"Bathtub type", showFor:"bath", items:[
+      "Fit-in (standard)","Freestanding"
+    ]},
+    { name:"Bath fixing", showFor:"bath", items:[
+      "Fix on vanity","Fix on existing structure","Standard (against walls)"
+    ]},
+    { name:"Bath side panel", showFor:"bath", items:[
+      "Tiled (custom built)",
+      "Plastic (factory, supplied with bath)",
+      "Wall panels matching","None (freestanding)"
+    ]},
+    { name:"Bath filler / taps", showFor:"bath", items:[
+      "Pillar (2 separate hot/cold pillars)",
+      "Wall-mounted",
+      "Deck-mounted mixer (single hole)",
+      "Deck-mounted mixer with hand shower",
+      "Bath shower mixer with overflow filler (modern)",
+      "No filler (fills from elsewhere)"
+    ]},
+    { name:"Glass screen / curtain", showFor:["bath","walkin"], items:[
+      "Fixed panel","Semi-fixed","Hinged","Folding",
+      "Shower curtain (no glass)"
+    ]},
+    { name:"Enclosure type", showFor:"enclosure", items:[
+      "Rectangular","Square","Quadrant","Pentagonal",
+      "Alcove","Wall to wall"
+    ]},
+    { name:"Enclosure door", showFor:"enclosure", items:[
+      "Hinged","Sliding","Pivot","Folding","Corner sliding","Any"
+    ]},
+    { name:"Shower valve", items:[
+      { text:"Exposed", group:"exposed" },
+      { text:"Concealed", group:"concealed" }
+    ]},
+    { name:"Shower outlets", items:[
+      "Handset","Adjustable rail",
+      "Overhead — wall mounted","Overhead — ceiling mounted"
+    ]},
+    { name:"Controls position", showFor:"concealed", items:[
+      "Away from water (side)","Under overhead"
+    ]},
+    { name:"Niche", items:[
+      "Tiled niche — single",
+      "Tiled niche with LED",
+      "Stacked tiled niches (x2/x3)",
+      "Vertical niche with shelves",
+      "Prefab niche","Prefab niche with LED",
+      "No niche"
+    ]},
+    { name:"Boxing within shower area", items:[
+      "Half-height (along shower wall)",
+      "Full-height (for concealed valve / services)",
+      "With insulation / soundproofing fill",
+      "No boxing"
+    ]},
+    { name:"Extras", items:[
+      "Grab rails","Shower seat / foldable chair"
+    ]}
+  ]},
+  { name:"TOILET", core:true, subs:[
+    { name:"Type", items:[
+      { text:"Close-coupled (floor-standing, visible cistern)", group:"visible" },
+      { text:"Floor-standing concealed cistern", group:"concealed" },
+      { text:"Wall-hung concealed cistern", group:"concealed" },
+      { text:"In-wall cistern (no box)", group:"inwall" },
+      "Smart toilet (e.g. TOTO)",
+      "Standard + smart seat",
+      "Combined toilet + vanity unit"
+    ]},
+    { name:"Cistern box", showFor:"concealed", items:[
+      "Half-height","Full-height to ceiling","Prefab pre-walled panel"
+    ]},
+    { name:"Soil pipe work", items:[
+      "Same position","Reroute through floor","Reroute through wall",
+      "Drilling required (new soil run)",
+      "Boxing around exposed soil pipe"
+    ]},
+    { name:"Bidet", items:[
+      "Shower bidet attachment","Bidet unit (separate)","None"
+    ]},
+    { name:"Lighting (triggers electrical)", items:[
+      "Under-toilet LED strip"
+    ]}
+  ]},
+  { name:"VANITY & BASIN", core:true, subs:[
+    { name:"Type", items:[
+      "Wash basin alone — wall-hung",
+      "Wash basin alone — pedestal",
+      "Wash basin alone — wash stand",
+      "Vanity unit — wall-hung single",
+      "Vanity unit — wall-hung double",
+      "Vanity unit — floor-standing single",
+      "Vanity unit — floor-standing double",
+      "Combined toilet + vanity unit"
+    ]},
+    { name:"Basin style (for vanity)", items:[
+      "Inset / integrated","Counter-top","Semi-recessed"
+    ]},
+    { name:"Taps", items:[
+      "Deck-mounted mixer (single hole)",
+      "Deck-mounted separate (3-hole)",
+      "Wall-mounted"
+    ]},
+    { name:"Lighting (triggers electrical)", items:[
+      "Under-vanity LED strip"
+    ]}
+  ]},
+  { name:"MIRROR & CABINET", core:true, subs:[
+    { name:"Type", items:[
+      { text:"Mirror", group:"mirror" },
+      { text:"Mirror cabinet", group:"cabinet" }
+    ]},
+    { name:"Cabinet mount", showFor:"cabinet", items:[
+      "Surface mounted","Recessed (recess work auto-derived)"
+    ]},
+    { name:"Electric", items:[
+      { text:"Electric (illuminated)", group:"electric" },
+      { text:"Non-electric", group:"non-electric" }
+    ]},
+    { name:"Side lights", showFor:"non-electric", items:[
+      "Side lights — 2 separate fixtures next to mirror"
+    ]},
+    { name:"Wiring", showFor:"electric", items:[
+      "New wiring","Existing kept / adjustment only"
+    ]},
+    { name:"Extras", items:[
+      "Shaver socket integrated","Shaver socket separate",
+      "Magnifying / extendable mirror"
+    ]}
+  ]},
+  { name:"HEATED TOWEL RAIL / RADIATOR", core:true, subs:[
+    { name:"Type", items:[
+      "Radiator (regular flat panel)","Towel Rail"
+    ]},
+    { name:"Fuel", items:[
+      "Water-fed (central heating)","Electric","Dual fuel"
+    ]},
+    { name:"Works", items:[
+      "New installation","Relocation",
+      "Pipe conversion floor → wall",
+      "Pipe conversion wall → floor",
+      "Add pipework","Add wiring"
+    ]},
+    { name:"Recess", items:[
+      "Wall recess (so door does not hit it)"
+    ]}
+  ]},
+  { name:"EXTRACTOR FAN", core:true, subs:[
+    { name:"Type", items:[
+      { text:"None required", group:"none" },
+      { text:"Replace existing (same hole, same wiring)", group:"replace" },
+      { text:"New installation — ceiling", group:"new" },
+      { text:"New installation — wall", group:"new" },
+      { text:"New installation — window", group:"new" }
+    ]},
+    { name:"Switch (3 options)", showFor:"new", items:[
+      "Linked to lights (triggers with lights)",
+      "Separate switch (independent control)",
+      "Standalone — humidistat / timer / PIR"
+    ]},
+    { name:"Drilling", showFor:"new", items:[
+      "Through wall","Through ceiling","Through window cassette"
+    ]}
+  ]},
+  { name:"ACCESSORIES", core:true, subs:[
+    { name:"Standard", items:[
+      "Standard package (TP holder + robe hook + soap dish)"
+    ]},
+    { name:"Individual additions", items:[
+      "Towel bar / rail (non-heated)",
+      "Towel ring / hoop",
+      "Toilet brush holder",
+      "Grab rail / safety rail"
+    ]}
+  ]},
+  { name:"PAINTING", core:true, subs:[
+    { name:"Ceiling treatment", items:[
+      "None","Paint only","Skim + paint"
+    ]},
+    { name:"Wall treatment", items:[
+      "None","Paint only","Skim + paint",
+      "Feature wall — different paint colour/finish"
+    ]}
+  ]},
+  { name:"PROTECTING & CLEANING", core:true, items:[
+    "Standard protecting and cleaning package"
+  ]}
+];
+
+/* ============================================================
+   STATE & PERSISTENCE
+   ============================================================ */
+const KEY_MASTER  = 'eh_survey_master_v32';
+const KEY_SESSION = 'eh_survey_session_v32';
+
+let DATA = [];
+let session = {
+  client: {
+    nameAddr: '',
+    propType: '',
+    wallSolid: [],
+    wallPartition: [],
+    style: '',
+    finishes: '',
+    finishesOther: ''
+  },
+  tony: {
+    completion: '',           // 'flexible' | 'urgent' | ''
+    completionDate: '',
+    callChips: [],            // multi-select array of values
+    callNotes: '',
+    parking: '',              // 'free' | 'permit' | 'none' | ''
+    personality: '',
+    winProb: '',              // 0..100 string from slider, '' if untouched
+    winProbSet: false,        // whether user moved the slider
+    price: '',                // chip value e.g. '7k+'
+    priceNotes: '',
+    ceilingPhoto: false,
+    otherPhotos: false,
+    ceilingNotes: ''
+  },
+  ticks: {},
+  notes: {},
+  openSections: {},
+  openSubs: {},        // sub-group open state per sub id
+  cardsOpen: { client_card: true, tony_card: false }  // collapsible cards
+};
+
+function newId(prefix) {
+  return prefix + '_' + Math.random().toString(36).slice(2,10) + Date.now().toString(36).slice(-4);
+}
+
+function assignIds(data) {
+  return data.map(sec => {
+    const s = { id: newId('s'), name: sec.name, note: sec.note || '', repeatable: !!sec.repeatable, core: !!sec.core };
+    const itemize = it => {
+      if (typeof it === 'string') return { id: newId('i'), text: it };
+      return { id: newId('i'), text: it.text, group: it.group, hd: !!it.hd };
+    };
+    if (sec.subs) {
+      s.subs = sec.subs.map(sub => ({
+        id: newId('sb'),
+        name: sub.name,
+        showFor: sub.showFor,
+        items: sub.items.map(itemize)
+      }));
+    } else if (sec.items) {
+      s.items = sec.items.map(itemize);
+    }
+    return s;
+  });
+}
+
+/* ============================================================
+   HD MIGRATION — apply HD_DEFAULTS to items matching by text
+   Called on fresh install AND when migrating from V3.2.
+   Skips if any item already has hd flag (i.e. user has tagged already).
+   ============================================================ */
+function applyHdDefaults(force) {
+  // Detect if any HD tagging already present
+  let hasAnyHd = false;
+  DATA.forEach(sec => {
+    const arrs = sec.subs ? sec.subs.map(s => s.items) : [sec.items || []];
+    arrs.forEach(arr => arr.forEach(it => { if (it.hd) hasAnyHd = true; }));
+  });
+  if (hasAnyHd && !force) return false;
+
+  // If forced, clear all first
+  if (force) {
+    DATA.forEach(sec => {
+      const arrs = sec.subs ? sec.subs.map(s => s.items) : [sec.items || []];
+      arrs.forEach(arr => arr.forEach(it => { delete it.hd; }));
+    });
+  }
+
+  // Apply defaults by text match
+  const lookup = new Set(HD_DEFAULTS);
+  DATA.forEach(sec => {
+    const arrs = sec.subs ? sec.subs.map(s => s.items) : [sec.items || []];
+    arrs.forEach(arr => arr.forEach(it => {
+      if (lookup.has(it.text)) it.hd = true;
+    }));
+  });
+  saveMaster();
+  return true;
+}
+
+function saveMaster() {
+  try { localStorage.setItem(KEY_MASTER, JSON.stringify(DATA)); } catch(e) {}
+}
+function saveSession() {
+  try { localStorage.setItem(KEY_SESSION, JSON.stringify(session)); } catch(e) {}
+}
+function loadMaster() {
+  try {
+    const raw = localStorage.getItem(KEY_MASTER);
+    if (raw) { DATA = JSON.parse(raw); return true; }
+  } catch(e) {}
+  return false;
+}
+function loadSession() {
+  try {
+    const raw = localStorage.getItem(KEY_SESSION);
+    if (raw) {
+      const loaded = JSON.parse(raw);
+      const c = loaded.client || {};
+      session.client = {
+        nameAddr: c.nameAddr || '',
+        propType: c.propType || '',
+        wallSolid: Array.isArray(c.wallSolid) ? c.wallSolid : [],
+        wallPartition: Array.isArray(c.wallPartition) ? c.wallPartition : [],
+        style: c.style || '',
+        finishes: c.finishes || '',
+        finishesOther: c.finishesOther || ''
+      };
+      const t = loaded.tony || {};
+      session.tony = {
+        completion: t.completion || '',
+        completionDate: t.completionDate || '',
+        callChips: Array.isArray(t.callChips) ? t.callChips : (t.call ? [t.call] : []),
+        callNotes: t.callNotes || t.call || '',
+        parking: t.parking || '',
+        personality: t.personality || '',
+        winProb: (t.winProb !== undefined && t.winProb !== null) ? t.winProb : '',
+        winProbSet: !!t.winProbSet || (t.winProb !== '' && t.winProb !== null && t.winProb !== undefined),
+        price: t.price || '',
+        priceNotes: t.priceNotes || '',
+        ceilingPhoto: !!t.ceilingPhoto,
+        otherPhotos: !!t.otherPhotos,
+        ceilingNotes: t.ceilingNotes || ''
+      };
+      session.ticks = loaded.ticks || {};
+      session.notes = loaded.notes || {};
+      session.openSections = loaded.openSections || {};
+      session.openSubs = loaded.openSubs || {};
+      session.cardsOpen = Object.assign({ client_card: true, tony_card: false }, loaded.cardsOpen || {});
+    }
+  } catch(e) {}
+}
+
+/* ============================================================
+   CONDITIONAL VISIBILITY LOGIC
+   ============================================================ */
+function isSubVisible(sec, sub) {
+  if (!sub.showFor) return true;
+  const groups = Array.isArray(sub.showFor) ? sub.showFor : [sub.showFor];
+  const allItems = [];
+  (sec.subs || []).forEach(s => s.items.forEach(it => allItems.push(it)));
+  if (sec.items) sec.items.forEach(it => allItems.push(it));
+  for (const it of allItems) {
+    if (it.group && groups.includes(it.group) && session.ticks[it.id]) return true;
+  }
+  return false;
+}
+
+function sectionTickCount(sec) {
+  let total = 0, ticked = 0;
+  const considerSub = (sub) => {
+    if (!isSubVisible(sec, sub)) return;
+    sub.items.forEach(it => {
+      total++;
+      if (session.ticks[it.id]) ticked++;
+    });
+  };
+  if (sec.subs) sec.subs.forEach(considerSub);
+  else if (sec.items) sec.items.forEach(it => {
+    total++;
+    if (session.ticks[it.id]) ticked++;
+  });
+  return { ticked, total };
+}
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+function escapeHTML(s) {
+  return String(s||'').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+
+function build() {
+  const main = document.getElementById('main');
+  main.innerHTML = '';
+  DATA.forEach((sec, si) => {
+    const { ticked, total } = sectionTickCount(sec);
+    const div = document.createElement('div');
+    div.className = 'section';
+    div.id = 'sec_' + sec.id;
+    if (session.openSections[sec.id]) div.classList.add('open');
+    if (ticked > 0) div.classList.add('has-ticks');
+
+    const hdr = document.createElement('div');
+    hdr.className = 'sec-hdr';
+    hdr.innerHTML = `
+      <span class="sec-arrow">▶</span>
+      <span class="sec-name">${escapeHTML(sec.name)}</span>
+      <span class="sec-meta">
+        <span class="sec-count ${ticked>0?'has':''}">${ticked}/${total}</span>
+        <span class="sec-dot"></span>
+      </span>
+    `;
+    hdr.addEventListener('click', () => toggleSec(sec.id));
+
+    // Edit mode: section delete button
+    const editActions = document.createElement('div');
+    editActions.className = 'sec-actions edit-only';
+    const secDelBtn = document.createElement('button');
+    secDelBtn.className = 'sec-del-btn';
+    secDelBtn.textContent = '×';
+    secDelBtn.title = 'Delete section';
+    secDelBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      handleSectionDelete(sec.id, secDelBtn);
+    });
+    editActions.appendChild(secDelBtn);
+    hdr.querySelector('.sec-meta').appendChild(editActions);
+
+    div.appendChild(hdr);
+
+    const body = document.createElement('div');
+    body.className = 'sec-body';
+
+    if (sec.subs) {
+      sec.subs.forEach((sub, subi) => {
+        if (!isSubVisible(sec, sub)) return;
+
+        // Count ticks in this sub-group
+        let subTicked = 0;
+        sub.items.forEach(it => { if (session.ticks[it.id]) subTicked++; });
+
+        const isOpen = !!session.openSubs[sub.id];
+
+        const st = document.createElement('div');
+        st.className = 'subsec-title' + (isOpen ? ' open' : '') + (subTicked > 0 ? ' has' : '');
+        st.dataset.subId = sub.id;
+        st.innerHTML = `
+          <span class="subsec-arrow">▶</span>
+          <span class="subsec-name">${escapeHTML(sub.name)}</span>
+          <span class="subsec-count">${subTicked}/${sub.items.length}</span>
+          <span class="sub-edit-controls">
+            <button class="sub-edit-btn" type="button" title="Rename">✎</button>
+            <button class="sub-edit-btn del" type="button" title="Delete sub-group">×</button>
+          </span>
+        `;
+        st.addEventListener('click', (e) => {
+          if (document.body.dataset.mode === 'edit') return; // don't collapse in edit mode
+          toggleSub(sub.id);
+        });
+        // Wire sub-group edit buttons
+        const btnRename = st.querySelector('.sub-edit-btn:not(.del)');
+        const btnDel = st.querySelector('.sub-edit-btn.del');
+        btnRename.addEventListener('click', (e) => { e.stopPropagation(); startRenameSub(sub.id, st); });
+        btnDel.addEventListener('click', (e) => { e.stopPropagation(); handleSubDelete(sub.id); });
+        body.appendChild(st);
+
+        // Content wrapper — collapsible
+        const contentWrap = document.createElement('div');
+        contentWrap.className = 'subsec-content' + (isOpen ? ' open' : '');
+        contentWrap.dataset.subContentId = sub.id;
+        renderItems(contentWrap, sub.items, si, subi, true);
+        contentWrap.appendChild(makeAddRow(si, subi, true));
+        body.appendChild(contentWrap);
+      });
+
+      // Add sub-group row (edit mode only)
+      const addSubRow = document.createElement('div');
+      addSubRow.className = 'add-sub-row';
+      const addSubInp = document.createElement('input');
+      addSubInp.className = 'add-sub-inp';
+      addSubInp.placeholder = 'Add new sub-group…';
+      addSubInp.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') { addSubGroup(si, addSubInp); }
+      });
+      const addSubBtn = document.createElement('button');
+      addSubBtn.className = 'add-sub-btn';
+      addSubBtn.type = 'button';
+      addSubBtn.textContent = '+ Sub-group';
+      addSubBtn.addEventListener('click', () => addSubGroup(si, addSubInp));
+      addSubRow.appendChild(addSubInp);
+      addSubRow.appendChild(addSubBtn);
+      body.appendChild(addSubRow);
+
+    } else if (sec.items) {
+      renderItems(body, sec.items, si, null, false);
+      body.appendChild(makeAddRow(si, null, false));
+    }
+
+    // Notes block (use mode only)
+    const noteBlock = document.createElement('div');
+    noteBlock.className = 'notes-block use-only';
+    noteBlock.innerHTML = `
+      <div class="notes-label">Section notes</div>
+      <textarea class="notes-area" placeholder="Free notes, dimensions, photos taken, anything that's not in the checklist…"></textarea>
+    `;
+    const noteTA = noteBlock.querySelector('textarea');
+    noteTA.value = session.notes[sec.id] || '';
+    noteTA.addEventListener('input', () => setNote(sec.id, noteTA.value));
+    body.appendChild(noteBlock);
+
+    div.appendChild(body);
+    main.appendChild(div);
+
+    // After SHOWER AREA-like sections, show "+ Add another" button
+    if (sec.repeatable || /^SHOWER AREA \d+$/.test(sec.name)) {
+      // Check if next section is also a shower area
+      const next = DATA[si+1];
+      if (!next || !/^SHOWER AREA \d+$/.test(next.name)) {
+        const addBtn = document.createElement('button');
+        addBtn.className = 'add-sa-btn';
+        addBtn.textContent = '+ Add another shower area';
+        addBtn.addEventListener('click', () => duplicateShowerArea(si));
+        main.appendChild(addBtn);
+      }
+    }
+  });
+}
+
+function renderItems(body, items, si, subi, isSub) {
+  items.forEach((item, oi) => {
+    // USE mode row
+    const useRow = document.createElement('div');
+    useRow.className = 'opt-row use-only' + (session.ticks[item.id] ? ' ticked' : '') + (item.hd ? ' has-hd' : '');
+    useRow.dataset.itemId = item.id;
+    useRow.innerHTML = `
+      <div class="opt-check"></div>
+      <div class="opt-label">${escapeHTML(item.text)}</div>
+      <div class="hd-marker" title="Hidden Detail"></div>
+    `;
+    useRow.addEventListener('click', () => toggleTick(item.id, useRow));
+    body.appendChild(useRow);
+
+    // EDIT mode row
+    const editRow = document.createElement('div');
+    editRow.className = 'edit-row edit-only';
+
+    const textInp = document.createElement('input');
+    textInp.className = 'edit-text';
+    textInp.type = 'text';
+    textInp.value = item.text;
+    textInp.addEventListener('change', () => renameItem(item.id, textInp.value));
+
+    const actions = document.createElement('div');
+    actions.className = 'opt-actions';
+
+    const hdBtn = document.createElement('button');
+    hdBtn.className = 'act-btn hd' + (item.hd ? ' on' : '');
+    hdBtn.type = 'button';
+    hdBtn.textContent = 'HD';
+    hdBtn.title = 'Tag as Hidden Detail';
+    hdBtn.dataset.itemId = item.id;
+    hdBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleHd(item.id); });
+
+    const upBtn = document.createElement('button');
+    upBtn.className = 'act-btn';
+    upBtn.type = 'button';
+    upBtn.textContent = '↑';
+    upBtn.addEventListener('click', (e) => { e.stopPropagation(); moveItemById(item.id, -1); });
+
+    const dnBtn = document.createElement('button');
+    dnBtn.className = 'act-btn';
+    dnBtn.type = 'button';
+    dnBtn.textContent = '↓';
+    dnBtn.addEventListener('click', (e) => { e.stopPropagation(); moveItemById(item.id, 1); });
+
+    const delBtn = document.createElement('button');
+    delBtn.className = 'act-btn del';
+    delBtn.type = 'button';
+    delBtn.textContent = '×';
+    delBtn.dataset.itemId = item.id;
+    delBtn.addEventListener('click', (e) => { e.stopPropagation(); handleItemDelete(item.id, delBtn); });
+
+    actions.appendChild(upBtn);
+    actions.appendChild(dnBtn);
+    actions.appendChild(delBtn);
+    actions.appendChild(hdBtn);
+    editRow.appendChild(textInp);
+    editRow.appendChild(actions);
+    body.appendChild(editRow);
+  });
+}
+
+function makeAddRow(si, subi, isSub) {
+  const row = document.createElement('div');
+  row.className = 'add-row edit-only';
+  const inp = document.createElement('input');
+  inp.className = 'add-inp';
+  inp.placeholder = 'Add option…';
+  inp.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { addItem(si, subi, isSub, inp); inp.blur(); }
+  });
+  const btn = document.createElement('button');
+  btn.className = 'add-btn';
+  btn.textContent = '+ Add';
+  btn.addEventListener('click', () => addItem(si, subi, isSub, inp));
+  row.appendChild(inp);
+  row.appendChild(btn);
+  return row;
+}
+
+/* ============================================================
+   USE MODE ACTIONS
+   ============================================================ */
+function toggleTick(itemId, rowEl) {
+  if (session.ticks[itemId]) {
+    delete session.ticks[itemId];
+    rowEl.classList.remove('ticked');
+  } else {
+    session.ticks[itemId] = true;
+    rowEl.classList.add('ticked');
+  }
+  saveSession();
+  // Need full rebuild for conditional sub-section visibility
+  build();
+}
+
+function setNote(sectionId, val) {
+  if (val) session.notes[sectionId] = val;
+  else delete session.notes[sectionId];
+  saveSession();
+  updateSectionCounts();
+}
+
+function updateSectionCounts() {
+  DATA.forEach(sec => {
+    const { ticked, total } = sectionTickCount(sec);
+    const el = document.getElementById('sec_' + sec.id);
+    if (!el) return;
+    const cnt = el.querySelector('.sec-count');
+    if (cnt) {
+      cnt.textContent = `${ticked}/${total}`;
+      cnt.classList.toggle('has', ticked > 0);
+    }
+    el.classList.toggle('has-ticks', ticked > 0);
+  });
+}
+
+function toggleSec(sectionId) {
+  const el = document.getElementById('sec_' + sectionId);
+  if (!el) return;
+  el.classList.toggle('open');
+  if (el.classList.contains('open')) session.openSections[sectionId] = true;
+  else delete session.openSections[sectionId];
+  saveSession();
+  updateExpandBtnText();
+}
+
+function toggleSub(subId) {
+  const isOpen = !!session.openSubs[subId];
+  if (isOpen) delete session.openSubs[subId];
+  else session.openSubs[subId] = true;
+  // Update DOM in place without full rebuild
+  document.querySelectorAll(`.subsec-title[data-sub-id="${subId}"]`).forEach(el => {
+    el.classList.toggle('open', !isOpen);
+  });
+  document.querySelectorAll(`.subsec-content[data-sub-content-id="${subId}"]`).forEach(el => {
+    el.classList.toggle('open', !isOpen);
+  });
+  saveSession();
+}
+
+function toggleCard(cardId) {
+  const el = document.getElementById(cardId);
+  if (!el) return;
+  el.classList.toggle('open');
+  session.cardsOpen[cardId] = el.classList.contains('open');
+  saveSession();
+}
+
+function expandAll() {
+  document.querySelectorAll('.section').forEach(s => s.classList.add('open'));
+  DATA.forEach(sec => {
+    session.openSections[sec.id] = true;
+    if (sec.subs) sec.subs.forEach(sub => { session.openSubs[sub.id] = true; });
+  });
+  // Cards
+  document.querySelectorAll('.client-card.collapsible').forEach(c => {
+    c.classList.add('open');
+    session.cardsOpen[c.id] = true;
+  });
+  // Sub-groups in DOM
+  document.querySelectorAll('.subsec-title').forEach(el => el.classList.add('open'));
+  document.querySelectorAll('.subsec-content').forEach(el => el.classList.add('open'));
+  saveSession();
+}
+function collapseAll() {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('open'));
+  session.openSections = {};
+  session.openSubs = {};
+  // Cards
+  document.querySelectorAll('.client-card.collapsible').forEach(c => {
+    c.classList.remove('open');
+    session.cardsOpen[c.id] = false;
+  });
+  document.querySelectorAll('.subsec-title').forEach(el => el.classList.remove('open'));
+  document.querySelectorAll('.subsec-content').forEach(el => el.classList.remove('open'));
+  saveSession();
+}
+function toggleExpandAll() {
+  const total = DATA.length;
+  const openCount = DATA.filter(sec => session.openSections[sec.id]).length;
+  if (openCount >= total / 2) collapseAll();
+  else expandAll();
+  updateExpandBtnText();
+}
+function updateExpandBtnText() {
+  const total = DATA.length;
+  const openCount = DATA.filter(sec => session.openSections[sec.id]).length;
+  const label = (openCount >= total / 2) ? 'Collapse all' : 'Expand all';
+  document.querySelectorAll('[data-expand-btn]').forEach(b => b.textContent = label);
+}
+
+/* ============================================================
+   EDIT MODE ACTIONS — with bulletproof two-tap delete
+   ============================================================ */
+function renameItem(itemId, newText) {
+  for (const sec of DATA) {
+    const arrs = sec.subs ? sec.subs.map(s => s.items) : [sec.items || []];
+    for (const arr of arrs) {
+      const it = arr.find(x => x.id === itemId);
+      if (it) { it.text = newText; saveMaster(); return; }
+    }
+  }
+}
+
+function toggleHd(itemId) {
+  for (const sec of DATA) {
+    const arrs = sec.subs ? sec.subs.map(s => s.items) : [sec.items || []];
+    for (const arr of arrs) {
+      const it = arr.find(x => x.id === itemId);
+      if (it) {
+        it.hd = !it.hd;
+        if (!it.hd) delete it.hd;
+        saveMaster();
+        // Update visible state without full rebuild
+        const useRow = document.querySelector(`.opt-row[data-item-id="${itemId}"]`);
+        if (useRow) useRow.classList.toggle('has-hd', !!it.hd);
+        const editBtn = document.querySelector(`.act-btn.hd[data-item-id="${itemId}"]`);
+        if (editBtn) editBtn.classList.toggle('on', !!it.hd);
+        return;
+      }
+    }
+  }
+}
+
+function findItemContext(itemId) {
+  for (let si = 0; si < DATA.length; si++) {
+    const sec = DATA[si];
+    if (sec.subs) {
+      for (let subi = 0; subi < sec.subs.length; subi++) {
+        const arr = sec.subs[subi].items;
+        const idx = arr.findIndex(x => x.id === itemId);
+        if (idx >= 0) return { arr, index: idx };
+      }
+    } else if (sec.items) {
+      const idx = sec.items.findIndex(x => x.id === itemId);
+      if (idx >= 0) return { arr: sec.items, index: idx };
+    }
+  }
+  return null;
+}
+
+function moveItemById(itemId, dir) {
+  const ctx = findItemContext(itemId);
+  if (!ctx) return;
+  const ni = ctx.index + dir;
+  if (ni < 0 || ni >= ctx.arr.length) return;
+  [ctx.arr[ctx.index], ctx.arr[ni]] = [ctx.arr[ni], ctx.arr[ctx.index]];
+  saveMaster();
+  build();
+}
+
+// Two-tap delete: first tap arms the button, second tap (within 3s) deletes
+let lastDeletedItem = null;  // { item, arr, index, wasTicked }
+
+function handleItemDelete(itemId, btn) {
+  const ctx = findItemContext(itemId);
+  if (!ctx) return;
+  const itemText = ctx.arr[ctx.index].text;
+
+  if (!confirm(`Delete option "${itemText}"?\n\nYou will have 8 seconds to undo.`)) {
+    return;
+  }
+
+  const wasTicked = !!session.ticks[itemId];
+  const itemCopy = JSON.parse(JSON.stringify(ctx.arr[ctx.index]));
+
+  lastDeletedItem = {
+    item: itemCopy,
+    arr: ctx.arr,
+    index: ctx.index,
+    wasTicked
+  };
+
+  ctx.arr.splice(ctx.index, 1);
+  delete session.ticks[itemId];
+  saveMaster();
+  saveSession();
+  build();
+  showUndoItemToast(`"${itemText}" deleted`);
+}
+
+function showUndoItemToast(msg) {
+  const t = document.getElementById('toast');
+  t.innerHTML = `${msg} · <span style="color:#111;background:#e8c98e;padding:4px 10px;border-radius:4px;margin-left:6px;font-weight:700;cursor:pointer;" onclick="undoItemDelete()">UNDO</span>`;
+  t.style.background = '#c9a96e';
+  t.style.color = '#111';
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  clearTimeout(undoTimer);
+  undoTimer = setTimeout(() => {
+    lastDeletedItem = null;
+    t.classList.remove('show');
+    t.style.background = ''; t.style.color = ''; t.innerHTML = '';
+  }, 8000);
+}
+
+function undoItemDelete() {
+  if (!lastDeletedItem) return;
+  clearTimeout(undoTimer);
+  const { item, arr, index, wasTicked } = lastDeletedItem;
+  arr.splice(Math.min(index, arr.length), 0, item);
+  if (wasTicked) session.ticks[item.id] = true;
+  lastDeletedItem = null;
+  saveMaster();
+  saveSession();
+  build();
+  const t = document.getElementById('toast');
+  t.style.background = ''; t.style.color = ''; t.innerHTML = '';
+  t.classList.remove('show');
+  showToast('Option restored');
+}
+
+function clearItemDeletePending() {
+  // no-op in V3.9, kept for backwards-compat
+}
+
+// Section delete — explicit Yes/No confirm + undo capability
+let lastDeletedSection = null;  // { section, index, ticks, note }
+let undoTimer = null;
+
+// ==== V4.2: Sub-group management ====
+let lastDeletedSub = null;  // { sub, sectionId, index, ticks }
+
+function findSubContext(subId) {
+  for (let si = 0; si < DATA.length; si++) {
+    const sec = DATA[si];
+    if (!sec.subs) continue;
+    for (let subi = 0; subi < sec.subs.length; subi++) {
+      if (sec.subs[subi].id === subId) return { sec, subi };
+    }
+  }
+  return null;
+}
+
+function startRenameSub(subId, titleEl) {
+  const ctx = findSubContext(subId);
+  if (!ctx) return;
+  const sub = ctx.sec.subs[ctx.subi];
+
+  // Replace title UI with input
+  const nameEl = titleEl.querySelector('.subsec-name');
+  const controls = titleEl.querySelector('.sub-edit-controls');
+  const currentName = sub.name;
+
+  const input = document.createElement('input');
+  input.className = 'sub-name-input';
+  input.value = currentName;
+  input.maxLength = 60;
+
+  const commit = () => {
+    const v = input.value.trim();
+    if (v && v !== currentName) {
+      sub.name = v;
+      saveMaster();
+    }
+    build();
+  };
+  const cancel = () => build();
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); commit(); }
+    else if (e.key === 'Escape') { e.preventDefault(); cancel(); }
+  });
+  input.addEventListener('blur', commit);
+
+  nameEl.replaceWith(input);
+  if (controls) controls.style.display = 'none';
+  input.focus();
+  input.select();
+}
+
+function handleSubDelete(subId) {
+  const ctx = findSubContext(subId);
+  if (!ctx) return;
+  const sub = ctx.sec.subs[ctx.subi];
+  const subName = sub.name;
+  const itemCount = sub.items.length;
+
+  // First confirmation
+  if (!confirm(`Delete sub-group "${subName}"?\n\nAll ${itemCount} option${itemCount === 1 ? '' : 's'} inside will be removed.\nYou will have 8 seconds to undo.`)) {
+    return;
+  }
+
+  // Password required for all sub-group deletes (V4.2 rule)
+  const pw = prompt(`Enter password to delete sub-group "${subName}":`);
+  if (pw === null) return;
+  if (pw.trim() !== '0000') {
+    alert('Wrong password. Sub-group not deleted.');
+    return;
+  }
+
+  // Save snapshot for undo
+  const savedTicks = {};
+  sub.items.forEach(it => { if (session.ticks[it.id]) savedTicks[it.id] = true; });
+
+  lastDeletedSub = {
+    sub: JSON.parse(JSON.stringify(sub)),
+    sectionId: ctx.sec.id,
+    index: ctx.subi,
+    ticks: savedTicks
+  };
+
+  // Perform delete
+  sub.items.forEach(it => delete session.ticks[it.id]);
+  ctx.sec.subs.splice(ctx.subi, 1);
+  saveMaster();
+  saveSession();
+  build();
+
+  showUndoSubToast(`Sub-group "${subName}" deleted`);
+}
+
+function showUndoSubToast(msg) {
+  const t = document.getElementById('toast');
+  t.innerHTML = `${msg} · <span style="color:#111;background:#e8c98e;padding:4px 10px;border-radius:4px;margin-left:6px;font-weight:700;cursor:pointer;" onclick="undoSubDelete()">UNDO</span>`;
+  t.style.background = '#c9a96e';
+  t.style.color = '#111';
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  clearTimeout(undoTimer);
+  undoTimer = setTimeout(() => {
+    lastDeletedSub = null;
+    t.classList.remove('show');
+    t.style.background = ''; t.style.color = ''; t.innerHTML = '';
+  }, 8000);
+}
+
+function undoSubDelete() {
+  if (!lastDeletedSub) return;
+  clearTimeout(undoTimer);
+  const { sub, sectionId, index, ticks } = lastDeletedSub;
+  const sec = DATA.find(s => s.id === sectionId);
+  if (!sec) { lastDeletedSub = null; return; }
+  if (!sec.subs) sec.subs = [];
+  sec.subs.splice(Math.min(index, sec.subs.length), 0, sub);
+  Object.keys(ticks).forEach(id => session.ticks[id] = true);
+  lastDeletedSub = null;
+  saveMaster();
+  saveSession();
+  build();
+  const t = document.getElementById('toast');
+  t.style.background = ''; t.style.color = ''; t.innerHTML = '';
+  t.classList.remove('show');
+  showToast('Sub-group restored');
+}
+
+function addSubGroup(si, inpEl) {
+  if (!inpEl || !inpEl.value.trim()) return;
+  const name = inpEl.value.trim();
+  if (!DATA[si].subs) DATA[si].subs = [];
+  DATA[si].subs.push({
+    id: newId('sb'),
+    name: name,
+    items: []
+  });
+  inpEl.value = '';
+  saveMaster();
+  build();
+  showToast(`Sub-group "${name}" added`);
+}
+
+function handleSectionDelete(sectionId, btn) {
+  const idx = DATA.findIndex(s => s.id === sectionId);
+  if (idx < 0) return;
+  const sec = DATA[idx];
+  const secName = sec.name;
+  const isCore = !!sec.core;
+
+  // First confirmation
+  if (!confirm(`Delete section "${secName}"?\n\nAll options and settings in this section will be removed.\nYou will have 8 seconds to undo.`)) {
+    return; // user cancelled
+  }
+
+  // V4.1: for core sections require password
+  if (isCore) {
+    const pw = prompt(`"${secName}" is a core section.\n\nEnter password to confirm delete:`);
+    if (pw === null) return; // cancelled
+    if (pw.trim() !== '0000') {
+      alert('Wrong password. Section not deleted.');
+      return;
+    }
+  }
+
+  // Save snapshot for undo
+  const savedTicks = {};
+  const allItems = [];
+  if (sec.subs) sec.subs.forEach(sb => sb.items.forEach(it => allItems.push(it.id)));
+  if (sec.items) sec.items.forEach(it => allItems.push(it.id));
+  allItems.forEach(id => {
+    if (session.ticks[id]) savedTicks[id] = true;
+  });
+  const savedNote = session.notes[sectionId];
+
+  lastDeletedSection = {
+    section: JSON.parse(JSON.stringify(sec)),
+    index: idx,
+    ticks: savedTicks,
+    note: savedNote
+  };
+
+  // Perform delete
+  allItems.forEach(id => delete session.ticks[id]);
+  delete session.notes[sectionId];
+  DATA.splice(idx, 1);
+  saveMaster();
+  saveSession();
+  build();
+
+  showUndoToast(`"${secName}" deleted`);
+}
+
+function showUndoToast(msg) {
+  const t = document.getElementById('toast');
+  t.innerHTML = `${msg} · <span style="color:#111;background:#e8c98e;padding:4px 10px;border-radius:4px;margin-left:6px;font-weight:700;cursor:pointer;" onclick="undoSectionDelete()">UNDO</span>`;
+  t.style.background = '#c9a96e';
+  t.style.color = '#111';
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  clearTimeout(undoTimer);
+  undoTimer = setTimeout(() => {
+    lastDeletedSection = null;  // undo window expired
+    t.classList.remove('show');
+    t.style.background = ''; t.style.color = ''; t.innerHTML = '';
+  }, 8000);
+}
+
+function undoSectionDelete() {
+  if (!lastDeletedSection) return;
+  clearTimeout(undoTimer);
+  const { section, index, ticks, note } = lastDeletedSection;
+  DATA.splice(Math.min(index, DATA.length), 0, section);
+  Object.keys(ticks).forEach(id => session.ticks[id] = true);
+  if (note) session.notes[section.id] = note;
+  lastDeletedSection = null;
+  saveMaster();
+  saveSession();
+  build();
+  const t = document.getElementById('toast');
+  t.style.background = ''; t.style.color = ''; t.innerHTML = '';
+  t.classList.remove('show');
+  showToast('Section restored');
+}
+function clearSecDeletePending() {
+  // kept for backwards-compat; no-op in V3.9
+}
+
+function addItem(si, subi, isSub, inpEl) {
+  if (!inpEl || !inpEl.value.trim()) return;
+  const newItem = { id: newId('i'), text: inpEl.value.trim() };
+  if (isSub) DATA[si].subs[subi].items.push(newItem);
+  else {
+    if (!DATA[si].items) DATA[si].items = [];
+    DATA[si].items.push(newItem);
+  }
+  inpEl.value = '';
+  saveMaster();
+  build();
+}
+
+function addSection() {
+  const inp = document.getElementById('newSectionInp');
+  const name = inp.value.trim();
+  if (!name) return;
+  DATA.push({ id: newId('s'), name: name.toUpperCase(), note:'', items: [] });
+  inp.value = '';
+  saveMaster();
+  build();
+}
+
+/* ============================================================
+   SHOWER AREA DUPLICATION
+   ============================================================ */
+function duplicateShowerArea(afterIdx) {
+  // Find the highest existing shower area number
+  let maxNum = 0;
+  DATA.forEach(sec => {
+    const m = sec.name.match(/^SHOWER AREA (\d+)$/);
+    if (m) maxNum = Math.max(maxNum, parseInt(m[1]));
+  });
+  // Find the original SHOWER AREA 1 as template
+  const template = DATA.find(s => s.name === 'SHOWER AREA 1');
+  if (!template) { showToast('Cannot duplicate'); return; }
+  // Deep clone with new IDs
+  const clone = JSON.parse(JSON.stringify(template));
+  clone.id = newId('s');
+  clone.name = 'SHOWER AREA ' + (maxNum + 1);
+  if (clone.subs) {
+    clone.subs.forEach(sub => {
+      sub.id = newId('sb');
+      sub.items.forEach(it => it.id = newId('i'));
+    });
+  }
+  if (clone.items) clone.items.forEach(it => it.id = newId('i'));
+  // Insert after the last shower area
+  DATA.splice(afterIdx + 1, 0, clone);
+  saveMaster();
+  build();
+  // Auto-open the new section
+  session.openSections[clone.id] = true;
+  saveSession();
+  setTimeout(() => {
+    const el = document.getElementById('sec_' + clone.id);
+    if (el) { el.classList.add('open'); el.scrollIntoView({ behavior:'smooth', block:'center' }); }
+  }, 60);
+  showToast('Added Shower Area ' + (maxNum + 1));
+}
+
+/* ============================================================
+   MODE TOGGLE
+   ============================================================ */
+function setMode(mode) {
+  document.body.dataset.mode = mode;
+  document.querySelectorAll('.mode-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.mode === mode);
+  });
+  // Clear any pending deletes when switching mode
+  clearItemDeletePending();
+  clearSecDeletePending();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ============================================================
+   GENERATE SURVEY OUTPUT
+   ============================================================ */
+const PROP_LABELS = { 'house':'House', 'flat-house':'Flat in house', 'flat-block':'Flat in block', 'council':'Council' };
+
+function buildGenerateText() {
+  const c = session.client;
+  const t = session.tony;
+
+  const PARKING_LABEL = { free:'Free parking', permit:'Permit needed', none:'No parking' };
+  const CALL_LABEL    = { morning:'Morning', afternoon:'Afternoon', after5:'After 5pm', anytime:'Anytime', weekends:'Weekends only' };
+  const PRICE_LABEL   = { '6k+':'£6k+', '7k+':'£7k+', '8k+':'£8k+', '10k+':'£10k+', '12k+':'£12k+', '15k+':'£15k+' };
+  const STYLE_LABEL   = { modern:'Modern', traditional:'Traditional', mixed:'Mixed' };
+  const FINISH_LABEL  = { chrome:'Chrome', black:'Black', gold:'Gold', other:'Other' };
+
+  // Section builder — flat list, no sub-labels
+  function buildSections(matchFn, includeNotes) {
+    const out = [];
+    DATA.forEach(sec => {
+      const secOutput = [];
+      if (sec.subs) {
+        sec.subs.forEach(sub => {
+          if (!isSubVisible(sec, sub)) return;
+          const ticked = sub.items.filter(matchFn);
+          if (!ticked.length) return;
+          ticked.forEach(it => secOutput.push('• ' + it.text));
+        });
+      } else if (sec.items) {
+        const ticked = sec.items.filter(matchFn);
+        ticked.forEach(it => secOutput.push('• ' + it.text));
+      }
+      if (includeNotes) {
+        const note = session.notes[sec.id];
+        if (note && note.trim()) {
+          const noteLines = note.trim().split(/\n+/).filter(Boolean);
+          noteLines.forEach(nl => secOutput.push('• ' + nl));
+        }
+      }
+      if (secOutput.length) {
+        out.push('');
+        out.push(sec.name);
+        secOutput.forEach(l => out.push(l));
+      }
+    });
+    return out;
+  }
+
+  const lines = [];
+
+  // ---- HEADER: client info (once) ----
+  if (c.nameAddr && c.nameAddr.trim()) {
+    const addrLine = c.nameAddr.trim().split('\n').filter(l => l.trim()).join(' · ');
+    if (addrLine) lines.push(addrLine);
+  }
+  // Empty line for breathing room
+  lines.push('');
+  // Property (on its own line)
+  if (c.propType) lines.push(PROP_LABELS[c.propType] || c.propType);
+  // Walls: label + numbers
+  const wallParts = [];
+  if (c.wallSolid && c.wallSolid.length) wallParts.push('Solid ' + c.wallSolid.sort((a,b)=>a-b).join(','));
+  if (c.wallPartition && c.wallPartition.length) wallParts.push('Partition ' + c.wallPartition.sort((a,b)=>a-b).join(','));
+  if (wallParts.length) lines.push('Walls: ' + wallParts.join(' · '));
+  // Style
+  if (c.style) lines.push('Style: ' + (STYLE_LABEL[c.style] || c.style));
+  // Finishes
+  if (c.finishes) {
+    if (c.finishes === 'other') {
+      const other = (c.finishesOther || '').trim();
+      lines.push('Finishes: ' + (other || 'Other'));
+    } else {
+      lines.push('Finishes: ' + (FINISH_LABEL[c.finishes] || c.finishes));
+    }
+  }
+
+  // ---- MAIN SECTIONS ----
+  const fullSecs = buildSections(it => session.ticks[it.id], true);
+  if (fullSecs.length) fullSecs.forEach(l => lines.push(l));
+
+  // ---- HIDDEN (no client info repeated) ----
+  lines.push('');
+  lines.push('');
+  lines.push('HIDDEN');
+  const hdSecs = buildSections(it => session.ticks[it.id] && it.hd, false);
+  if (hdSecs.length) {
+    // Skip the first empty line since we already have header
+    hdSecs.forEach((l, i) => { if (i === 0 && l === '') return; lines.push(l); });
+  } else {
+    lines.push('—');
+  }
+
+  // ---- TONY (no client info repeated, short header) ----
+  lines.push('');
+  lines.push('');
+  lines.push('TONY');
+  const tonyLines = [];
+
+  if (t.completion || (t.completionDate && t.completionDate.trim())) {
+    let s = 'Completion: ';
+    if (t.completion === 'urgent') s += 'URGENT';
+    else if (t.completion === 'flexible') s += 'Flexible';
+    else s += '—';
+    if (t.completionDate && t.completionDate.trim()) s += ' · ' + t.completionDate.trim();
+    tonyLines.push(s);
+  }
+
+  if ((Array.isArray(t.callChips) && t.callChips.length) || (t.callNotes && t.callNotes.trim())) {
+    let s = 'Call: ';
+    const labels = (t.callChips || []).map(v => CALL_LABEL[v] || v);
+    if (labels.length) s += labels.join(', ');
+    if (t.callNotes && t.callNotes.trim()) {
+      s += (labels.length ? ' · ' : '') + t.callNotes.trim().replace(/\n+/g, ' / ');
+    }
+    tonyLines.push(s);
+  }
+
+  if (t.parking) tonyLines.push('Parking: ' + (PARKING_LABEL[t.parking] || t.parking));
+  if (t.personality !== '' && t.personality !== null && t.personality !== undefined) tonyLines.push('Personality: ' + t.personality + '/10');
+  if (t.winProbSet) tonyLines.push('Win: ' + t.winProb + '%');
+
+  if (t.price || (t.priceNotes && t.priceNotes.trim())) {
+    let s = 'Price: ';
+    if (t.price) s += (PRICE_LABEL[t.price] || t.price);
+    if (t.priceNotes && t.priceNotes.trim()) {
+      s += (t.price ? ' · ' : '') + t.priceNotes.trim().replace(/\n+/g, ' / ');
+    }
+    tonyLines.push(s);
+  }
+
+  const photoStatus = [];
+  photoStatus.push(t.ceilingPhoto ? '✓ ceiling' : '☐ ceiling MISSING');
+  photoStatus.push(t.otherPhotos ? '✓ other'   : '☐ other');
+  tonyLines.push('Photos: ' + photoStatus.join(' · '));
+  if (t.ceilingNotes && t.ceilingNotes.trim()) {
+    tonyLines.push('Photo notes: ' + t.ceilingNotes.trim().replace(/\n+/g, ' / '));
+  }
+
+  if (tonyLines.length === 0) lines.push('—');
+  else tonyLines.forEach(l => lines.push(l));
+
+  // Collapse consecutive empty lines at start
+  while (lines.length && lines[0] === '') lines.shift();
+
+  return lines.join('\n');
+}
+
+function openGenerate() {
+  document.getElementById('genText').textContent = buildGenerateText();
+  document.getElementById('genModal').classList.add('open');
+  document.getElementById('shareBtn').style.display = navigator.share ? '' : 'none';
+}
+function closeGenerate() { document.getElementById('genModal').classList.remove('open'); }
+function copyGen() {
+  copyText(document.getElementById('genText').textContent, 'Output copied · paste & segment in WhatsApp');
+}
+function shareGen() {
+  const text = document.getElementById('genText').textContent;
+  const c = session.client;
+  const firstLine = (c.nameAddr||'').split('\n')[0];
+  const title = 'Bathroom Survey' + (firstLine ? ' — ' + firstLine : '');
+  if (navigator.share) {
+    navigator.share({ title, text }).catch(()=>{});
+  } else {
+    copyText(text, 'Copied');
+  }
+}
+
+/* ============================================================
+   EXPORT FULL LIST
+   ============================================================ */
+function buildExportText() {
+  let out = 'ELEGANT HAVEN — Master Checklist (Full)\n';
+  out += '='.repeat(40) + '\n\n';
+  DATA.forEach(sec => {
+    out += sec.name;
+    if (sec.note) out += ' (' + sec.note + ')';
+    out += '\n' + '-'.repeat(sec.name.length) + '\n';
+    if (sec.subs) {
+      sec.subs.forEach(sub => {
+        out += '  ' + sub.name;
+        if (sub.showFor) out += ' [conditional]';
+        out += ':\n';
+        sub.items.forEach(it => out += '    - ' + it.text + '\n');
+      });
+    } else if (sec.items) {
+      sec.items.forEach(it => out += '  - ' + it.text + '\n');
+    }
+    out += '\n';
+  });
+  return out;
+}
+function openExportList() {
+  document.getElementById('exportText').textContent = buildExportText();
+  document.getElementById('exportModal').classList.add('open');
+}
+function closeExportList() { document.getElementById('exportModal').classList.remove('open'); }
+function copyExport() { copyText(document.getElementById('exportText').textContent, 'Full list copied'); }
+
+/* ============================================================
+   COPY HELPER
+   ============================================================ */
+function copyText(text, successMsg) {
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(() => showToast(successMsg || 'Copied')).catch(fallback);
+  } else fallback();
+  function fallback() {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); showToast(successMsg || 'Copied'); }
+    catch(e) { showToast('Copy failed'); }
+    document.body.removeChild(ta);
+  }
+}
+
+/* ============================================================
+   NEW SURVEY
+   ============================================================ */
+function newSurvey() {
+  const choice = prompt(
+    'Start a new survey?\n\n' +
+    'This will erase: client info, ticks, notes, and Tony handoff data.\n' +
+    '(Master list & tags NOT touched.)\n\n' +
+    'Type:\n' +
+    '  Y  = Yes, save backup first then reset\n' +
+    '  N  = Reset without backup\n' +
+    '  C  = Cancel (do nothing)\n\n' +
+    'Your choice (Y / N / C):',
+    'Y'
+  );
+
+  if (!choice) return; // cancelled
+  const c = choice.trim().toUpperCase().charAt(0);
+
+  if (c === 'C' || c === '') return; // cancelled
+  if (c !== 'Y' && c !== 'N') return; // invalid input — abort safely
+
+  if (c === 'Y') {
+    downloadBackup();
+  }
+
+  // Now perform reset
+  session.client = { nameAddr:'', propType:'', wallSolid:[], wallPartition:[], style:'', finishes:'', finishesOther:'' };
+  session.tony = {
+    completion:'', completionDate:'',
+    callChips:[], callNotes:'',
+    parking:'',
+    personality:'',
+    winProb:'', winProbSet:false,
+    price:'', priceNotes:'',
+    ceilingPhoto:false, otherPhotos:false, ceilingNotes:''
+  };
+  session.ticks = {};
+  session.notes = {};
+  saveSession();
+  document.getElementById('ci_nameaddr').value = '';
+  const fo = document.getElementById('finishes_other'); if (fo) fo.value = '';
+  refreshChips();
+  refreshWallPicker();
+  refreshFinishesOtherVisibility();
+  refreshTonyFields();
+  build();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  showToast(c === 'Y' ? 'Backup saved · new survey started' : 'New survey started');
+}
+
+/* ============================================================
+   SETTINGS
+   ============================================================ */
+function openSettings() { document.getElementById('settingsModal').classList.add('open'); }
+function closeSettings() { document.getElementById('settingsModal').classList.remove('open'); }
+
+function downloadBackup() {
+  const payload = {
+    type: 'eh_survey_v32_backup',
+    savedAt: new Date().toISOString(),
+    master: DATA,
+    session: session
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'eh-survey-v32-backup-' + new Date().toISOString().slice(0,10) + '.json';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('Backup downloaded');
+}
+
+function restoreBackup(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (data.type !== 'eh_survey_v32_backup' || !Array.isArray(data.master)) {
+        alert('Not a valid V3.2 backup file.');
+        return;
+      }
+      if (!confirm('Restore from this backup? Current list will be replaced.')) return;
+      DATA = data.master;
+      if (data.session) {
+        const c = data.session.client || {};
+        session.client = {
+          nameAddr: c.nameAddr || '',
+          propType: c.propType || '',
+          wallSolid: Array.isArray(c.wallSolid) ? c.wallSolid : [],
+          wallPartition: Array.isArray(c.wallPartition) ? c.wallPartition : [],
+          style: c.style || '',
+          finishes: c.finishes || '',
+          finishesOther: c.finishesOther || ''
+        };
+        const t = data.session.tony || {};
+        session.tony = {
+          completion: t.completion || '',
+          completionDate: t.completionDate || '',
+          callChips: Array.isArray(t.callChips) ? t.callChips : (t.call ? [t.call] : []),
+          callNotes: t.callNotes || t.call || '',
+          parking: t.parking || '',
+          personality: t.personality || '',
+          winProb: (t.winProb !== undefined && t.winProb !== null) ? t.winProb : '',
+          winProbSet: !!t.winProbSet || (t.winProb !== '' && t.winProb !== null && t.winProb !== undefined),
+          price: t.price || '',
+          priceNotes: t.priceNotes || '',
+          ceilingPhoto: !!t.ceilingPhoto,
+          otherPhotos: !!t.otherPhotos,
+          ceilingNotes: t.ceilingNotes || ''
+        };
+        session.ticks = data.session.ticks || {};
+        session.notes = data.session.notes || {};
+        session.openSections = data.session.openSections || {};
+      }
+      saveMaster(); saveSession();
+      document.getElementById('ci_nameaddr').value = session.client.nameAddr || '';
+      refreshChips();
+      refreshWallPicker();
+      refreshTonyFields();
+      build();
+      closeSettings();
+      showToast('Backup restored');
+    } catch(err) {
+      alert('Could not read backup: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+function resetHdTags() {
+  if (!confirm('Reset Hidden Detail tags to defaults?\n\nThis clears all current HD tags and re-applies the standard set (~40 items).')) return;
+  applyHdDefaults(true);
+  build();
+  closeSettings();
+  showToast('HD tags reset to defaults');
+}
+
+function resetToDefaults() {
+  if (!confirm('Reset list to factory defaults?\n\nEvery added/changed option will be ERASED.\n\nCannot be undone.')) return;
+  if (!confirm('Are you ABSOLUTELY sure?')) return;
+  DATA = assignIds(DEFAULT_DATA);
+  session = {
+    client: { nameAddr:'', propType:'', wallSolid:[], wallPartition:[], style:'', finishes:'', finishesOther:'' },
+    tony: { completion:'', completionDate:'', callChips:[], callNotes:'', parking:'', personality:'', winProb:'', winProbSet:false, price:'', priceNotes:'', ceilingPhoto:false, otherPhotos:false, ceilingNotes:'' },
+    ticks: {}, notes: {}, openSections: {}
+  };
+  saveMaster(); saveSession();
+  document.getElementById('ci_nameaddr').value = '';
+  const fo = document.getElementById('finishes_other'); if (fo) fo.value = '';
+  refreshChips();
+  refreshWallPicker();
+  refreshFinishesOtherVisibility();
+  refreshTonyFields();
+  build();
+  closeSettings();
+  showToast('Reset to defaults');
+}
+
+/* ============================================================
+   CLIENT INFO & WALL PICKER
+   ============================================================ */
+function bindClientInputs() {
+  const ta = document.getElementById('ci_nameaddr');
+  ta.value = session.client.nameAddr || '';
+  ta.addEventListener('input', () => { session.client.nameAddr = ta.value; saveSession(); });
+
+  document.querySelectorAll('#prop_type_row .chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const v = chip.dataset.val;
+      session.client.propType = (session.client.propType === v) ? '' : v;
+      saveSession();
+      refreshChips();
+    });
+  });
+
+  // Style chips
+  document.querySelectorAll('#style_row .chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const v = chip.dataset.val;
+      session.client.style = (session.client.style === v) ? '' : v;
+      saveSession();
+      refreshChips();
+    });
+  });
+
+  // Finishes chips
+  document.querySelectorAll('#finishes_row .chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const v = chip.dataset.val;
+      session.client.finishes = (session.client.finishes === v) ? '' : v;
+      saveSession();
+      refreshChips();
+      refreshFinishesOtherVisibility();
+    });
+  });
+
+  // Finishes "Other" free text
+  const finOther = document.getElementById('finishes_other');
+  if (finOther) {
+    finOther.value = session.client.finishesOther || '';
+    finOther.addEventListener('input', () => {
+      session.client.finishesOther = finOther.value;
+      saveSession();
+    });
+  }
+  refreshFinishesOtherVisibility();
+
+  buildWallPicker();
+  refreshChips();
+  bindTonyInputs();
+}
+
+function refreshFinishesOtherVisibility() {
+  const inp = document.getElementById('finishes_other');
+  if (!inp) return;
+  inp.style.display = (session.client.finishes === 'other') ? 'block' : 'none';
+}
+
+function bindTonyInputs() {
+  const t = session.tony;
+
+  // Helper: single-select chip group
+  function wireSingle(rowId, key) {
+    document.querySelectorAll('#' + rowId + ' .chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const v = chip.dataset.val;
+        t[key] = (t[key] === v) ? '' : v;
+        saveSession();
+        refreshTonyUI();
+      });
+    });
+  }
+  // Helper: multi-select chip group
+  function wireMulti(rowId, key) {
+    document.querySelectorAll('#' + rowId + ' .chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const v = chip.dataset.val;
+        if (!Array.isArray(t[key])) t[key] = [];
+        const i = t[key].indexOf(v);
+        if (i >= 0) t[key].splice(i, 1);
+        else t[key].push(v);
+        saveSession();
+        refreshTonyUI();
+      });
+    });
+  }
+
+  wireSingle('tony_completion_row', 'completion');
+  wireMulti('tony_call_row',         'callChips');
+  wireSingle('tony_parking_row',     'parking');
+  wireSingle('tony_price_row',       'price');
+
+  // Text fields
+  const wireText = (id, key) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.value = t[key] || '';
+    el.addEventListener('input', () => { t[key] = el.value; saveSession(); });
+  };
+  wireText('tony_completion_date', 'completionDate');
+  wireText('tony_call_notes',      'callNotes');
+  wireText('tony_personality',     'personality');
+  wireText('tony_price_notes',     'priceNotes');
+  wireText('tony_ceiling_notes',   'ceilingNotes');
+
+  // Win probability slider
+  const slider = document.getElementById('tony_winprob_slider');
+  const valEl  = document.getElementById('tony_winprob_val');
+  if (slider) {
+    if (t.winProbSet && t.winProb !== '') slider.value = t.winProb;
+    else slider.value = 0;
+    const updateVal = () => {
+      valEl.textContent = t.winProbSet ? slider.value + '%' : '—';
+    };
+    updateVal();
+    slider.addEventListener('input', () => {
+      t.winProb = slider.value;
+      t.winProbSet = true;
+      valEl.textContent = slider.value + '%';
+      saveSession();
+    });
+  }
+
+  // Photo checkboxes
+  const wireCheck = (id, key) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.toggle('checked', !!t[key]);
+    el.parentElement.addEventListener('click', () => {
+      t[key] = !t[key];
+      el.classList.toggle('checked', !!t[key]);
+      saveSession();
+    });
+  };
+  wireCheck('tony_ceiling_check',       'ceilingPhoto');
+  wireCheck('tony_other_photos_check',  'otherPhotos');
+
+  refreshTonyUI();
+}
+
+function refreshTonyUI() {
+  const t = session.tony;
+  // single-select chips
+  ['tony_completion_row','tony_parking_row','tony_price_row'].forEach(rowId => {
+    const key = ({tony_completion_row:'completion', tony_parking_row:'parking', tony_price_row:'price'})[rowId];
+    document.querySelectorAll('#' + rowId + ' .chip').forEach(chip => {
+      chip.classList.toggle('selected', chip.dataset.val === t[key]);
+    });
+  });
+  // multi-select chips
+  document.querySelectorAll('#tony_call_row .chip').forEach(chip => {
+    chip.classList.toggle('selected', Array.isArray(t.callChips) && t.callChips.includes(chip.dataset.val));
+  });
+}
+
+function refreshTonyFields() {
+  const t = session.tony;
+  const setVal = (id, v) => { const el = document.getElementById(id); if (el) el.value = v || ''; };
+  setVal('tony_completion_date', t.completionDate);
+  setVal('tony_call_notes',      t.callNotes);
+  setVal('tony_personality',     t.personality);
+  setVal('tony_price_notes',     t.priceNotes);
+  setVal('tony_ceiling_notes',   t.ceilingNotes);
+
+  const slider = document.getElementById('tony_winprob_slider');
+  const valEl  = document.getElementById('tony_winprob_val');
+  if (slider) {
+    if (t.winProbSet && t.winProb !== '') slider.value = t.winProb;
+    else slider.value = 0;
+    if (valEl) valEl.textContent = t.winProbSet ? slider.value + '%' : '—';
+  }
+
+  const c1 = document.getElementById('tony_ceiling_check');
+  const c2 = document.getElementById('tony_other_photos_check');
+  if (c1) c1.classList.toggle('checked', !!t.ceilingPhoto);
+  if (c2) c2.classList.toggle('checked', !!t.otherPhotos);
+
+  refreshTonyUI();
+}
+
+function buildWallPicker() {
+  const host = document.getElementById('wall_picker');
+  host.innerHTML = '';
+  ['solid','partition'].forEach(type => {
+    const row = document.createElement('div');
+    row.className = 'wall-row';
+    const label = document.createElement('div');
+    label.className = 'wall-label';
+    label.textContent = type === 'solid' ? 'Solid' : 'Partition';
+    const nums = document.createElement('div');
+    nums.className = 'wall-nums';
+    for (let n = 1; n <= 5; n++) {
+      const b = document.createElement('button');
+      b.className = 'wall-btn';
+      b.type = 'button';
+      b.textContent = n;
+      b.dataset.type = type;
+      b.dataset.n = n;
+      b.addEventListener('click', () => toggleWall(type, n));
+      nums.appendChild(b);
+    }
+    row.appendChild(label);
+    row.appendChild(nums);
+    host.appendChild(row);
+  });
+  refreshWallPicker();
+}
+
+function toggleWall(type, n) {
+  const arr = (type === 'solid') ? session.client.wallSolid : session.client.wallPartition;
+  const i = arr.indexOf(n);
+  if (i >= 0) arr.splice(i, 1); else arr.push(n);
+  saveSession();
+  refreshWallPicker();
+}
+
+function refreshWallPicker() {
+  document.querySelectorAll('.wall-btn').forEach(b => {
+    const arr = (b.dataset.type === 'solid') ? session.client.wallSolid : session.client.wallPartition;
+    b.classList.toggle('selected', arr.includes(parseInt(b.dataset.n)));
+  });
+}
+
+function refreshChips() {
+  document.querySelectorAll('#prop_type_row .chip').forEach(chip => {
+    chip.classList.toggle('selected', chip.dataset.val === session.client.propType);
+  });
+  document.querySelectorAll('#style_row .chip').forEach(chip => {
+    chip.classList.toggle('selected', chip.dataset.val === session.client.style);
+  });
+  document.querySelectorAll('#finishes_row .chip').forEach(chip => {
+    chip.classList.toggle('selected', chip.dataset.val === session.client.finishes);
+  });
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+function init() {
+  if (!loadMaster()) {
+    DATA = assignIds(DEFAULT_DATA);
+    saveMaster();
+  }
+  loadSession();
+  applyHdDefaults();  // V3.3: auto-tag Hidden Detail items on first load
+  applyCoreFlags();   // V4.1: mark default sections as core (password-protected delete)
+  build();
+  bindClientInputs();
+  updateExpandBtnText();
+  // Sync collapsible card states
+  Object.keys(session.cardsOpen || {}).forEach(cardId => {
+    const el = document.getElementById(cardId);
+    if (el) el.classList.toggle('open', !!session.cardsOpen[cardId]);
+  });
+}
+
+// V4.1: mark sections as core based on default names
+function applyCoreFlags() {
+  const CORE_NAMES = new Set();
+  DEFAULT_DATA.forEach(sec => { if (sec.core) CORE_NAMES.add(sec.name); });
+  // Also treat all SHOWER AREA N as core
+  let touched = false;
+  DATA.forEach(sec => {
+    if (sec.core) return;
+    if (CORE_NAMES.has(sec.name) || /^SHOWER AREA \d+$/.test(sec.name)) {
+      sec.core = true;
+      touched = true;
+    }
+  });
+  if (touched) saveMaster();
+}
+
+// Modal background tap to close
+document.querySelectorAll('.modal-bg').forEach(m => {
+  m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); });
+});
+
+init();
+</script>
+</body>
+</html>
