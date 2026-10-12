@@ -141,6 +141,7 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
   <div class="topbar-right">
     <button class="btn btn-sm" id="editBtn" onclick="toggleEdit()">Edit</button>
     <button class="btn btn-sm" onclick="newForm()">New form</button>
+    <button class="btn btn-sm" onclick="exportStructure()">Export</button>
     <button class="btn btn-sm btn-accent" onclick="copyOut()">Copy</button>
   </div>
 </div>
@@ -181,7 +182,7 @@ const DEFAULT_DATA = [
     { title:'Use', options:[ {label:'Bath only'},{label:'Shower above bath'} ]},
     { title:'Bath panel', options:[ {label:'Tiled'},{label:'Plastic'},{label:'Wooden'} ]},
     { title:'Bath screen', options:[ {label:'None'},{label:'Fixed'},{label:'Semi-fixed'},{label:'Hinged'},{label:'Folding'} ]},
-    { title:'Bath filler', options:[ {label:'Deck mounted'},{label:'Wall mounted'},{label:'Overflow'},{label:'Floor standing'},{label:'Pillar taps'},{label:'Mixer tap with hand shower'},{label:'Adjustable rod'} ]},
+    { title:'Bath filler', options:[ {label:'Deck mounted'},{label:'Wall mounted'},{label:'Overflow'},{label:'Floor standing'},{label:'Pillar taps'},{label:'Mixer tap with hand shower'},{label:'Adjustable rod'},{label:'Positioned middle'},{label:'Positioned left'},{label:'Positioned right'} ]},
     { title:'Shower system', options:[ {label:'Exposed'},{label:'Concealed'},{label:'Handset'},{label:'Adjustable rail'},{label:'Overhead wall'},{label:'Overhead ceiling'} ]},
     { title:'Controls', options:[ {label:'Under'},{label:'Away'} ]},
     { title:'Niche', options:[ {label:'Tiled'},{label:'Prefabricated'},{label:'Single'},{label:'Stacked'},{label:'LED'},{label:'Mitred 45° (trimless)'},{label:'Plastic trims'},{label:'Metal trims'},{label:'Marble / stone trims'} ]},
@@ -205,7 +206,7 @@ const DEFAULT_DATA = [
     { title:'Controls', options:[ {label:'Under'},{label:'Away'} ]},
     { title:'Niche', options:[ {label:'Tiled'},{label:'Prefabricated'},{label:'Single'},{label:'Stacked'},{label:'LED'},{label:'Mitred 45° (trimless)'},{label:'Plastic trims'},{label:'Metal trims'},{label:'Marble / stone trims'} ]},
     { title:'Boxing', options:[ {label:'Half-height', hidden:true},{label:'Full-height', hidden:true},{label:'Nib wall', hidden:true},{label:'Subceiling (overhead shower)', hidden:true} ]},
-    { title:'Extras', options:[ {label:'Grab rails'},{label:'Shower seat'},{label:'Folding chair'} ]},
+    { title:'Extras', options:[ {label:'Grab rails'},{label:'Shower bench'},{label:'Folding chair'} ]},
   ]},
   { title:'SHOWER AREA 2', collapsed:true, subsections:[
     { title:'— BATHTUB —', options:[  ]},
@@ -214,7 +215,7 @@ const DEFAULT_DATA = [
     { title:'Use', options:[ {label:'Bath only'},{label:'Shower above bath'} ]},
     { title:'Bath panel', options:[ {label:'Tiled'},{label:'Plastic'},{label:'Wooden'} ]},
     { title:'Bath screen', options:[ {label:'None'},{label:'Fixed'},{label:'Semi-fixed'},{label:'Hinged'},{label:'Folding'} ]},
-    { title:'Bath filler', options:[ {label:'Deck mounted'},{label:'Wall mounted'},{label:'Overflow'},{label:'Floor standing'},{label:'Pillar taps'},{label:'Mixer tap with hand shower'},{label:'Adjustable rod'} ]},
+    { title:'Bath filler', options:[ {label:'Deck mounted'},{label:'Wall mounted'},{label:'Overflow'},{label:'Floor standing'},{label:'Pillar taps'},{label:'Mixer tap with hand shower'},{label:'Adjustable rod'},{label:'Positioned middle'},{label:'Positioned left'},{label:'Positioned right'} ]},
     { title:'Shower system', options:[ {label:'Exposed'},{label:'Concealed'},{label:'Handset'},{label:'Adjustable rail'},{label:'Overhead wall'},{label:'Overhead ceiling'} ]},
     { title:'Controls', options:[ {label:'Under'},{label:'Away'} ]},
     { title:'Niche', options:[ {label:'Tiled'},{label:'Prefabricated'},{label:'Single'},{label:'Stacked'},{label:'LED'},{label:'Mitred 45° (trimless)'},{label:'Plastic trims'},{label:'Metal trims'},{label:'Marble / stone trims'} ]},
@@ -238,7 +239,7 @@ const DEFAULT_DATA = [
     { title:'Controls', options:[ {label:'Under'},{label:'Away'} ]},
     { title:'Niche', options:[ {label:'Tiled'},{label:'Prefabricated'},{label:'Single'},{label:'Stacked'},{label:'LED'},{label:'Mitred 45° (trimless)'},{label:'Plastic trims'},{label:'Metal trims'},{label:'Marble / stone trims'} ]},
     { title:'Boxing', options:[ {label:'Half-height', hidden:true},{label:'Full-height', hidden:true},{label:'Nib wall', hidden:true},{label:'Subceiling (overhead shower)', hidden:true} ]},
-    { title:'Extras', options:[ {label:'Grab rails'},{label:'Shower seat'},{label:'Folding chair'} ]},
+    { title:'Extras', options:[ {label:'Grab rails'},{label:'Shower bench'},{label:'Folding chair'} ]},
   ]},
   { title:'TOILET', subsections:[
     { title:'Type', options:[ {label:'Close-coupled'},{label:'Floor-standing'},{label:'Wall-hung'},{label:'In-wall cistern (no box)'},{label:'Smart toilet'},{label:'Standard + smart seat'},{label:'Old style with cistern above'} ]},
@@ -276,12 +277,12 @@ const DEFAULT_DATA = [
   { title:'EXTRACTOR FAN', subsections:[
     { title:'Type', options:[ {label:'None required'},{label:'Replace existing'},{label:'New — ceiling'},{label:'New — wall'},{label:'New — window'} ]},
     { title:'Switch', options:[ {label:'Separate'},{label:'Same as lighting'} ]},
-    { title:'Works', options:[ {label:'Drilling', hidden:true},{label:'Wiring + isolator', hidden:true} ]},
+    { title:'Works', options:[ {label:'Add drilling', hidden:true},{label:'Add wiring + isolator', hidden:true} ]},
   ]},
   { title:'HEATER', subsections:[
     { title:'Type', options:[ {label:'Towel rail electric'},{label:'Towel rail water-fed'},{label:'Towel rail dual fuel'},{label:'Radiator'} ]},
     { title:'Position', options:[ {label:'Same place'},{label:'Relocated'} ]},
-    { title:'Works', options:[ {label:'New installation'},{label:'Pipe conversion floor to wall', hidden:true},{label:'Add pipework', hidden:true},{label:'Add wiring', hidden:true} ]},
+    { title:'Works', options:[ {label:'New installation'},{label:'Add pipe conversion floor to wall', hidden:true},{label:'Add pipework', hidden:true},{label:'Add wiring', hidden:true} ]},
   ]},
   { title:'OTHER', subsections:[
     { title:'', options:[ {label:'Underfloor heating standard'},{label:'Underfloor heating wifi'},{label:'Underfloor heating wiring', hidden:true},{label:'Booster pump', hidden:true},{label:'Boiler', hidden:true},{label:'Macerator', hidden:true},{label:'Isolator / fused spur', hidden:true} ]},
@@ -304,20 +305,15 @@ const DEFAULT_DATA = [
   ]},
   { title:'PAINTING', subsections:[
     { title:'Walls paint', options:[ {label:'No change'},{label:'Paint only'},{label:'Skim + paint'} ]},
-  ]},
-  { title:'CEILING', subsections:[
-    { title:'', options:[ {label:'No change'},{label:'Paint only'},{label:'Skim + paint'} ]},
+    { title:'Ceiling paint', options:[ {label:'No change'},{label:'Paint only'},{label:'Skim + paint'} ]},
   ]},
   { title:'BUILDING WORKS', subsections:[
-    { title:'Walls', options:[ {label:'New partition wall', hidden:true},{label:'Nib wall', hidden:true},{label:'Block existing opening', hidden:true},{label:'Making good', hidden:true} ]},
-    { title:'Floor', options:[ {label:'Floor levelling', hidden:true},{label:'Sub-floor repair', hidden:true},{label:'Creaking floor', hidden:true},{label:'Platform / raised floor', hidden:true} ]},
+    { title:'Walls', options:[ {label:'New partition wall', hidden:true},{label:'Nib wall', hidden:true},{label:'Block existing opening', hidden:true},{label:'Making good', hidden:true},{label:'Add insulation boards'} ]},
+    { title:'Floor', options:[ {label:'Floor levelling', hidden:true},{label:'Sub-floor repair leak damages', hidden:true},{label:'Creaking floor', hidden:true},{label:'Platform / raised floor', hidden:true} ]},
     { title:'Ceiling', options:[ {label:'Subceiling / ceiling drop', hidden:true},{label:'Bulkhead box', hidden:true} ]},
-    { title:'Doors', options:[ {label:'New door opening'},{label:'Relocate door'},{label:'Resize door'},{label:'Change door leaf only (same frame)'},{label:'Change swing left / right'},{label:'Change swing in / out'},{label:'Pocket door'},{label:'Sliding door'},{label:'Folding door'} ]},
+    { title:'Doors', options:[ {label:'New door opening'},{label:'Relocate door'},{label:'Resize door'},{label:'Change door wing only (same frame)'},{label:'Change swing left / right'},{label:'Change swing in / out'},{label:'Pocket door'},{label:'Sliding door'},{label:'Folding door'} ]},
     { title:'Boxes', options:[ {label:'Corner wall-wall box', hidden:true},{label:'Corner floor-wall box', hidden:true},{label:'Reduce / rebuild existing box', hidden:true},{label:'Resize existing box', hidden:true} ]},
     { title:'Other', options:[ {label:'Storage for washing machine / dryer'},{label:'Convert shower to cupboard or opposite'} ]},
-  ]},
-  { title:'ADDED BY CUSTOMER', subsections:[
-    { title:'', options:[ {label:'Added by customer', type:'text'} ]},
   ]},
   { title:'COMPLETION', subsections:[
     { title:'', options:[ {label:'Flexible'},{label:'Urgent'},{label:'Target date', type:'text'} ]},
@@ -326,7 +322,7 @@ const DEFAULT_DATA = [
     { title:'', options:[ {label:'Labour'},{label:'Rubbish disposal'},{label:'Building materials (per proposal list)'},{label:'Protection and cleaning'} ]},
   ]},
   { title:'TONY', subsections:[
-    { title:'', options:[ {label:'Call after', type:'text'},{label:'Win', type:'slider', min:0, max:100, step:5, unit:'%'},{label:'Price about', type:'slider', min:5000, max:30000, step:500, unit:'£'},{label:'Personality', type:'slider', min:1, max:10, step:1, unit:''} ]},
+    { title:'', options:[ {label:'Call after', type:'text'},{label:'Win', type:'slider', min:0, max:100, step:5, unit:'%'},{label:'Personality', type:'slider', min:1, max:10, step:1, unit:''},{label:'Price about', type:'text'} ]},
     { title:'Parking', options:[ {label:'Free'},{label:'Permit needed'},{label:'No parking'},{label:'Estimate labour cost', type:'text'},{label:'Notes', type:'text'} ]},
   ]},
 ];
@@ -537,7 +533,7 @@ function updateOut(){
         lines.push(t);
       });
       if(!lines.length) return;
-      parts.push((g ? g + '\n' : '') + lines.join('\n'));
+      parts.push((g ? g.toUpperCase() + '\n' : '') + lines.join('\n'));
     });
     if(sec.note.trim()) parts.push(sec.note.trim());
     if(parts.length) blocks.push(sec.title + '\n\n' + parts.join('\n\n'));
@@ -547,6 +543,31 @@ function updateOut(){
   else { out.className = 'output-body'; out.textContent = blocks.join('\n\n\n'); }
 }
 
+function exportStructure(){
+  const L = [];
+  state.forEach(sec => {
+    L.push(sec.title);
+    sec.subsections.forEach(ss => {
+      const g = ss.title.trim();
+      if(g.startsWith('—')){ L.push('  == ' + g.replace(/—/g,'').trim() + ' =='); return; }
+      if(g) L.push('  ' + g + ':');
+      ss.options.forEach(o => {
+        let l = '  - ' + o.label;
+        if(o.type === 'text') l += ' [text]';
+        if(o.type === 'ticktext') l += ' [tick+text]';
+        if(o.type === 'slider') l += ' [slider ' + o.min + '-' + o.max + (o.unit||'') + ']';
+        if(o.hidden) l += ' (H)';
+        L.push(l);
+      });
+    });
+    L.push('');
+  });
+  const text = L.join('\n');
+  navigator.clipboard.writeText(text).then(() => toast('Structure copied')).catch(() => {
+    const ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); toast('Structure copied');
+  });
+}
 function copyOut(){
   const out = document.getElementById('out');
   if(out.classList.contains('empty')){ toast('Nothing to copy'); return; }

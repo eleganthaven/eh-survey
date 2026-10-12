@@ -68,6 +68,9 @@ SHOWER AREA 1
   - Pillar taps
   - Mixer tap with hand shower
   - Adjustable rod
+  - Positioned middle
+  - Positioned left
+  - Positioned right
   Shower system:
   - Exposed
   - Concealed
@@ -186,7 +189,7 @@ SHOWER AREA 1
   - Subceiling (overhead shower) (H)
   Extras:
   - Grab rails
-  - Shower seat
+  - Shower bench
   - Folding chair
 
 SHOWER AREA 2
@@ -218,6 +221,9 @@ SHOWER AREA 2
   - Pillar taps
   - Mixer tap with hand shower
   - Adjustable rod
+  - Positioned middle
+  - Positioned left
+  - Positioned right
   Shower system:
   - Exposed
   - Concealed
@@ -336,7 +342,7 @@ SHOWER AREA 2
   - Subceiling (overhead shower) (H)
   Extras:
   - Grab rails
-  - Shower seat
+  - Shower bench
   - Folding chair
 
 TOILET
@@ -455,8 +461,8 @@ EXTRACTOR FAN
   - Separate
   - Same as lighting
   Works:
-  - Drilling (H)
-  - Wiring + isolator (H)
+  - Add drilling (H)
+  - Add wiring + isolator (H)
 
 HEATER
   Type:
@@ -469,7 +475,7 @@ HEATER
   - Relocated
   Works:
   - New installation
-  - Pipe conversion floor to wall (H)
+  - Add pipe conversion floor to wall (H)
   - Add pipework (H)
   - Add wiring (H)
 
@@ -538,8 +544,7 @@ PAINTING
   - No change
   - Paint only
   - Skim + paint
-
-CEILING
+  Ceiling paint:
   - No change
   - Paint only
   - Skim + paint
@@ -550,9 +555,10 @@ BUILDING WORKS
   - Nib wall (H)
   - Block existing opening (H)
   - Making good (H)
+  - Add insulation boards
   Floor:
   - Floor levelling (H)
-  - Sub-floor repair (H)
+  - Sub-floor repair leak damages (H)
   - Creaking floor (H)
   - Platform / raised floor (H)
   Ceiling:
@@ -562,7 +568,7 @@ BUILDING WORKS
   - New door opening
   - Relocate door
   - Resize door
-  - Change door leaf only (same frame)
+  - Change door wing only (same frame)
   - Change swing left / right
   - Change swing in / out
   - Pocket door
@@ -576,9 +582,6 @@ BUILDING WORKS
   Other:
   - Storage for washing machine / dryer
   - Convert shower to cupboard or opposite
-
-ADDED BY CUSTOMER
-  - Added by customer [text]
 
 COMPLETION
   - Flexible
@@ -594,8 +597,8 @@ FROM US
 TONY
   - Call after [text]
   - Win [slider 0-100%]
-  - Price about [slider 5000-30000£]
   - Personality [slider 1-10]
+  - Price about [text]
   Parking:
   - Free
   - Permit needed
