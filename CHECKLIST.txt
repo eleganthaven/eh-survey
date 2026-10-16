@@ -39,307 +39,156 @@ DEMOLITION
   - Full strip out + partition wall removal
   - None (already demolished)
 
-SHOWER AREA 1
+SHOWER AREA
   == BATHTUB ==
   Bathtub:
-  - Fit-in
-  - Freestanding
+  - Fit-in bath
+  - Freestanding bath
   Position:
-  - Same place
-  - Relocated
+  - Bath same place
+  - Bath relocated
   Use:
   - Bath only
   - Shower above bath
   Bath panel:
-  - Tiled
-  - Plastic
-  - Wooden
+  - Tiled bath panel
+  - Plastic bath panel
+  - Wooden bath panel
   Bath screen:
-  - None
-  - Fixed
-  - Semi-fixed
-  - Hinged
-  - Folding
+  - No bath screen
+  - Fixed bath screen
+  - Semi-fixed bath screen
+  - Hinged bath screen
+  - Folding bath screen
+  - Curtain
   Bath filler:
-  - Deck mounted
-  - Wall mounted
-  - Overflow
-  - Floor standing
+  - Deck filler
+  - Wall filler
+  - Overflow filler
+  - Floor standing filler
   - Pillar taps
   - Mixer tap with hand shower
   - Adjustable rod
-  - Positioned middle
-  - Positioned left
-  - Positioned right
+  - Filler middle
+  - Filler left
+  - Filler right
   Shower system:
-  - Exposed
-  - Concealed
+  - Exposed shower
+  - Concealed shower
   - Handset
   - Adjustable rail
   - Overhead wall
   - Overhead ceiling
   Controls:
-  - Under
-  - Away
+  - Controls under head
+  - Controls away
   Niche:
-  - Tiled
-  - Prefabricated
-  - Single
-  - Stacked
-  - LED
-  - Mitred 45° (trimless)
-  - Plastic trims
-  - Metal trims
-  - Marble / stone trims
+  - Niche tiled
+  - Niche prefabricated
+  - Niche single
+  - Niche stacked
+  - Niche LED
+  - Niche mitred 45° trimless
+  - Niche plastic trims
+  - Niche metal trims
+  - Niche marble / stone trims
   Boxing:
-  - Half-height (H)
-  - Full-height (H)
+  - Half-height box (H)
+  - Full-height box (H)
   - Nib wall (H)
-  - Subceiling (overhead shower) (H)
+  - Subceiling box (overhead shower) (H)
   - Adjustment box (H)
   Extras:
   - Grab rails
   == ENCLOSURE ==
   Enclosure:
-  - Rectangular
-  - Square
-  - Quadrant
-  - Pentagonal
-  - Alcove
-  - Wall to wall
+  - Rectangular enclosure
+  - Square enclosure
+  - Quadrant enclosure
+  - Pentagonal enclosure
+  - Alcove enclosure
+  - Wall to wall enclosure
   Position:
-  - Same place
-  - Relocated
+  - Enclosure same place
+  - Enclosure relocated
   Door:
-  - Hinged
-  - Sliding
-  - Pivot
-  - Folding
-  - Corner sliding
+  - Hinged door
+  - Sliding door
+  - Pivot door
+  - Folding door
+  - Corner sliding door
   Floor:
-  - Tray
-  - Wet room
+  - Shower tray
+  - Wet room floor
   - Platform for drainage (H)
   Shower system:
-  - Exposed
-  - Concealed
+  - Exposed shower
+  - Concealed shower
   - Handset
   - Adjustable rail
   - Overhead wall
   - Overhead ceiling
   Controls:
-  - Under
-  - Away
+  - Controls under head
+  - Controls away
   Niche:
-  - Tiled
-  - Prefabricated
-  - Single
-  - Stacked
-  - LED
-  - Mitred 45° (trimless)
-  - Plastic trims
-  - Metal trims
-  - Marble / stone trims
+  - Niche tiled
+  - Niche prefabricated
+  - Niche single
+  - Niche stacked
+  - Niche LED
+  - Niche mitred 45° trimless
+  - Niche plastic trims
+  - Niche metal trims
+  - Niche marble / stone trims
   Boxing:
-  - Half-height (H)
-  - Full-height (H)
+  - Half-height box (H)
+  - Full-height box (H)
   - Nib wall (H)
-  - Subceiling (overhead shower) (H)
+  - Subceiling box (overhead shower) (H)
   Extras:
   - Grab rails
   - Bench
   - Folding chair
   == WALK-IN ==
   Glass screen:
-  - Fixed
-  - Semi-fixed
-  - Hinged
-  - Folding
+  - Fixed glass screen
+  - Semi-fixed glass screen
+  - Hinged glass screen
+  - Folding glass screen
+  - Curtain
   Position:
-  - Same place
-  - Relocated — needs new pipework
+  - Walk-in same place
+  - Walk-in relocated — needs new pipework
   Floor:
-  - Tray
-  - Wet room
+  - Shower tray
+  - Wet room floor
   - Platform for drainage (H)
   Shower system:
-  - Exposed
-  - Concealed
+  - Exposed shower
+  - Concealed shower
   - Handset
   - Adjustable rail
   - Overhead wall
   - Overhead ceiling
   Controls:
-  - Under
-  - Away
+  - Controls under head
+  - Controls away
   Niche:
-  - Tiled
-  - Prefabricated
-  - Single
-  - Stacked
-  - LED
-  - Mitred 45° (trimless)
-  - Plastic trims
-  - Metal trims
-  - Marble / stone trims
+  - Niche tiled
+  - Niche prefabricated
+  - Niche single
+  - Niche stacked
+  - Niche LED
+  - Niche mitred 45° trimless
+  - Niche plastic trims
+  - Niche metal trims
+  - Niche marble / stone trims
   Boxing:
-  - Half-height (H)
-  - Full-height (H)
+  - Half-height box (H)
+  - Full-height box (H)
   - Nib wall (H)
-  - Subceiling (overhead shower) (H)
-  Extras:
-  - Grab rails
-  - Shower bench
-  - Folding chair
-
-SHOWER AREA 2
-  == BATHTUB ==
-  Bathtub:
-  - Fit-in
-  - Freestanding
-  Position:
-  - Same place
-  - Relocated
-  Use:
-  - Bath only
-  - Shower above bath
-  Bath panel:
-  - Tiled
-  - Plastic
-  - Wooden
-  Bath screen:
-  - None
-  - Fixed
-  - Semi-fixed
-  - Hinged
-  - Folding
-  Bath filler:
-  - Deck mounted
-  - Wall mounted
-  - Overflow
-  - Floor standing
-  - Pillar taps
-  - Mixer tap with hand shower
-  - Adjustable rod
-  - Positioned middle
-  - Positioned left
-  - Positioned right
-  Shower system:
-  - Exposed
-  - Concealed
-  - Handset
-  - Adjustable rail
-  - Overhead wall
-  - Overhead ceiling
-  Controls:
-  - Under
-  - Away
-  Niche:
-  - Tiled
-  - Prefabricated
-  - Single
-  - Stacked
-  - LED
-  - Mitred 45° (trimless)
-  - Plastic trims
-  - Metal trims
-  - Marble / stone trims
-  Boxing:
-  - Half-height (H)
-  - Full-height (H)
-  - Nib wall (H)
-  - Subceiling (overhead shower) (H)
-  - Adjustment box (H)
-  Extras:
-  - Grab rails
-  == ENCLOSURE ==
-  Enclosure:
-  - Rectangular
-  - Square
-  - Quadrant
-  - Pentagonal
-  - Alcove
-  - Wall to wall
-  Position:
-  - Same place
-  - Relocated
-  Door:
-  - Hinged
-  - Sliding
-  - Pivot
-  - Folding
-  - Corner sliding
-  Floor:
-  - Tray
-  - Wet room
-  - Platform for drainage (H)
-  Shower system:
-  - Exposed
-  - Concealed
-  - Handset
-  - Adjustable rail
-  - Overhead wall
-  - Overhead ceiling
-  Controls:
-  - Under
-  - Away
-  Niche:
-  - Tiled
-  - Prefabricated
-  - Single
-  - Stacked
-  - LED
-  - Mitred 45° (trimless)
-  - Plastic trims
-  - Metal trims
-  - Marble / stone trims
-  Boxing:
-  - Half-height (H)
-  - Full-height (H)
-  - Nib wall (H)
-  - Subceiling (overhead shower) (H)
-  Extras:
-  - Grab rails
-  - Bench
-  - Folding chair
-  == WALK-IN ==
-  Glass screen:
-  - Fixed
-  - Semi-fixed
-  - Hinged
-  - Folding
-  Position:
-  - Same place
-  - Relocated — needs new pipework
-  Floor:
-  - Tray
-  - Wet room
-  - Platform for drainage (H)
-  Shower system:
-  - Exposed
-  - Concealed
-  - Handset
-  - Adjustable rail
-  - Overhead wall
-  - Overhead ceiling
-  Controls:
-  - Under
-  - Away
-  Niche:
-  - Tiled
-  - Prefabricated
-  - Single
-  - Stacked
-  - LED
-  - Mitred 45° (trimless)
-  - Plastic trims
-  - Metal trims
-  - Marble / stone trims
-  Boxing:
-  - Half-height (H)
-  - Full-height (H)
-  - Nib wall (H)
-  - Subceiling (overhead shower) (H)
+  - Subceiling box (overhead shower) (H)
   Extras:
   - Grab rails
   - Shower bench
@@ -347,53 +196,55 @@ SHOWER AREA 2
 
 TOILET
   Type:
-  - Close-coupled
-  - Floor-standing
-  - Wall-hung
-  - In-wall cistern (no box)
+  - Keep same toilet
+  - Close-coupled toilet
+  - Floor-standing toilet
+  - Wall-hung toilet
+  - In-wall cistern toilet (no box)
   - Smart toilet
-  - Standard + smart seat
-  - Old style with cistern above
+  - Standard toilet + smart seat
+  - Old style toilet with cistern above
   Position:
-  - Same place
-  - Relocated
+  - Toilet same place
+  - Toilet relocated
   Bidet:
   - Bidet shower
   - Bidet unit
   Cistern box:
-  - Half-height (H)
-  - Full-height (to ceiling) (H)
+  - Cistern box half-height (H)
+  - Cistern box to ceiling (H)
   - Storage above toilet
   - Under toilet LED
   Add:
-  - Cistern box (H)
-  - Smart toilet wiring (H)
-  - LED wiring (H)
-  - Pipework (H)
-  - Drilling ext wall for soil pipe (H)
-  - Soil pipe box (H)
+  - Add cistern box (H)
+  - Add smart toilet wiring (H)
+  - Add LED wiring (H)
+  - Add pipework (H)
+  - Add drilling ext wall for soil pipe (H)
+  - Add soil pipe box (H)
 
 VANITY & BASIN
   Basin:
-  - Wall-hung
-  - Pedestal
+  - Keep same basin
+  - Wall-hung basin
+  - Pedestal basin
   - Wash stand
   Vanity unit:
-  - Wall-hung single
-  - Wall-hung double
-  - Floor-standing single
-  - Floor-standing double
+  - Wall-hung single vanity
+  - Wall-hung double vanity
+  - Floor-standing single vanity
+  - Floor-standing double vanity
   Position:
-  - Same place
-  - Relocated
+  - Vanity same place
+  - Vanity relocated
   Basin style:
-  - Inset
-  - Counter-top
-  - Semi-recessed
+  - Inset basin
+  - Counter-top basin
+  - Semi-recessed basin
   Taps:
-  - Mixer deck
-  - Wall-mounted
-  - Pillar
+  - Mixer deck tap
+  - Wall-mounted tap
+  - Pillar taps
   Boxing:
   - Half-height service box (H)
   Electrical:
@@ -401,8 +252,8 @@ VANITY & BASIN
 
 LIGHTS
   Main light:
-  - No change
-  - Replace like for like
+  - Main light no change
+  - Main light like for like
   - Single light to spotlights
   - Spotlights to single light
   Dimmer:
@@ -417,7 +268,7 @@ LIGHTS
   - Light above mirror
   - Ceiling LED strip
   Switch:
-  - Pull cord keep
+  - Keep pull cord
   - Pull cord to wall switch — tiled wall (H)
   - Pull cord to wall switch — painted wall (H)
   Circuit:
@@ -429,14 +280,14 @@ LIGHTS
 MIRROR
   Type:
   - Mirror
-  - Cabinet surface mounted
-  - Cabinet recessed
+  - Mirror cabinet surface mounted
+  - Mirror cabinet recessed
   Location:
-  - Above vanity
-  - Other wall
+  - Mirror above vanity
+  - Mirror other wall
   Electric:
-  - Electric
-  - Non-electric
+  - Electric mirror
+  - Non-electric mirror
   - Side lights
   - Light above mirror
   - Add wiring (H)
@@ -446,33 +297,35 @@ MIRROR
   - Magnifying / extendable mirror
 
 SHAVER SOCKET
-  - Integrated
-  - Separate
+  - Shaver socket integrated
+  - Shaver socket separate
   - Add wiring (H)
 
 EXTRACTOR FAN
   Type:
-  - None required
-  - Replace existing
-  - New — ceiling
-  - New — wall
-  - New — window
+  - Keep same fan
+  - No fan required
+  - Replace existing fan
+  - New fan ceiling
+  - New fan wall
+  - New fan window
   Switch:
-  - Separate
-  - Same as lighting
+  - Fan separate switch
+  - Fan same as lighting
   Works:
   - Add drilling (H)
   - Add wiring + isolator (H)
 
 HEATER
   Type:
+  - Keep same heater
   - Towel rail electric
   - Towel rail water-fed
   - Towel rail dual fuel
   - Radiator
   Position:
-  - Same place
-  - Relocated
+  - Heater same place
+  - Heater relocated
   Works:
   - New installation
   - Add pipe conversion floor to wall (H)
@@ -496,11 +349,11 @@ TILING
   - Paint
   - Wallpaper
   Walls tile type:
-  - Machine cut (ceramic / porcelain)
-  - Grinder cut (marble / stone)
+  - Ceramic / porcelain
+  - Marble / stone
   Walls tile size:
-  - Large
-  - Small
+  - Large tiles
+  - Small tiles
   Walls pattern:
   - Straight
   - Brick tiles
@@ -522,32 +375,32 @@ TILING
   - Wood
   - Carpet
   Floor tile type:
-  - Machine cut (ceramic / porcelain)
-  - Grinder cut (marble / stone)
+  - Ceramic / porcelain
+  - Marble / stone
   Floor tile size:
-  - Large
-  - Small
+  - Large tiles
+  - Small tiles
   Floor pattern:
   - Straight
   - Brick bond
   - Herringbone
   - Diagonal
   Waterproofing:
-  - Shower area only (H)
-  - Full bathroom (H)
+  - Waterproofing shower area (H)
+  - Waterproofing full bathroom (H)
   Finishing:
   - Skirtings
   - Covings
 
 PAINTING
-  Walls paint:
-  - No change
-  - Paint only
-  - Skim + paint
   Ceiling paint:
-  - No change
-  - Paint only
-  - Skim + paint
+  - Ceiling no change
+  - Ceiling paint only
+  - Ceiling skim and paint
+  Walls paint:
+  - Walls no change
+  - Walls paint only
+  - Walls skim and paint
 
 BUILDING WORKS
   Walls:
@@ -600,7 +453,7 @@ TONY
   - Personality [slider 1-10]
   - Price about [text]
   Parking:
-  - Free
+  - Free parking
   - Permit needed
   - No parking
   - Estimate labour cost [text]
