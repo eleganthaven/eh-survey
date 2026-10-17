@@ -1,25 +1,25 @@
 CLIENT
   - Name + address [text]
   Property:
-  - house
-  - flat in house
-  - flat in block
-  - council
-  :
+  - House
+  - Flat in house
+  - Flat in block
+  - Council
+  Access:
   - Stairs [tick+text]
   - Lift [tick+text]
-  == WALLS 1 door · 2 left · 3 opposite · 4 right · 5 extra ==
+  Walls 1 door · 2 left · 3 opposite · 4 right · 5 extra:
   - Solid [tick+text]
   - Stud [tick+text]
   Style:
-  - modern
-  - traditional
-  - mixed
+  - Modern
+  - Traditional
+  - Mixed
   Brassware:
-  - chrome
-  - black
-  - gold
-  - brass
+  - Chrome
+  - Black
+  - Gold
+  - Brass
 
 LAYOUT
   - Same
@@ -51,185 +51,180 @@ SHOWER AREA
   - Bath only
   - Shower above bath
   Bath panel:
-  - tiled
-  - plastic
-  - wooden
+  - Tiled
+  - Plastic
+  - Wooden
   Bath screen:
-  - none
-  - fixed
-  - semi-fixed
-  - hinged
-  - folding
-  - curtain
+  - None
+  - Fixed
+  - Semi-fixed
+  - Hinged
+  - Folding
+  - Curtain
   Filler:
-  - deck
-  - wall
-  - overflow
-  - floor standing
-  - pillar taps
-  - mixer with hand shower
-  - adjustable rod
-  - middle
-  - left
-  - right
+  - Deck
+  - Wall
+  - Overflow
+  - Floor standing
+  - Pillar taps
+  - Mixer tap with hand shower
+  - Adjustable rod
+  - Middle
+  - Left
+  - Right
   Shower:
-  - exposed
-  - concealed
-  - handset
-  - adjustable rail
-  - overhead wall
-  - overhead ceiling
+  - Exposed
+  - Concealed
+  - Handset
+  - Adjustable rail
+  - Overhead wall
+  - Overhead ceiling
   Controls:
-  - under head
-  - away
+  - Under head
+  - Away
   Niche:
-  - tiled
-  - prefabricated
-  - single
-  - stacked
+  - Tiled
+  - Prefabricated
+  - Single
+  - Stacked
   - LED
-  - mitred 45° trimless
-  - plastic trims
-  - metal trims
-  - marble / stone trims
+  - Mitred 45° trimless
+  - Plastic trims
+  - Metal trims
+  - Marble / stone trims
   Boxing:
-  - half-height (H)
-  - full-height (H)
-  - nib wall (H)
-  - subceiling (overhead shower) (H)
-  - adjustment box (H)
-  :
+  - Half-height (H)
+  - Full-height (H)
+  - Nib wall (H)
+  - Subceiling (overhead shower) (H)
+  - Adjustment box (H)
+  ---
   - Grab rails
   - Add pipework (H)
   == ENCLOSURE ==
   - Keep same
   - New installation
   - Replace
-  Enclosure:
-  - rectangular
-  - square
-  - quadrant
-  - pentagonal
-  - alcove
-  - wall to wall
-  :
+  Shape:
+  - Rectangular
+  - Square
+  - Quadrant
+  - Pentagonal
+  - Alcove
+  - Wall to wall
+  ---
   - Same place
   - Relocated
   Door:
-  - hinged
-  - sliding
-  - pivot
-  - folding
-  - corner sliding
+  - Hinged
+  - Sliding
+  - Pivot
+  - Folding
+  - Corner sliding
   Floor:
-  - shower tray
-  - wet room
-  - platform for drainage (H)
+  - Shower tray
+  - Wet room
+  - Platform for drainage (H)
   Shower:
-  - exposed
-  - concealed
-  - handset
-  - adjustable rail
-  - overhead wall
-  - overhead ceiling
+  - Exposed
+  - Concealed
+  - Handset
+  - Adjustable rail
+  - Overhead wall
+  - Overhead ceiling
   Controls:
-  - under head
-  - away
+  - Under head
+  - Away
   Niche:
-  - tiled
-  - prefabricated
-  - single
-  - stacked
+  - Tiled
+  - Prefabricated
+  - Single
+  - Stacked
   - LED
-  - mitred 45° trimless
-  - plastic trims
-  - metal trims
-  - marble / stone trims
+  - Mitred 45° trimless
+  - Plastic trims
+  - Metal trims
+  - Marble / stone trims
   Boxing:
-  - half-height (H)
-  - full-height (H)
-  - nib wall (H)
-  - subceiling (overhead shower) (H)
-  Extras:
-  - grab rails
-  - bench
-  - folding chair
-  :
+  - Half-height (H)
+  - Full-height (H)
+  - Nib wall (H)
+  - Subceiling (overhead shower) (H)
+  ---
+  - Grab rails
+  - Bench
+  - Folding chair
   - Add pipework (H)
   == WALK-IN ==
   - Keep same
   - New installation
   - Replace
   Glass screen:
-  - fixed
-  - semi-fixed
-  - hinged
-  - folding
-  - curtain
-  :
+  - Fixed
+  - Semi-fixed
+  - Hinged
+  - Folding
+  - Curtain
+  ---
   - Same place
   - Relocated
   Floor:
-  - shower tray
-  - wet room
-  - platform for drainage (H)
+  - Shower tray
+  - Wet room
+  - Platform for drainage (H)
   Shower:
-  - exposed
-  - concealed
-  - handset
-  - adjustable rail
-  - overhead wall
-  - overhead ceiling
+  - Exposed
+  - Concealed
+  - Handset
+  - Adjustable rail
+  - Overhead wall
+  - Overhead ceiling
   Controls:
-  - under head
-  - away
+  - Under head
+  - Away
   Niche:
-  - tiled
-  - prefabricated
-  - single
-  :
+  - Tiled
+  - Prefabricated
+  - Single
+  - Stacked
   - LED
-  - mitred 45° trimless
-  - plastic trims
-  - metal trims
-  - marble / stone trims
+  - Mitred 45° trimless
+  - Plastic trims
+  - Metal trims
+  - Marble / stone trims
   Boxing:
-  - half-height (H)
-  - full-height (H)
-  - nib wall (H)
-  - subceiling (overhead shower) (H)
-  Extras:
-  - grab rails
-  - shower bench
-  - folding chair
-  :
+  - Half-height (H)
+  - Full-height (H)
+  - Nib wall (H)
+  - Subceiling (overhead shower) (H)
+  ---
+  - Grab rails
+  - Shower bench
+  - Folding chair
   - Add pipework (H)
 
 TOILET
   - Keep same
   - New installation
   - Replace
-  Toilet:
-  - close-coupled
-  - floor-standing
-  - wall-hung
-  - in-wall cistern (no box)
-  - smart
-  - standard + smart seat
-  - old style cistern above
-  - toilet + basin combination unit
-  :
+  - Close-coupled toilet
+  - Floor-standing toilet
+  - Wall-hung toilet
+  - In-wall cistern toilet (no box)
+  - Smart toilet
+  - Standard toilet + smart seat
+  - Old style toilet with cistern above
+  - Toilet + basin combination unit
   - Same place
   - Relocated
-  Bidet:
-  - bidet shower
-  - bidet unit
+  - Bidet shower
+  - Bidet unit
   Cistern box:
-  - half-height (H)
-  - to ceiling (H)
-  - storage above toilet
-  - under toilet LED
-  :
+  - Half-height (H)
+  - To ceiling (H)
+  ---
+  - Storage above toilet
+  - Under toilet LED
   - Add cistern box (H)
   - Add smart toilet wiring (H)
   - Add LED wiring (H)
@@ -243,25 +238,25 @@ VANITY & BASIN
   - New installation
   - Replace
   Vanity:
-  - wall-hung single
-  - wall-hung double
-  - floor-standing single
-  - floor-standing double
+  - Wall-hung single
+  - Wall-hung double
+  - Floor-standing single
+  - Floor-standing double
   Basin:
-  - wall-hung
-  - pedestal
-  - wash stand
-  - inset
-  - counter-top
-  - semi-recessed
-  :
+  - Wall-hung
+  - Pedestal
+  - Wash stand
+  - Inset
+  - Counter-top
+  - Semi-recessed
+  ---
   - Same place
   - Relocated
-  Tap:
-  - mixer deck
-  - wall-mounted
-  - pillar taps
-  :
+  Taps:
+  - Mixer deck
+  - Wall-mounted
+  - Pillar taps
+  ---
   - Under vanity LED
   - Add pipework (H)
   - Add wiring (H)
@@ -269,47 +264,44 @@ VANITY & BASIN
 
 LIGHTS
   Main light:
-  - no change
-  - like for like
-  - single to spotlights
-  - spotlights to single
-  Dimmer:
-  - dimmable
-  - not dimmable
-  Other lights:
-  - wall lights
-  - under vanity LED
-  - under toilet LED
-  - niche LED
-  - mirror side lights
-  - light above mirror
-  - ceiling LED strip
+  - No change
+  - Like for like
+  - Single light to spotlights
+  - Spotlights to single light
+  ---
+  - Dimmable
+  - Not dimmable
+  - Wall lights
+  - Under vanity LED
+  - Under toilet LED
+  - Niche LED
+  - Mirror side lights
+  - Light above mirror
+  - Ceiling LED strip
   Switch:
-  - keep pull cord
-  - pull cord to wall switch — tiled wall (H)
-  - pull cord to wall switch — painted wall (H)
+  - Keep pull cord
+  - Pull cord to wall switch — tiled wall (H)
+  - Pull cord to wall switch — painted wall (H)
   Circuit:
-  - same (H)
-  - separate (H)
-  - new (H)
-  - rewiring (H)
+  - Same (H)
+  - Separate (H)
+  - New (H)
+  - Rewiring (H)
 
 MIRROR
   - Keep same
   - New installation
   - Replace
-  Mirror:
-  - plain
-  - cabinet surface mounted
-  - cabinet recessed
-  - above vanity
-  - other wall
-  - electric
-  - non-electric
-  - side lights
-  - light above
-  - magnifying / extendable
-  :
+  - Plain mirror
+  - Mirror cabinet surface mounted
+  - Mirror cabinet recessed
+  - Above vanity
+  - Other wall
+  - Electric mirror
+  - Non-electric mirror
+  - Side lights
+  - Light above mirror
+  - Magnifying / extendable mirror
   - Add wiring (H)
   - Recess for cabinet (H)
 
@@ -324,13 +316,13 @@ EXTRACTOR FAN
   - Replace
   - No fan required
   New fan:
-  - ceiling
-  - wall
-  - window
+  - Ceiling
+  - Wall
+  - Window
   Switch:
-  - separate switch
-  - same as lighting
-  :
+  - Separate switch
+  - Same as lighting
+  ---
   - Add drilling (H)
   - Add wiring + isolator (H)
   - Add duct box (H)
@@ -339,11 +331,9 @@ HEATER
   - Keep same
   - New installation
   - Replace
-  Towel rail:
-  - electric
-  - water-fed
-  - dual fuel
-  :
+  - Towel rail electric
+  - Towel rail water-fed
+  - Towel rail dual fuel
   - Radiator
   - Same place
   - Relocated
@@ -377,11 +367,11 @@ WALLS
   - Making good (H)
   - Access panel
   - Add insulation boards
-  Box:
-  - corner wall-wall (H)
-  - corner floor-wall (H)
-  - reduce / rebuild existing (H)
-  - resize existing (H)
+  Boxes:
+  - Corner wall-wall (H)
+  - Corner floor-wall (H)
+  - Reduce / rebuild existing (H)
+  - Resize existing (H)
 
 FLOOR
   - Floor levelling (H)
@@ -414,66 +404,65 @@ UNFORESEEN
 TILING
   == WALLS ==
   Finish:
-  - tiles
-  - panels
-  - paint
-  - wallpaper
+  - Tiles
+  - Panels
+  - Paint
+  - Wallpaper
   Tile:
-  - ceramic / porcelain
-  - marble / stone
+  - Ceramic / porcelain
+  - Marble / stone
   Size:
-  - large
-  - small
+  - Large
+  - Small
   Pattern:
-  - straight
-  - brick tiles
-  - brick bond
-  - vertical
-  - horizontal
-  - herringbone
+  - Straight
+  - Brick tiles
+  - Brick bond
+  - Vertical
+  - Horizontal
+  - Herringbone
   Coverage:
-  - full height all
-  - shower area only
-  - shower area + mid height rest
-  - same as existing
-  :
+  - Full height all
+  - Shower area only
+  - Shower area + mid height rest
+  - Same as existing
   - Feature wall
   == FLOOR ==
   Finish:
-  - tiles
-  - vinyl
-  - wood
-  - carpet
+  - Tiles
+  - Vinyl
+  - Wood
+  - Carpet
   Tile:
-  - ceramic / porcelain
-  - marble / stone
+  - Ceramic / porcelain
+  - Marble / stone
   Size:
-  - large
-  - small
+  - Large
+  - Small
   Pattern:
-  - straight
-  - brick bond
-  - herringbone
-  - diagonal
+  - Straight
+  - Brick bond
+  - Herringbone
+  - Diagonal
   Waterproofing:
-  - shower area (H)
-  - full bathroom (H)
+  - Shower area (H)
+  - Full bathroom (H)
   Skirting:
-  - tiled
-  - wooden
-  :
+  - Tiled
+  - Wooden
+  ---
   - Covings
 
 PAINTING
   Ceiling:
-  - no change
-  - paint only
-  - skim and paint
-  - cornice
+  - No change
+  - Paint only
+  - Skim and paint
+  - Cornice
   Walls:
-  - no change
-  - paint only
-  - skim and paint
+  - No change
+  - Paint only
+  - Skim and paint
 
 COMPLETION
   - Flexible
@@ -492,9 +481,9 @@ TONY
   - Personality [slider 1-10]
   - Price about [text]
   Parking:
-  - free
-  - permit needed
-  - none
-  :
+  - Free
+  - Permit needed
+  - None
+  ---
   - Estimate labour cost [text]
   - Notes [text]
