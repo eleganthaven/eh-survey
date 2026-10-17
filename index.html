@@ -6,7 +6,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#2c6e49">
-<title>Elegant Haven Survey V8</title>
+<title>Elegant Haven Survey V9</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <style>
 :root {
@@ -60,6 +60,12 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
 .section-divider { height: 1px; background: var(--border); margin: 0 13px; }
 
 .options-list { padding: 2px 13px 6px; }
+.chip-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 5px 13px; }
+.chip-label { font-size: 11px; font-weight: 700; color: var(--fg2); text-transform: uppercase; letter-spacing: 0.06em; margin-right: 2px; flex-shrink: 0; }
+.chip { font: inherit; font-size: 13px; padding: 5px 10px; border-radius: 16px; border: 1px solid var(--border); background: var(--bg2); color: var(--fg); cursor: pointer; line-height: 1.2; }
+.chip.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+.chip.h { border-color: var(--hid-border); background: var(--hid-bg); color: var(--hid-fg); }
+.chip.h.on { background: var(--hid-border); color: #1a1a18; }
 .option-item { display: flex; align-items: center; gap: 8px; padding: 5px 0; }
 .option-check { width: 20px; height: 20px; border: 2px solid var(--border); border-radius: 4px; appearance: none; -webkit-appearance: none; cursor: pointer; flex-shrink: 0; background: var(--bg3); position: relative; }
 .option-check:checked { background: var(--accent); border-color: var(--accent); }
@@ -76,6 +82,8 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
 
 .btn-h { background: none; border: 1px solid var(--border); border-radius: 5px; color: var(--fg2); font-size: 11px; font-weight: 700; padding: 1px 6px; cursor: pointer; font-family: inherit; flex-shrink: 0; }
 .option-item.is-hidden .btn-h { border-color: var(--hid-border); color: var(--hid-fg); background: var(--hid-bg); }
+.mv { background: none; border: 1px solid var(--border); border-radius: 5px; color: var(--fg2); font-size: 11px; padding: 1px 5px; cursor: pointer; font-family: inherit; flex-shrink: 0; line-height: 1.4; }
+.mv:disabled { opacity: .3; }
 .option-del { background: none; border: none; color: var(--danger); cursor: pointer; font-size: 16px; padding: 2px 4px; line-height: 1; flex-shrink: 0; }
 
 .add-row button { background: none; border: 1px dashed var(--border); border-radius: 6px; color: var(--fg2); font-family: inherit; font-size: 13px; padding: 5px 12px; cursor: pointer; width: 100%; text-align: left; }
@@ -113,9 +121,6 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
 .out-grp { font-size: 11px; font-weight: 700; color: var(--fg2); text-transform: uppercase; letter-spacing: .06em; margin: 8px 0 1px; }
 .out-opt { font-size: 14px; line-height: 1.4; }
 </style>
-</head>
-<body>
-
 
 
 <div class="modal-overlay" id="pwModal" hidden>
@@ -146,36 +151,33 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
     <button class="btn btn-sm" id="editBtn" onclick="toggleEdit()">Edit</button>
     <button class="btn btn-sm" onclick="newForm()">New form</button>
     <button class="btn btn-sm" onclick="exportStructure()">Export</button>
-    <button class="btn btn-sm btn-accent" onclick="copyOut('B')">Copy</button>
+    <button class="btn btn-sm btn-accent" onclick="copyOut()">Copy</button>
   </div>
 </div>
 
 <div class="main">
   <div id="sections"></div>
   <div class="output-panel">
-    <div class="output-header"><h2>Output A</h2><button class="btn btn-sm" onclick="copyOut('A')">Copy</button></div>
+    <div class="output-header"><h2>Output</h2><button class="btn btn-sm" onclick="copyOut()">Copy</button></div>
     <div class="output-body empty" id="outA">Tick items to see output.</div>
-  </div>
-  <div class="output-panel">
-    <div class="output-header"><h2>Output B</h2><button class="btn btn-sm" onclick="copyOut('B')">Copy</button></div>
-    <div class="output-body empty" id="outB">Tick items to see output.</div>
   </div>
 </div>
 <div class="toast" id="toast"></div>
 
 <script>
 const PASSWORD = '000';
-const KEY = 'ehSurveyV8';
+const KEY = 'ehSurveyV9';
 
 // option types: 'tick' (default), 'text' (free text field, e.g. name/address), 'ticktext' (tick + small text, e.g. walls)
 const DEFAULT_DATA = [
   { title:'CLIENT', subsections:[
     { title:'', options:[ {label:'Name + address', type:'text'} ]},
-    { title:'Property', options:[ {label:'House'},{label:'Flat in house'},{label:'Flat in block'},{label:'Council'} ]},
-    { title:'Access — floor no.', options:[ {label:'Stairs', type:'ticktext'},{label:'Lift', type:'ticktext'} ]},
-    { title:'Walls — 1 door · 2 left · 3 opposite · 4 right · 5 extra', options:[ {label:'Solid', type:'ticktext'},{label:'Stud', type:'ticktext'} ]},
-    { title:'Style', options:[ {label:'Modern'},{label:'Traditional'},{label:'Mixed'} ]},
-    { title:'Brassware', options:[ {label:'Chrome'},{label:'Black'},{label:'Gold'},{label:'Brass'} ]},
+    { title:'Property', options:[ {label:'house'},{label:'flat in house'},{label:'flat in block'},{label:'council'} ]},
+    { title:'', options:[ {label:'Stairs', type:'ticktext'},{label:'Lift', type:'ticktext'} ]},
+    { title:'— WALLS 1 door · 2 left · 3 opposite · 4 right · 5 extra —', options:[  ]},
+    { title:'', options:[ {label:'Solid', type:'ticktext'},{label:'Stud', type:'ticktext'} ]},
+    { title:'Style', options:[ {label:'modern'},{label:'traditional'},{label:'mixed'} ]},
+    { title:'Brassware', options:[ {label:'chrome'},{label:'black'},{label:'gold'},{label:'brass'} ]},
   ]},
   { title:'LAYOUT', subsections:[
     { title:'', options:[ {label:'Same'},{label:'Make drawing'},{label:'Relocation'},{label:'Bath to shower'},{label:'Shower to bath'},{label:'Shower to toilet'},{label:'Merge WC'},{label:'Extension'},{label:'New build (en suite)'},{label:'Bedroom to bathroom'},{label:'Toilet to shower'} ]},
@@ -185,110 +187,124 @@ const DEFAULT_DATA = [
   ]},
   { title:'SHOWER AREA', subsections:[
     { title:'— BATHTUB —', options:[  ]},
-    { title:'Bathtub', options:[ {label:'Fit-in bath'},{label:'Freestanding bath'} ]},
-    { title:'Position', options:[ {label:'Bath same place'},{label:'Bath relocated'} ]},
-    { title:'Use', options:[ {label:'Bath only'},{label:'Shower above bath'} ]},
-    { title:'Bath panel', options:[ {label:'Tiled bath panel'},{label:'Plastic bath panel'},{label:'Wooden bath panel'} ]},
-    { title:'Bath screen', options:[ {label:'No bath screen'},{label:'Fixed bath screen'},{label:'Semi-fixed bath screen'},{label:'Hinged bath screen'},{label:'Folding bath screen'},{label:'Curtain'} ]},
-    { title:'Bath filler', options:[ {label:'Deck filler'},{label:'Wall filler'},{label:'Overflow filler'},{label:'Floor standing filler'},{label:'Pillar taps'},{label:'Mixer tap with hand shower'},{label:'Adjustable rod'},{label:'Filler middle'},{label:'Filler left'},{label:'Filler right'} ]},
-    { title:'Shower system', options:[ {label:'Exposed shower'},{label:'Concealed shower'},{label:'Handset'},{label:'Adjustable rail'},{label:'Overhead wall'},{label:'Overhead ceiling'} ]},
-    { title:'Controls', options:[ {label:'Controls under head'},{label:'Controls away'} ]},
-    { title:'Niche', options:[ {label:'Niche tiled'},{label:'Niche prefabricated'},{label:'Niche single'},{label:'Niche stacked'},{label:'Niche LED'},{label:'Niche mitred 45° trimless'},{label:'Niche plastic trims'},{label:'Niche metal trims'},{label:'Niche marble / stone trims'} ]},
-    { title:'Boxing', options:[ {label:'Half-height box', hidden:true},{label:'Full-height box', hidden:true},{label:'Nib wall', hidden:true},{label:'Subceiling box (overhead shower)', hidden:true},{label:'Adjustment box', hidden:true} ]},
-    { title:'Extras', options:[ {label:'Grab rails'} ]},
+    { title:'', options:[ {label:'Keep same'},{label:'New installation'},{label:'Replace'},{label:'Fit-in bath'},{label:'Freestanding bath'},{label:'Same place'},{label:'Relocated'},{label:'Bath only'},{label:'Shower above bath'} ]},
+    { title:'Bath panel', options:[ {label:'tiled'},{label:'plastic'},{label:'wooden'} ]},
+    { title:'Bath screen', options:[ {label:'none'},{label:'fixed'},{label:'semi-fixed'},{label:'hinged'},{label:'folding'},{label:'curtain'} ]},
+    { title:'Filler', options:[ {label:'deck'},{label:'wall'},{label:'overflow'},{label:'floor standing'},{label:'pillar taps'},{label:'mixer with hand shower'},{label:'adjustable rod'},{label:'middle'},{label:'left'},{label:'right'} ]},
+    { title:'Shower', options:[ {label:'exposed'},{label:'concealed'},{label:'handset'},{label:'adjustable rail'},{label:'overhead wall'},{label:'overhead ceiling'} ]},
+    { title:'Controls', options:[ {label:'under head'},{label:'away'} ]},
+    { title:'Niche', options:[ {label:'tiled'},{label:'prefabricated'},{label:'single'},{label:'stacked'},{label:'LED'},{label:'mitred 45° trimless'},{label:'plastic trims'},{label:'metal trims'},{label:'marble / stone trims'} ]},
+    { title:'Boxing', options:[ {label:'half-height', hidden:true},{label:'full-height', hidden:true},{label:'nib wall', hidden:true},{label:'subceiling (overhead shower)', hidden:true},{label:'adjustment box', hidden:true} ]},
+    { title:'', options:[ {label:'Grab rails'},{label:'Add pipework', hidden:true} ]},
     { title:'— ENCLOSURE —', options:[  ]},
-    { title:'Enclosure', options:[ {label:'Rectangular enclosure'},{label:'Square enclosure'},{label:'Quadrant enclosure'},{label:'Pentagonal enclosure'},{label:'Alcove enclosure'},{label:'Wall to wall enclosure'} ]},
-    { title:'Position', options:[ {label:'Enclosure same place'},{label:'Enclosure relocated'} ]},
-    { title:'Door', options:[ {label:'Hinged door'},{label:'Sliding door'},{label:'Pivot door'},{label:'Folding door'},{label:'Corner sliding door'} ]},
-    { title:'Floor', options:[ {label:'Shower tray'},{label:'Wet room floor'},{label:'Platform for drainage', hidden:true} ]},
-    { title:'Shower system', options:[ {label:'Exposed shower'},{label:'Concealed shower'},{label:'Handset'},{label:'Adjustable rail'},{label:'Overhead wall'},{label:'Overhead ceiling'} ]},
-    { title:'Controls', options:[ {label:'Controls under head'},{label:'Controls away'} ]},
-    { title:'Niche', options:[ {label:'Niche tiled'},{label:'Niche prefabricated'},{label:'Niche single'},{label:'Niche stacked'},{label:'Niche LED'},{label:'Niche mitred 45° trimless'},{label:'Niche plastic trims'},{label:'Niche metal trims'},{label:'Niche marble / stone trims'} ]},
-    { title:'Boxing', options:[ {label:'Half-height box', hidden:true},{label:'Full-height box', hidden:true},{label:'Nib wall', hidden:true},{label:'Subceiling box (overhead shower)', hidden:true} ]},
-    { title:'Extras', options:[ {label:'Grab rails'},{label:'Bench'},{label:'Folding chair'} ]},
+    { title:'', options:[ {label:'Keep same'},{label:'New installation'},{label:'Replace'} ]},
+    { title:'Enclosure', options:[ {label:'rectangular'},{label:'square'},{label:'quadrant'},{label:'pentagonal'},{label:'alcove'},{label:'wall to wall'} ]},
+    { title:'', options:[ {label:'Same place'},{label:'Relocated'} ]},
+    { title:'Door', options:[ {label:'hinged'},{label:'sliding'},{label:'pivot'},{label:'folding'},{label:'corner sliding'} ]},
+    { title:'Floor', options:[ {label:'shower tray'},{label:'wet room'},{label:'platform for drainage', hidden:true} ]},
+    { title:'Shower', options:[ {label:'exposed'},{label:'concealed'},{label:'handset'},{label:'adjustable rail'},{label:'overhead wall'},{label:'overhead ceiling'} ]},
+    { title:'Controls', options:[ {label:'under head'},{label:'away'} ]},
+    { title:'Niche', options:[ {label:'tiled'},{label:'prefabricated'},{label:'single'},{label:'stacked'},{label:'LED'},{label:'mitred 45° trimless'},{label:'plastic trims'},{label:'metal trims'},{label:'marble / stone trims'} ]},
+    { title:'Boxing', options:[ {label:'half-height', hidden:true},{label:'full-height', hidden:true},{label:'nib wall', hidden:true},{label:'subceiling (overhead shower)', hidden:true} ]},
+    { title:'Extras', options:[ {label:'grab rails'},{label:'bench'},{label:'folding chair'} ]},
+    { title:'', options:[ {label:'Add pipework', hidden:true} ]},
     { title:'— WALK-IN —', options:[  ]},
-    { title:'Glass screen', options:[ {label:'Fixed glass screen'},{label:'Semi-fixed glass screen'},{label:'Hinged glass screen'},{label:'Folding glass screen'},{label:'Curtain'} ]},
-    { title:'Position', options:[ {label:'Walk-in same place'},{label:'Walk-in relocated — needs new pipework'} ]},
-    { title:'Floor', options:[ {label:'Shower tray'},{label:'Wet room floor'},{label:'Platform for drainage', hidden:true} ]},
-    { title:'Shower system', options:[ {label:'Exposed shower'},{label:'Concealed shower'},{label:'Handset'},{label:'Adjustable rail'},{label:'Overhead wall'},{label:'Overhead ceiling'} ]},
-    { title:'Controls', options:[ {label:'Controls under head'},{label:'Controls away'} ]},
-    { title:'Niche', options:[ {label:'Niche tiled'},{label:'Niche prefabricated'},{label:'Niche single'},{label:'Niche stacked'},{label:'Niche LED'},{label:'Niche mitred 45° trimless'},{label:'Niche plastic trims'},{label:'Niche metal trims'},{label:'Niche marble / stone trims'} ]},
-    { title:'Boxing', options:[ {label:'Half-height box', hidden:true},{label:'Full-height box', hidden:true},{label:'Nib wall', hidden:true},{label:'Subceiling box (overhead shower)', hidden:true} ]},
-    { title:'Extras', options:[ {label:'Grab rails'},{label:'Shower bench'},{label:'Folding chair'} ]},
+    { title:'', options:[ {label:'Keep same'},{label:'New installation'},{label:'Replace'} ]},
+    { title:'Glass screen', options:[ {label:'fixed'},{label:'semi-fixed'},{label:'hinged'},{label:'folding'},{label:'curtain'} ]},
+    { title:'', options:[ {label:'Same place'},{label:'Relocated'} ]},
+    { title:'Floor', options:[ {label:'shower tray'},{label:'wet room'},{label:'platform for drainage', hidden:true} ]},
+    { title:'Shower', options:[ {label:'exposed'},{label:'concealed'},{label:'handset'},{label:'adjustable rail'},{label:'overhead wall'},{label:'overhead ceiling'} ]},
+    { title:'Controls', options:[ {label:'under head'},{label:'away'} ]},
+    { title:'Niche', options:[ {label:'tiled'},{label:'prefabricated'},{label:'single'} ]},
+    { title:'', options:[ {label:'LED'},{label:'mitred 45° trimless'},{label:'plastic trims'},{label:'metal trims'},{label:'marble / stone trims'} ]},
+    { title:'Boxing', options:[ {label:'half-height', hidden:true},{label:'full-height', hidden:true},{label:'nib wall', hidden:true},{label:'subceiling (overhead shower)', hidden:true} ]},
+    { title:'Extras', options:[ {label:'grab rails'},{label:'shower bench'},{label:'folding chair'} ]},
+    { title:'', options:[ {label:'Add pipework', hidden:true} ]},
   ]},
   { title:'TOILET', subsections:[
-    { title:'Type', options:[ {label:'Keep same toilet'},{label:'Close-coupled toilet'},{label:'Floor-standing toilet'},{label:'Wall-hung toilet'},{label:'In-wall cistern toilet (no box)'},{label:'Smart toilet'},{label:'Standard toilet + smart seat'},{label:'Old style toilet with cistern above'} ]},
-    { title:'Position', options:[ {label:'Toilet same place'},{label:'Toilet relocated'} ]},
-    { title:'Bidet', options:[ {label:'Bidet shower'},{label:'Bidet unit'} ]},
-    { title:'Cistern box', options:[ {label:'Cistern box half-height', hidden:true},{label:'Cistern box to ceiling', hidden:true},{label:'Storage above toilet'},{label:'Under toilet LED'} ]},
-    { title:'Add', options:[ {label:'Add cistern box', hidden:true},{label:'Add smart toilet wiring', hidden:true},{label:'Add LED wiring', hidden:true},{label:'Add pipework', hidden:true},{label:'Add drilling ext wall for soil pipe', hidden:true},{label:'Add soil pipe box', hidden:true} ]},
+    { title:'', options:[ {label:'Keep same'},{label:'New installation'},{label:'Replace'} ]},
+    { title:'Toilet', options:[ {label:'close-coupled'},{label:'floor-standing'},{label:'wall-hung'},{label:'in-wall cistern (no box)'},{label:'smart'},{label:'standard + smart seat'},{label:'old style cistern above'},{label:'toilet + basin combination unit'} ]},
+    { title:'', options:[ {label:'Same place'},{label:'Relocated'} ]},
+    { title:'Bidet', options:[ {label:'bidet shower'},{label:'bidet unit'} ]},
+    { title:'Cistern box', options:[ {label:'half-height', hidden:true},{label:'to ceiling', hidden:true},{label:'storage above toilet'},{label:'under toilet LED'} ]},
+    { title:'', options:[ {label:'Add cistern box', hidden:true},{label:'Add smart toilet wiring', hidden:true},{label:'Add LED wiring', hidden:true},{label:'Add pipework', hidden:true},{label:'Add soil pipe connection', hidden:true},{label:'Add drilling ext wall for soil pipe', hidden:true},{label:'Add soil pipe box', hidden:true} ]},
   ]},
   { title:'VANITY & BASIN', subsections:[
-    { title:'Basin', options:[ {label:'Keep same basin'},{label:'Wall-hung basin'},{label:'Pedestal basin'},{label:'Wash stand'} ]},
-    { title:'Vanity unit', options:[ {label:'Wall-hung single vanity'},{label:'Wall-hung double vanity'},{label:'Floor-standing single vanity'},{label:'Floor-standing double vanity'} ]},
-    { title:'Position', options:[ {label:'Vanity same place'},{label:'Vanity relocated'} ]},
-    { title:'Basin style', options:[ {label:'Inset basin'},{label:'Counter-top basin'},{label:'Semi-recessed basin'} ]},
-    { title:'Taps', options:[ {label:'Mixer deck tap'},{label:'Wall-mounted tap'},{label:'Pillar taps'} ]},
-    { title:'Boxing', options:[ {label:'Half-height service box', hidden:true} ]},
-    { title:'Electrical', options:[ {label:'Under vanity LED'} ]},
+    { title:'', options:[ {label:'Keep same'},{label:'New installation'},{label:'Replace'} ]},
+    { title:'Vanity', options:[ {label:'wall-hung single'},{label:'wall-hung double'},{label:'floor-standing single'},{label:'floor-standing double'} ]},
+    { title:'Basin', options:[ {label:'wall-hung'},{label:'pedestal'},{label:'wash stand'},{label:'inset'},{label:'counter-top'},{label:'semi-recessed'} ]},
+    { title:'', options:[ {label:'Same place'},{label:'Relocated'} ]},
+    { title:'Tap', options:[ {label:'mixer deck'},{label:'wall-mounted'},{label:'pillar taps'} ]},
+    { title:'', options:[ {label:'Under vanity LED'},{label:'Add pipework', hidden:true},{label:'Add wiring', hidden:true},{label:'Half-height service box', hidden:true} ]},
   ]},
   { title:'LIGHTS', subsections:[
-    { title:'Main light', options:[ {label:'Main light no change'},{label:'Main light like for like'},{label:'Single light to spotlights'},{label:'Spotlights to single light'} ]},
-    { title:'Dimmer', options:[ {label:'Dimmable'},{label:'Not dimmable'} ]},
-    { title:'Other lights', options:[ {label:'Wall lights'},{label:'Under vanity LED'},{label:'Under toilet LED'},{label:'Niche LED'},{label:'Mirror side lights'},{label:'Light above mirror'},{label:'Ceiling LED strip'} ]},
-    { title:'Switch', options:[ {label:'Keep pull cord'},{label:'Pull cord to wall switch — tiled wall', hidden:true},{label:'Pull cord to wall switch — painted wall', hidden:true} ]},
-    { title:'Circuit', options:[ {label:'Same circuit', hidden:true},{label:'Separate circuit', hidden:true},{label:'New circuit', hidden:true},{label:'Rewiring', hidden:true} ]},
+    { title:'Main light', options:[ {label:'no change'},{label:'like for like'},{label:'single to spotlights'},{label:'spotlights to single'} ]},
+    { title:'Dimmer', options:[ {label:'dimmable'},{label:'not dimmable'} ]},
+    { title:'Other lights', options:[ {label:'wall lights'},{label:'under vanity LED'},{label:'under toilet LED'},{label:'niche LED'},{label:'mirror side lights'},{label:'light above mirror'},{label:'ceiling LED strip'} ]},
+    { title:'Switch', options:[ {label:'keep pull cord'},{label:'pull cord to wall switch — tiled wall', hidden:true},{label:'pull cord to wall switch — painted wall', hidden:true} ]},
+    { title:'Circuit', options:[ {label:'same', hidden:true},{label:'separate', hidden:true},{label:'new', hidden:true},{label:'rewiring', hidden:true} ]},
   ]},
   { title:'MIRROR', subsections:[
-    { title:'Type', options:[ {label:'Mirror'},{label:'Mirror cabinet surface mounted'},{label:'Mirror cabinet recessed'} ]},
-    { title:'Location', options:[ {label:'Mirror above vanity'},{label:'Mirror other wall'} ]},
-    { title:'Electric', options:[ {label:'Electric mirror'},{label:'Non-electric mirror'},{label:'Side lights'},{label:'Light above mirror'},{label:'Add wiring', hidden:true} ]},
-    { title:'Building', options:[ {label:'Recess for cabinet', hidden:true} ]},
-    { title:'Extras', options:[ {label:'Magnifying / extendable mirror'} ]},
+    { title:'', options:[ {label:'Keep same'},{label:'New installation'},{label:'Replace'} ]},
+    { title:'Mirror', options:[ {label:'plain'},{label:'cabinet surface mounted'},{label:'cabinet recessed'},{label:'above vanity'},{label:'other wall'},{label:'electric'},{label:'non-electric'},{label:'side lights'},{label:'light above'},{label:'magnifying / extendable'} ]},
+    { title:'', options:[ {label:'Add wiring', hidden:true},{label:'Recess for cabinet', hidden:true} ]},
   ]},
   { title:'SHAVER SOCKET', subsections:[
     { title:'', options:[ {label:'Shaver socket integrated'},{label:'Shaver socket separate'},{label:'Add wiring', hidden:true} ]},
   ]},
   { title:'EXTRACTOR FAN', subsections:[
-    { title:'Type', options:[ {label:'Keep same fan'},{label:'No fan required'},{label:'Replace existing fan'},{label:'New fan ceiling'},{label:'New fan wall'},{label:'New fan window'} ]},
-    { title:'Switch', options:[ {label:'Fan separate switch'},{label:'Fan same as lighting'} ]},
-    { title:'Works', options:[ {label:'Add drilling', hidden:true},{label:'Add wiring + isolator', hidden:true} ]},
+    { title:'', options:[ {label:'Keep same'},{label:'New installation'},{label:'Replace'},{label:'No fan required'} ]},
+    { title:'New fan', options:[ {label:'ceiling'},{label:'wall'},{label:'window'} ]},
+    { title:'Switch', options:[ {label:'separate switch'},{label:'same as lighting'} ]},
+    { title:'', options:[ {label:'Add drilling', hidden:true},{label:'Add wiring + isolator', hidden:true},{label:'Add duct box', hidden:true} ]},
   ]},
   { title:'HEATER', subsections:[
-    { title:'Type', options:[ {label:'Keep same heater'},{label:'Towel rail electric'},{label:'Towel rail water-fed'},{label:'Towel rail dual fuel'},{label:'Radiator'} ]},
-    { title:'Position', options:[ {label:'Heater same place'},{label:'Heater relocated'} ]},
-    { title:'Works', options:[ {label:'New installation'},{label:'Add pipe conversion floor to wall', hidden:true},{label:'Add pipework', hidden:true},{label:'Add wiring', hidden:true} ]},
+    { title:'', options:[ {label:'Keep same'},{label:'New installation'},{label:'Replace'} ]},
+    { title:'Towel rail', options:[ {label:'electric'},{label:'water-fed'},{label:'dual fuel'} ]},
+    { title:'', options:[ {label:'Radiator'},{label:'Same place'},{label:'Relocated'},{label:'Add pipework', hidden:true},{label:'Add wiring', hidden:true},{label:'Add box', hidden:true},{label:'Add pipe conversion floor to wall', hidden:true},{label:'Add pipe conversion wall to floor', hidden:true} ]},
   ]},
   { title:'OTHER', subsections:[
-    { title:'', options:[ {label:'Underfloor heating standard'},{label:'Underfloor heating wifi'},{label:'Underfloor heating wiring', hidden:true},{label:'Booster pump', hidden:true},{label:'Boiler', hidden:true},{label:'Macerator', hidden:true},{label:'Isolator / fused spur', hidden:true} ]},
+    { title:'', options:[ {label:'Underfloor heating standard'},{label:'Underfloor heating wifi'},{label:'Underfloor heating wiring', hidden:true},{label:'Booster pump', hidden:true},{label:'Boiler', hidden:true},{label:'Macerator', hidden:true},{label:'Isolator / fused spur', hidden:true},{label:'Storage for washing machine / dryer'},{label:'Convert shower to cupboard or opposite'} ]},
+  ]},
+  { title:'CEILING', subsections:[
+    { title:'', options:[ {label:'New ceiling'},{label:'Add insulation'},{label:'Subceiling / ceiling drop', hidden:true},{label:'Bulkhead box', hidden:true} ]},
+  ]},
+  { title:'WALLS', subsections:[
+    { title:'', options:[ {label:'New partition wall', hidden:true},{label:'Nib wall', hidden:true},{label:'Block existing opening', hidden:true},{label:'Making good', hidden:true},{label:'Access panel'},{label:'Add insulation boards'} ]},
+    { title:'Box', options:[ {label:'corner wall-wall', hidden:true},{label:'corner floor-wall', hidden:true},{label:'reduce / rebuild existing', hidden:true},{label:'resize existing', hidden:true} ]},
+  ]},
+  { title:'FLOOR', subsections:[
+    { title:'', options:[ {label:'Floor levelling', hidden:true},{label:'Sub-floor repair leak damages', hidden:true},{label:'Creaking floor', hidden:true},{label:'Platform / raised floor', hidden:true} ]},
+  ]},
+  { title:'DOORS', subsections:[
+    { title:'', options:[ {label:'New door opening'},{label:'Relocate door'},{label:'Resize door'},{label:'Change door wing only (same frame)'},{label:'Change swing left / right'},{label:'Change swing in / out'},{label:'Pocket door'},{label:'Sliding door'},{label:'Folding door'} ]},
+  ]},
+  { title:'WINDOWS', subsections:[
+    { title:'', options:[ {label:'New window opening + lintel', hidden:true},{label:'Replace existing window'},{label:'Paint window frame'},{label:'Window sill tiled'} ]},
+  ]},
+  { title:'UNFORESEEN', subsections:[
+    { title:'', options:[ {label:'Hard wall plaster'},{label:'New plasterboard'},{label:'New floorboards'} ]},
   ]},
   { title:'TILING', subsections:[
     { title:'— WALLS —', options:[  ]},
-    { title:'Walls finish', options:[ {label:'Tiles'},{label:'Panels'},{label:'Paint'},{label:'Wallpaper'} ]},
-    { title:'Walls tile type', options:[ {label:'Ceramic / porcelain'},{label:'Marble / stone'} ]},
-    { title:'Walls tile size', options:[ {label:'Large tiles'},{label:'Small tiles'} ]},
-    { title:'Walls pattern', options:[ {label:'Straight'},{label:'Brick tiles'},{label:'Brick bond'},{label:'Vertical'},{label:'Horizontal'},{label:'Herringbone'} ]},
-    { title:'Walls coverage', options:[ {label:'Full height all'},{label:'Shower area only'},{label:'Shower area + mid height rest'},{label:'Same as existing'} ]},
-    { title:'Walls special', options:[ {label:'Feature wall'} ]},
+    { title:'Finish', options:[ {label:'tiles'},{label:'panels'},{label:'paint'},{label:'wallpaper'} ]},
+    { title:'Tile', options:[ {label:'ceramic / porcelain'},{label:'marble / stone'} ]},
+    { title:'Size', options:[ {label:'large'},{label:'small'} ]},
+    { title:'Pattern', options:[ {label:'straight'},{label:'brick tiles'},{label:'brick bond'},{label:'vertical'},{label:'horizontal'},{label:'herringbone'} ]},
+    { title:'Coverage', options:[ {label:'full height all'},{label:'shower area only'},{label:'shower area + mid height rest'},{label:'same as existing'} ]},
+    { title:'', options:[ {label:'Feature wall'} ]},
     { title:'— FLOOR —', options:[  ]},
-    { title:'Floor finish', options:[ {label:'Tiles'},{label:'Vinyl'},{label:'Wood'},{label:'Carpet'} ]},
-    { title:'Floor tile type', options:[ {label:'Ceramic / porcelain'},{label:'Marble / stone'} ]},
-    { title:'Floor tile size', options:[ {label:'Large tiles'},{label:'Small tiles'} ]},
-    { title:'Floor pattern', options:[ {label:'Straight'},{label:'Brick bond'},{label:'Herringbone'},{label:'Diagonal'} ]},
-    { title:'Waterproofing', options:[ {label:'Waterproofing shower area', hidden:true},{label:'Waterproofing full bathroom', hidden:true} ]},
-    { title:'Finishing', options:[ {label:'Skirtings'},{label:'Covings'} ]},
+    { title:'Finish', options:[ {label:'tiles'},{label:'vinyl'},{label:'wood'},{label:'carpet'} ]},
+    { title:'Tile', options:[ {label:'ceramic / porcelain'},{label:'marble / stone'} ]},
+    { title:'Size', options:[ {label:'large'},{label:'small'} ]},
+    { title:'Pattern', options:[ {label:'straight'},{label:'brick bond'},{label:'herringbone'},{label:'diagonal'} ]},
+    { title:'Waterproofing', options:[ {label:'shower area', hidden:true},{label:'full bathroom', hidden:true} ]},
+    { title:'Skirting', options:[ {label:'tiled'},{label:'wooden'} ]},
+    { title:'', options:[ {label:'Covings'} ]},
   ]},
   { title:'PAINTING', subsections:[
-    { title:'Ceiling paint', options:[ {label:'Ceiling no change'},{label:'Ceiling paint only'},{label:'Ceiling skim and paint'} ]},
-    { title:'Walls paint', options:[ {label:'Walls no change'},{label:'Walls paint only'},{label:'Walls skim and paint'} ]},
-  ]},
-  { title:'BUILDING WORKS', subsections:[
-    { title:'Walls', options:[ {label:'New partition wall', hidden:true},{label:'Nib wall', hidden:true},{label:'Block existing opening', hidden:true},{label:'Making good', hidden:true},{label:'Add insulation boards'} ]},
-    { title:'Floor', options:[ {label:'Floor levelling', hidden:true},{label:'Sub-floor repair leak damages', hidden:true},{label:'Creaking floor', hidden:true},{label:'Platform / raised floor', hidden:true} ]},
-    { title:'Ceiling', options:[ {label:'Subceiling / ceiling drop', hidden:true},{label:'Bulkhead box', hidden:true} ]},
-    { title:'Doors', options:[ {label:'New door opening'},{label:'Relocate door'},{label:'Resize door'},{label:'Change door wing only (same frame)'},{label:'Change swing left / right'},{label:'Change swing in / out'},{label:'Pocket door'},{label:'Sliding door'},{label:'Folding door'} ]},
-    { title:'Boxes', options:[ {label:'Corner wall-wall box', hidden:true},{label:'Corner floor-wall box', hidden:true},{label:'Reduce / rebuild existing box', hidden:true},{label:'Resize existing box', hidden:true} ]},
-    { title:'Other', options:[ {label:'Storage for washing machine / dryer'},{label:'Convert shower to cupboard or opposite'} ]},
+    { title:'Ceiling', options:[ {label:'no change'},{label:'paint only'},{label:'skim and paint'},{label:'cornice'} ]},
+    { title:'Walls', options:[ {label:'no change'},{label:'paint only'},{label:'skim and paint'} ]},
   ]},
   { title:'COMPLETION', subsections:[
     { title:'', options:[ {label:'Flexible'},{label:'Urgent'},{label:'Target date', type:'text'} ]},
@@ -298,7 +314,8 @@ const DEFAULT_DATA = [
   ]},
   { title:'TONY', subsections:[
     { title:'', options:[ {label:'Call after', type:'text'},{label:'Win', type:'slider', min:0, max:100, step:5, unit:'%'},{label:'Personality', type:'slider', min:1, max:10, step:1, unit:''},{label:'Price about', type:'text'} ]},
-    { title:'Parking', options:[ {label:'Free parking'},{label:'Permit needed'},{label:'No parking'},{label:'Estimate labour cost', type:'text'},{label:'Notes', type:'text'} ]},
+    { title:'Parking', options:[ {label:'free'},{label:'permit needed'},{label:'none'} ]},
+    { title:'', options:[ {label:'Estimate labour cost', type:'text'},{label:'Notes', type:'text'} ]},
   ]},
 ];
 
@@ -400,9 +417,11 @@ function renderSection(sec, si){
   ti.onchange = e => { sec.title = e.target.value; updateOut(); save(); };
   hdr.append(col, ti);
   if(editMode){
+    const up = el('button', 'mv', '▲'); up.disabled = si === 0; up.onclick = () => moveSec(si, -1);
+    const dn = el('button', 'mv', '▼'); dn.disabled = si === state.length - 1; dn.onclick = () => moveSec(si, 1);
     const del = el('button', 'btn btn-danger btn-sm', '✕');
     del.onclick = () => askConfirm('Delete section "' + sec.title + '"?', () => { state.splice(si, 1); render(); });
-    hdr.append(del);
+    hdr.append(up, dn, del);
   }
   div.append(hdr);
 
@@ -440,7 +459,19 @@ function renderSub(sec, ss, ssi){
     div.append(hdr);
   }
   const ol = el('div', 'options-list');
-  ss.options.forEach((o, oi) => ol.append(renderOpt(ss, o, oi)));
+  if(ss.title && !editMode){
+    div.innerHTML = '';
+    const cr = el('div', 'chip-row'); cr.append(el('span', 'chip-label', ss.title));
+    ss.options.forEach((o, oi) => {
+      if(o.type !== 'tick'){ ol.append(renderOpt(sec, ss, ssi, o, oi)); return; }
+      const c = el('button', 'chip' + (o.checked ? ' on' : '') + (o.hidden ? ' h' : ''), o.label);
+      c.onclick = () => { o.checked = !o.checked; c.classList.toggle('on', o.checked); updateOut(); save(); };
+      cr.append(c);
+    });
+    div.append(cr);
+  } else {
+    ss.options.forEach((o, oi) => ol.append(renderOpt(sec, ss, ssi, o, oi)));
+  }
   div.append(ol);
   if(editMode){
     const r = el('div', 'add-row add-option-row');
@@ -454,7 +485,7 @@ function renderSub(sec, ss, ssi){
   return div;
 }
 
-function renderOpt(ss, o, oi){
+function renderOpt(sec, ss, ssi, o, oi){
   const row = el('div', 'option-item' + (o.checked ? ' is-checked' : '') + (o.hidden ? ' is-hidden' : ''));
   if(o.type !== 'text' && o.type !== 'slider'){
     const cb = document.createElement('input'); cb.type = 'checkbox'; cb.className = 'option-check'; cb.checked = o.checked;
@@ -482,80 +513,98 @@ function renderOpt(ss, o, oi){
   hb.onclick = () => requirePw(() => { o.hidden = !o.hidden; render(); });
   row.append(hb);
   if(editMode){
+    const up = el('button', 'mv', '▲'); up.onclick = () => moveOpt(sec, ssi, oi, -1);
+    const dn = el('button', 'mv', '▼'); dn.onclick = () => moveOpt(sec, ssi, oi, 1);
     const del = el('button', 'option-del', '✕');
     del.onclick = () => askConfirm('Delete "' + o.label + '"?', () => { ss.options.splice(oi, 1); render(); });
-    row.append(del);
+    row.append(up, dn, del);
   }
   return row;
 }
 
+function moveSec(si, d){ const j = si + d; if(j < 0 || j >= state.length) return; const t = state[si]; state[si] = state[j]; state[j] = t; render(); }
+function moveOpt(sec, ssi, oi, d){
+  const ss = sec.subsections[ssi]; const j = oi + d;
+  if(j >= 0 && j < ss.options.length){ const t = ss.options[oi]; ss.options[oi] = ss.options[j]; ss.options[j] = t; render(); return; }
+  // hop to the neighbouring group (skip divider bands)
+  let k = ssi + d;
+  while(k >= 0 && k < sec.subsections.length && sec.subsections[k].title.trim().startsWith('—')) k += d;
+  if(k < 0 || k >= sec.subsections.length) return;
+  const o = ss.options.splice(oi, 1)[0];
+  if(d < 0) sec.subsections[k].options.push(o); else sec.subsections[k].options.unshift(o);
+  render();
+}
+function exportStructure(){
+  const L = [];
+  state.forEach(sec => {
+    L.push(sec.title);
+    let prevTitled = false;
+    sec.subsections.forEach(ss => {
+      const g = ss.title.trim();
+      if(g.startsWith('—')){ prevTitled = false; L.push('  == ' + g.replace(/—/g,'').trim() + ' =='); return; }
+      if(g) L.push('  ' + g + ':'); else if(prevTitled) L.push('  :');
+      prevTitled = !!g;
+      ss.options.forEach(o => {
+        let l = '  - ' + o.label;
+        if(o.type === 'text') l += ' [text]';
+        if(o.type === 'ticktext') l += ' [tick+text]';
+        if(o.type === 'slider') l += ' [slider ' + o.min + '-' + o.max + (o.unit||'') + ']';
+        if(o.hidden) l += ' (H)';
+        L.push(l);
+      });
+    });
+    L.push('');
+  });
+  copyText(L.join('\n'), 'Structure copied');
+}
+function copyText(text, msg){
+  navigator.clipboard.writeText(text).then(() => toast(msg)).catch(() => {
+    const ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); toast(msg);
+  });
+}
 function fmtSlider(o, v){ v = Number(v); if(o.unit === '£') return '£' + v.toLocaleString('en-GB'); return v + (o.unit || ''); }
 
 // ---- output: key words only ----
-let OUT_A = '', OUT_B = '';
+let OUT = '';
+function optText(o){
+  if(o.type === 'text'){ if(!o.text.trim()) return null; return (o.label === 'Name + address' || o.label === 'Notes' || o.label === 'Added by customer') ? o.text.trim() : o.label + ' ' + o.text.trim(); }
+  if(o.type === 'slider'){ if(o.text === '') return null; return o.label + ' ' + fmtSlider(o, o.text); }
+  if(!o.checked) return null;
+  let t = o.label; if(o.type === 'ticktext' && o.text.trim()) t += ' ' + o.text.trim(); if(o.hidden) t += ' (H)';
+  return t;
+}
 function collectSec(sec){
-  // returns [{g, items[]}] for a section; g kept only for TILING
-  const keepG = sec.title.trim().toUpperCase() === 'TILING';
-  const groups = [];
+  const lines = []; let band = null;
   sec.subsections.forEach(ss => {
     const g = ss.title.trim();
-    if(g.startsWith('—')) return;
-    const items = [];
-    ss.options.forEach(o => {
-      let t = '';
-      if(o.type === 'text'){ if(!o.text.trim()) return; t = (o.label === 'Name + address' || o.label === 'Notes' || o.label === 'Added by customer') ? o.text.trim() : o.label + ' ' + o.text.trim(); }
-      else if(o.type === 'slider'){ if(o.text === '') return; t = o.label + ' ' + fmtSlider(o, o.text); }
-      else { if(!o.checked) return; t = o.label; if(o.type === 'ticktext' && o.text.trim()) t += ' ' + o.text.trim(); if(o.hidden) t += ' (H)'; }
-      items.push(t);
-    });
-    if(!items.length) return;
-    let label = '';
-    if(keepG && g){ const m = g.match(/^(Walls|Floor)\b/i); label = m ? m[1] : ''; }
-    groups.push({ g: label, items });
+    if(g.startsWith('—')){ const n = g.replace(/—/g,'').trim(); const m = n.replace(/\s*\d.*$/, '').trim(); band = m ? m[0] + m.slice(1).toLowerCase() : null; return; }
+    const items = []; const rows = [];
+    ss.options.forEach(o => { const t = optText(o); if(t == null) return; if(g && o.type === 'tick') items.push(t); else rows.push(t); });
+    if(!items.length && !rows.length) return;
+    if(band){ lines.push(band); band = null; }
+    if(items.length) lines.push(g + ': ' + items.join(', '));
+    rows.forEach(r => lines.push(r));
   });
-  if(sec.note.trim()) groups.push({ g: '', items: [sec.note.trim()] });
-  return groups;
+  if(sec.note.trim()) lines.push(sec.note.trim());
+  return lines;
 }
 function updateOut(){
-  const A = [], B = [], hA = [], hB = [];
+  const A = [], hA = [];
   state.forEach(sec => {
-    const groups = collectSec(sec);
-    if(!groups.length) return;
-    const T = sec.title.trim().toUpperCase();
-    const isClient = T === 'CLIENT';
-    // A: one per line; TILING groups prefixed
-    const la = [], hb = [];
-    groups.forEach(gr => gr.items.forEach(it => la.push(gr.g ? gr.g + ': ' + it : it)));
-    // B: merge TILING by Walls/Floor; else one line joined with +
-    const lb = [];
-    if(T === 'TILING'){
-      const m = {};
-      groups.forEach(gr => { const k = gr.g || ''; (m[k] = m[k] || []).push(...gr.items); });
-      Object.entries(m).forEach(([k, its]) => lb.push((k ? k + ': ' : '') + its.join(' + ')));
-    } else {
-      lb.push(groups.flatMap(gr => gr.items).join(' + '));
-    }
-    A.push((isClient ? '' : sec.title + '\n') + la.join('\n'));
-    B.push((isClient ? '' : sec.title + '\n') + lb.join('\n'));
-    hA.push((isClient ? '' : '<div class="out-sec">' + esc(sec.title) + '</div>') + la.map(l => '<div class="out-opt">' + esc(l) + '</div>').join(''));
-    hB.push((isClient ? '' : '<div class="out-sec">' + esc(sec.title) + '</div>') + lb.map(l => '<div class="out-opt">' + esc(l) + '</div>').join(''));
+    const lines = collectSec(sec);
+    if(!lines.length) return;
+    const isClient = sec.title.trim().toUpperCase() === 'CLIENT';
+    A.push((isClient ? '' : sec.title + '\n') + lines.join('\n'));
+    hA.push((isClient ? '' : '<div class="out-sec">' + esc(sec.title) + '</div>') + lines.map(l => '<div class="out-opt">' + esc(l) + '</div>').join(''));
   });
-  const oa = document.getElementById('outA'), ob = document.getElementById('outB');
-  if(!A.length){ OUT_A = OUT_B = ''; oa.className = ob.className = 'output-body empty'; oa.textContent = ob.textContent = 'Tick items to see output.'; return; }
-  OUT_A = A.join('\n\n'); OUT_B = B.join('\n\n');
-  oa.className = ob.className = 'output-body';
-  oa.innerHTML = hA.join(''); ob.innerHTML = hB.join('');
+  const oa = document.getElementById('outA');
+  if(!A.length){ OUT = ''; oa.className = 'output-body empty'; oa.textContent = 'Tick items to see output.'; return; }
+  OUT = A.join('\n\n');
+  oa.className = 'output-body'; oa.innerHTML = hA.join('');
 }
 function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-function copyOut(which){
-  const text = which === 'A' ? OUT_A : OUT_B;
-  if(!text){ toast('Nothing to copy'); return; }
-  navigator.clipboard.writeText(text).then(() => toast('Copied')).catch(() => {
-    const ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); toast('Copied');
-  });
-}
+function copyOut(){ if(!OUT){ toast('Nothing to copy'); return; } copyText(OUT, 'Copied'); }
 function addSection(at){
   state.splice(at == null ? state.length : at, 0, { id: uid(), title: 'NEW SECTION', note: '', collapsed: false, subsections: [{ id: uid(), title: '', options: [{ id: uid(), label: 'New item', type: 'tick', checked: false, hidden: false, text: '' }] }] });
   render();
