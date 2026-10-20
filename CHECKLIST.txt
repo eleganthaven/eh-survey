@@ -43,6 +43,7 @@ DEMOLITION
 
 SHOWER AREA
   == BATHTUB ==
+  - Not required
   - Keep same
   - New installation
   - Replace
@@ -107,6 +108,7 @@ SHOWER AREA
   - Grab rails
   - Add pipework (H)
   == ENCLOSURE ==
+  - Not required
   - Keep same
   - New installation
   - Replace
@@ -162,6 +164,7 @@ SHOWER AREA
   :
   - Add pipework (H)
   == WALK-IN ==
+  - Not required
   - Keep same
   - New installation
   - Replace
@@ -211,6 +214,7 @@ SHOWER AREA
   - Add pipework (H)
 
 TOILET
+  - Not required
   Type:
   - close-coupled
   - floor-standing
@@ -246,6 +250,7 @@ TOILET
   - Add soil pipe box (H)
 
 VANITY & BASIN
+  - Not required
   Type:
   - vanity
   - basin only
@@ -306,6 +311,7 @@ LIGHTS
   - rewiring (H)
 
 MIRROR
+  - Not required
   Type:
   - mirror
   - cabinet surface mounted
@@ -329,6 +335,7 @@ MIRROR
   - Recess for cabinet (H)
 
 SHAVER SOCKET
+  - Not required
   - Shaver socket integrated
   - Shaver socket separate
   - Add wiring (H)
@@ -351,6 +358,7 @@ EXTRACTOR FAN
   - Add duct work (H)
 
 HEATER
+  - Not required
   - Keep same
   - New installation
   - Replace
