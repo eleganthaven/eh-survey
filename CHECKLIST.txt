@@ -46,12 +46,15 @@ SHOWER AREA
   - Keep same
   - New installation
   - Replace
-  - Fit-in bath
-  - Freestanding bath
-  - Same place
-  - Relocated
-  - Bath only
-  - Shower above bath
+  Bath:
+  - fit-in
+  - freestanding
+  Position:
+  - same place
+  - relocated
+  Use:
+  - bath only
+  - shower above bath
   Bath panel:
   - tiled
   - plastic
@@ -114,9 +117,9 @@ SHOWER AREA
   - pentagonal
   - alcove
   - wall to wall
-  :
-  - Same place
-  - Relocated
+  Position:
+  - same place
+  - relocated
   Door:
   - hinged
   - sliding
@@ -168,9 +171,9 @@ SHOWER AREA
   - hinged
   - folding
   - curtain
-  :
-  - Same place
-  - Relocated
+  Position:
+  - same place
+  - relocated
   Floor:
   - shower tray
   - wet room
@@ -208,6 +211,7 @@ SHOWER AREA
   - Add pipework (H)
 
 TOILET
+  Type:
   - close-coupled
   - floor-standing
   - wall-hung
@@ -216,18 +220,23 @@ TOILET
   - standard + smart seat
   - old style cistern above
   - toilet + basin combination unit
+  :
   - Keep same
   - New installation
   - Replace
-  - Same place
-  - Relocated
+  Position:
+  - same place
+  - relocated
+  Bidet:
   - bidet shower
   - bidet unit
-  - cistern box half-height (H)
-  - cistern box to ceiling (H)
+  Cistern box:
+  - half-height (H)
+  - to ceiling (H)
   - storage above toilet
   - under storage light
   - under toilet LED
+  :
   - Add cistern box (H)
   - Add smart toilet wiring (H)
   - Add LED wiring (H)
@@ -237,25 +246,33 @@ TOILET
   - Add soil pipe box (H)
 
 VANITY & BASIN
+  Type:
   - vanity
   - basin only
+  :
   - Keep same
   - New installation
   - Replace
+  Mount:
   - wall-hung
   - floor-standing
+  Size:
   - single
   - double
+  Basin:
   - pedestal
   - wash stand
   - inset
   - counter-top
   - semi-recessed
-  - Same place
-  - Relocated
-  - mixer deck tap
-  - wall-mounted tap
+  Position:
+  - same place
+  - relocated
+  Tap:
+  - mixer deck
+  - wall-mounted
   - pillar taps
+  :
   - under vanity LED
   - Add pipework (H)
   - Add wiring (H)
@@ -289,18 +306,24 @@ LIGHTS
   - rewiring (H)
 
 MIRROR
+  Type:
   - mirror
   - cabinet surface mounted
   - cabinet recessed
+  :
   - Keep same
   - New installation
   - Replace
+  Electric:
   - electric
   - non-electric
+  Position:
   - above vanity
   - other wall
+  Lights:
   - side lights
   - light above
+  :
   - magnifying / extendable
   - Add wiring (H)
   - Recess for cabinet (H)
@@ -315,11 +338,14 @@ EXTRACTOR FAN
   - New installation
   - Replace
   - No fan required
+  New fan:
   - ceiling
   - wall
   - window
+  Switch:
   - separate switch
   - same as lighting
+  :
   - Add drilling (H)
   - Add wiring + isolator (H)
   - Add duct work (H)
@@ -330,11 +356,14 @@ HEATER
   - Replace
   - radiator to towel rail
   - towel rail to radiator
+  Type:
   - electric
   - water-fed
   - dual fuel
-  - Same place
-  - Relocated
+  Position:
+  - same place
+  - relocated
+  :
   - Add pipework (H)
   - Add wiring (H)
   - Add box (H)
@@ -413,8 +442,7 @@ TILING
   - paint
   - wallpaper
   Tile:
-  - tool cut (ceramic / porcelain)
-  - Grinder cut (marble / stone) (H)
+  - marble / stone
   Size:
   - large
   - medium
@@ -471,9 +499,9 @@ PAINTING
   - skim and paint
 
 COMPLETION
+  - Notes [text]
   - Flexible
   - Urgent
-  - Target date [text]
 
 FROM US
   - Labour
@@ -486,6 +514,7 @@ TONY
   - Win [slider 0-100%]
   - Personality [slider 1-10]
   - Price about [text]
+  - Completion date [text]
   Parking:
   - free
   - permit needed
