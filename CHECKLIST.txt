@@ -510,11 +510,11 @@ FROM US
   - Protection
 
 TONY
+  - Completion date [text]
   - Call after [text]
   - Win [slider 0-100%]
   - Personality [slider 1-10]
   - Price about [text]
-  - Completion date [text]
   Parking:
   - free
   - permit needed

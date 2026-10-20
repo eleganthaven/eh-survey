@@ -327,7 +327,7 @@ const DEFAULT_DATA = [
     { title:'', options:[ {label:'Labour'},{label:'Rubbish disposal'},{label:'Building materials (per proposal list)'},{label:'Protection'} ]},
   ]},
   { title:'TONY', subsections:[
-    { title:'', options:[ {label:'Call after', type:'text'},{label:'Win', type:'slider', min:0, max:100, step:5, unit:'%'},{label:'Personality', type:'slider', min:1, max:10, step:1, unit:''},{label:'Price about', type:'text'},{label:'Completion date', type:'text'} ]},
+    { title:'', options:[ {label:'Completion date', type:'text'},{label:'Call after', type:'text'},{label:'Win', type:'slider', min:0, max:100, step:5, unit:'%'},{label:'Personality', type:'slider', min:1, max:10, step:1, unit:''},{label:'Price about', type:'text'} ]},
     { title:'Parking', options:[ {label:'free'},{label:'permit needed'},{label:'none'} ]},
   ]},
 ];
@@ -472,7 +472,7 @@ function renderSub(sec, ss, ssi){
     div.append(hdr);
   }
   const ol = el('div', 'options-list');
-  if(false){
+  if(ss.title && !editMode && ss.options.filter(o => o.type === 'tick').length <= 3){
     const ch = el('div', 'chips');
     ss.options.forEach((o, oi) => {
       if(o.type !== 'tick'){ ol.append(renderOpt(sec, ss, ssi, o, oi)); return; }
