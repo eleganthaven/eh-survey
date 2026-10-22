@@ -6,7 +6,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#2c6e49">
-<title>Elegant Haven Survey V11</title>
+<title>Elegant Haven Survey V12</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <style>
 :root {
@@ -169,7 +169,7 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
 
 <script>
 const PASSWORD = '000';
-const KEY = 'ehSurveyV11';
+const KEY = 'ehSurveyV12';
 
 // option types: 'tick' (default), 'text' (free text field, e.g. name/address), 'ticktext' (tick + small text, e.g. walls)
 const DEFAULT_DATA = [
@@ -180,7 +180,7 @@ const DEFAULT_DATA = [
     { title:'— WALLS 1 door · 2 left · 3 opposite · 4 right · 5 extra —', options:[  ]},
     { title:'', options:[ {label:'Stud', type:'ticktext'},{label:'Note', type:'text'} ]},
     { title:'Style', options:[ {label:'modern'},{label:'traditional'},{label:'mixed'},{label:'Notes', type:'ticktext'} ]},
-    { title:'Brassware', options:[ {label:'chrome'},{label:'black'},{label:'gold'},{label:'brass'} ]},
+    { title:'Brassware', options:[ {label:'chrome'},{label:'black'},{label:'gold'},{label:'brass'},{label:'any'} ]},
   ]},
   { title:'LAYOUT', subsections:[
     { title:'', options:[ {label:'Same'},{label:'Make drawing'},{label:'Relocation'},{label:'Bath to shower'},{label:'Shower to bath'},{label:'Shower to toilet'},{label:'Merge WC'},{label:'Extension'},{label:'New build (en suite)'},{label:'Bedroom to bathroom'},{label:'Toilet to shower'},{label:'Text', type:'text'} ]},
@@ -190,36 +190,36 @@ const DEFAULT_DATA = [
   ]},
   { title:'SHOWER AREA', subsections:[
     { title:'— BATHTUB —', options:[  ]},
-    { title:'', options:[ {label:'Not required'},{label:'Keep same'},{label:'New installation'},{label:'Replace'} ]},
     { title:'Bath', options:[ {label:'fit-in'},{label:'freestanding'} ]},
-    { title:'Position', options:[ {label:'same place'},{label:'relocated'} ]},
+    { title:'', options:[ {label:'Not required'},{label:'Keep same'},{label:'New installation'},{label:'Replace'} ]},
+    { title:'Position', options:[ {label:'same place'},{label:'relocated'},{label:'opposite wall'},{label:'next wall'} ]},
     { title:'Use', options:[ {label:'bath only'},{label:'shower above bath'} ]},
     { title:'Bath panel', options:[ {label:'tiled'},{label:'plastic'},{label:'wooden'} ]},
     { title:'Bath screen', options:[ {label:'none'},{label:'fixed'},{label:'semi-fixed'},{label:'hinged'},{label:'folding'},{label:'curtain'} ]},
-    { title:'Filler', options:[ {label:'deck'},{label:'wall'},{label:'overflow'},{label:'floor standing'},{label:'pillar taps'},{label:'mixer with hand shower'},{label:'adjustable rod'},{label:'middle'},{label:'left'},{label:'right'} ]},
-    { title:'Shower', options:[ {label:'exposed'},{label:'concealed'},{label:'handset'},{label:'adjustable rail'},{label:'overhead wall'},{label:'overhead ceiling'} ]},
+    { title:'Filler', options:[ {label:'deck'},{label:'wall'},{label:'overflow'},{label:'floor standing'},{label:'from the shower'},{label:'pillar taps'},{label:'mixer with hand shower'},{label:'adjustable rod'},{label:'middle'},{label:'left'},{label:'right'} ]},
+    { title:'Shower', options:[ {label:'exposed'},{label:'concealed'},{label:'electric'},{label:'handset'},{label:'adjustable rail'},{label:'overhead wall'},{label:'overhead ceiling'} ]},
     { title:'Controls', options:[ {label:'under head'},{label:'away'} ]},
     { title:'Niche', options:[ {label:'tiled'},{label:'prefabricated'},{label:'single'},{label:'stacked'},{label:'LED'},{label:'mitred 45° trimless'},{label:'plastic trims'},{label:'metal trims'},{label:'marble / stone trims'} ]},
     { title:'Boxing', options:[ {label:'half-height', hidden:true},{label:'full-height', hidden:true},{label:'nib wall', hidden:true},{label:'subceiling (overhead shower)', hidden:true},{label:'adjustment box', hidden:true} ]},
     { title:'', options:[ {label:'Grab rails'},{label:'Add pipework', hidden:true} ]},
     { title:'— ENCLOSURE —', options:[  ]},
-    { title:'', options:[ {label:'Not required'},{label:'Keep same'},{label:'New installation'},{label:'Replace'} ]},
     { title:'Enclosure', options:[ {label:'rectangular'},{label:'square'},{label:'quadrant'},{label:'pentagonal'},{label:'alcove'},{label:'wall to wall'} ]},
-    { title:'Position', options:[ {label:'same place'},{label:'relocated'} ]},
+    { title:'', options:[ {label:'Not required'},{label:'Keep same'},{label:'New installation'},{label:'Replace'} ]},
+    { title:'Position', options:[ {label:'same place'},{label:'relocated'},{label:'opposite wall'},{label:'next wall'} ]},
     { title:'Door', options:[ {label:'hinged'},{label:'sliding'},{label:'pivot'},{label:'folding'},{label:'corner sliding'} ]},
     { title:'Floor', options:[ {label:'shower tray'},{label:'wet room'},{label:'platform for drainage', hidden:true} ]},
-    { title:'Shower', options:[ {label:'exposed'},{label:'concealed'},{label:'handset'},{label:'adjustable rail'},{label:'overhead wall'},{label:'overhead ceiling'} ]},
+    { title:'Shower', options:[ {label:'exposed'},{label:'concealed'},{label:'electric'},{label:'handset'},{label:'adjustable rail'},{label:'overhead wall'},{label:'overhead ceiling'} ]},
     { title:'Controls', options:[ {label:'under head'},{label:'away'} ]},
     { title:'Niche', options:[ {label:'tiled'},{label:'prefabricated'},{label:'single'},{label:'stacked'},{label:'LED'},{label:'mitred 45° trimless'},{label:'plastic trims'},{label:'metal trims'},{label:'marble / stone trims'} ]},
     { title:'Boxing', options:[ {label:'half-height', hidden:true},{label:'full-height', hidden:true},{label:'nib wall', hidden:true},{label:'subceiling (overhead shower)', hidden:true} ]},
     { title:'Extras', options:[ {label:'grab rails'},{label:'bench'},{label:'folding chair'} ]},
     { title:'', options:[ {label:'Add pipework', hidden:true} ]},
     { title:'— WALK-IN —', options:[  ]},
-    { title:'', options:[ {label:'Not required'},{label:'Keep same'},{label:'New installation'},{label:'Replace'} ]},
     { title:'Glass screen', options:[ {label:'fixed'},{label:'semi-fixed'},{label:'hinged'},{label:'folding'},{label:'curtain'} ]},
-    { title:'Position', options:[ {label:'same place'},{label:'relocated'} ]},
+    { title:'', options:[ {label:'Not required'},{label:'Keep same'},{label:'New installation'},{label:'Replace'} ]},
+    { title:'Position', options:[ {label:'same place'},{label:'relocated'},{label:'opposite wall'},{label:'next wall'} ]},
     { title:'Floor', options:[ {label:'shower tray'},{label:'wet room'},{label:'platform for drainage', hidden:true} ]},
-    { title:'Shower', options:[ {label:'exposed'},{label:'concealed'},{label:'handset'},{label:'adjustable rail'},{label:'overhead wall'},{label:'overhead ceiling'} ]},
+    { title:'Shower', options:[ {label:'exposed'},{label:'concealed'},{label:'electric'},{label:'handset'},{label:'adjustable rail'},{label:'overhead wall'},{label:'overhead ceiling'} ]},
     { title:'Controls', options:[ {label:'under head'},{label:'away'} ]},
     { title:'Niche', options:[ {label:'tiled'},{label:'prefabricated'},{label:'single'} ]},
     { title:'', options:[ {label:'LED'},{label:'mitred 45° trimless'},{label:'plastic trims'},{label:'metal trims'},{label:'marble / stone trims'} ]},
@@ -228,18 +228,16 @@ const DEFAULT_DATA = [
     { title:'', options:[ {label:'Add pipework', hidden:true} ]},
   ]},
   { title:'TOILET', subsections:[
-    { title:'', options:[ {label:'Not required'} ]},
     { title:'Type', options:[ {label:'close-coupled'},{label:'floor-standing'},{label:'wall-hung'},{label:'in-wall cistern (no box)'},{label:'smart'},{label:'standard + smart seat'},{label:'old style cistern above'},{label:'toilet + basin combination unit'} ]},
-    { title:'', options:[ {label:'Keep same'},{label:'New installation'},{label:'Replace'} ]},
+    { title:'', options:[ {label:'Not required'},{label:'Keep same'},{label:'New installation'},{label:'Replace'} ]},
     { title:'Position', options:[ {label:'same place'},{label:'relocated'} ]},
     { title:'Bidet', options:[ {label:'bidet shower'},{label:'bidet unit'} ]},
     { title:'Cistern box', options:[ {label:'half-height', hidden:true},{label:'to ceiling', hidden:true},{label:'storage above toilet'},{label:'under storage light'},{label:'under toilet LED'} ]},
     { title:'', options:[ {label:'Add cistern box', hidden:true},{label:'Add smart toilet wiring', hidden:true},{label:'Add LED wiring', hidden:true},{label:'Add pipework', hidden:true},{label:'Add soil pipe connection', hidden:true},{label:'Add drilling ext wall for soil pipe', hidden:true},{label:'Add soil pipe box', hidden:true} ]},
   ]},
   { title:'VANITY & BASIN', subsections:[
-    { title:'', options:[ {label:'Not required'} ]},
     { title:'Type', options:[ {label:'vanity'},{label:'basin only'} ]},
-    { title:'', options:[ {label:'Keep same'},{label:'New installation'},{label:'Replace'} ]},
+    { title:'', options:[ {label:'Not required'},{label:'Keep same'},{label:'New installation'},{label:'Replace'} ]},
     { title:'Mount', options:[ {label:'wall-hung'},{label:'floor-standing'} ]},
     { title:'Size', options:[ {label:'single'},{label:'double'} ]},
     { title:'Basin', options:[ {label:'pedestal'},{label:'wash stand'},{label:'inset'},{label:'counter-top'},{label:'semi-recessed'} ]},
@@ -252,46 +250,33 @@ const DEFAULT_DATA = [
     { title:'Dimmer', options:[ {label:'dimmable'},{label:'not dimmable'} ]},
     { title:'Other lights', options:[ {label:'wall lights'},{label:'under vanity LED'},{label:'under toilet LED'},{label:'niche LED'},{label:'mirror side lights'},{label:'light above mirror'},{label:'ceiling LED strip'} ]},
     { title:'Switch', options:[ {label:'keep pull cord'},{label:'pull cord to wall switch — tiled wall', hidden:true},{label:'pull cord to wall switch — painted wall', hidden:true} ]},
-    { title:'Circuit', options:[ {label:'same', hidden:true},{label:'separate', hidden:true},{label:'new', hidden:true},{label:'rewiring', hidden:true} ]},
+    { title:'Circuit', options:[ {label:'same', hidden:true},{label:'separate', hidden:true},{label:'new', hidden:true},{label:'rewiring', hidden:true},{label:'extra circuit for the led lights', hidden:true} ]},
   ]},
   { title:'MIRROR', subsections:[
-    { title:'', options:[ {label:'Not required'} ]},
     { title:'Type', options:[ {label:'mirror'},{label:'cabinet surface mounted'},{label:'cabinet recessed'} ]},
-    { title:'', options:[ {label:'Keep same'},{label:'New installation'},{label:'Replace'} ]},
+    { title:'', options:[ {label:'Not required'},{label:'Keep same'},{label:'New installation'},{label:'Replace'} ]},
     { title:'Electric', options:[ {label:'electric'},{label:'non-electric'} ]},
     { title:'Position', options:[ {label:'above vanity'},{label:'other wall'} ]},
     { title:'Lights', options:[ {label:'side lights'},{label:'light above'} ]},
     { title:'', options:[ {label:'magnifying / extendable'},{label:'Add wiring', hidden:true},{label:'Recess for cabinet', hidden:true} ]},
   ]},
   { title:'SHAVER SOCKET', subsections:[
-    { title:'', options:[ {label:'Not required'},{label:'Shaver socket integrated'},{label:'Shaver socket separate'},{label:'Add wiring', hidden:true} ]},
+    { title:'', options:[ {label:'Shaver socket integrated'},{label:'Shaver socket separate'},{label:'Not required'},{label:'Add wiring', hidden:true} ]},
   ]},
   { title:'EXTRACTOR FAN', subsections:[
-    { title:'', options:[ {label:'Keep same'},{label:'New installation'},{label:'Replace'},{label:'No fan required'} ]},
-    { title:'New fan', options:[ {label:'ceiling'},{label:'wall'},{label:'window'} ]},
+    { title:'Fan', options:[ {label:'ceiling'},{label:'wall'},{label:'window'} ]},
+    { title:'', options:[ {label:'No fan required'},{label:'Keep same'},{label:'New installation'},{label:'Replace'} ]},
     { title:'Switch', options:[ {label:'separate switch'},{label:'same as lighting'} ]},
     { title:'', options:[ {label:'Add drilling', hidden:true},{label:'Add wiring + isolator', hidden:true},{label:'Add duct work', hidden:true} ]},
   ]},
   { title:'HEATER', subsections:[
+    { title:'Type', options:[ {label:'radiator'},{label:'towel rail'},{label:'electric'},{label:'water-fed'},{label:'dual fuel'} ]},
     { title:'', options:[ {label:'Not required'},{label:'Keep same'},{label:'New installation'},{label:'Replace'},{label:'radiator to towel rail'},{label:'towel rail to radiator'} ]},
-    { title:'Type', options:[ {label:'electric'},{label:'water-fed'},{label:'dual fuel'} ]},
     { title:'Position', options:[ {label:'same place'},{label:'relocated'} ]},
     { title:'', options:[ {label:'Add pipework', hidden:true},{label:'Add wiring', hidden:true},{label:'Add box', hidden:true},{label:'Add pipe conversion floor to wall', hidden:true},{label:'Add pipe conversion wall to floor', hidden:true} ]},
   ]},
   { title:'OTHER', subsections:[
     { title:'', options:[ {label:'Underfloor heating standard'},{label:'Underfloor heating wifi'},{label:'Underfloor heating wiring', hidden:true},{label:'Booster pump', hidden:true},{label:'Boiler', hidden:true},{label:'Macerator', hidden:true},{label:'Isolator / fused spur', hidden:true},{label:'Storage for washing machine / dryer'},{label:'Convert shower to cupboard or opposite'} ]},
-  ]},
-  { title:'CEILING', subsections:[
-    { title:'', options:[ {label:'New ceiling'},{label:'Add insulation'},{label:'Subceiling / ceiling drop', hidden:true},{label:'Bulkhead box', hidden:true} ]},
-  ]},
-  { title:'WALLS', subsections:[
-    { title:'', options:[ {label:'New partition wall', hidden:true},{label:'Nib wall', hidden:true},{label:'Block existing opening', hidden:true},{label:'Making good', hidden:true},{label:'Access panel'},{label:'Add insulation boards on external walls'} ]},
-  ]},
-  { title:'BOXES', subsections:[
-    { title:'', options:[ {label:'new corner wall-wall', hidden:true},{label:'new corner floor-wall', hidden:true},{label:'new corner-ceiling (bulkhead)'},{label:'reduce / rebuild existing', hidden:true},{label:'resize existing', hidden:true},{label:'remove if possible with pipes in wall or under floor'} ]},
-  ]},
-  { title:'FLOOR', subsections:[
-    { title:'', options:[ {label:'Floor levelling', hidden:true},{label:'Sub-floor repair leak damages', hidden:true},{label:'Creaking floor', hidden:true},{label:'Platform / raised floor', hidden:true} ]},
   ]},
   { title:'DOORS', subsections:[
     { title:'', options:[ {label:'New door opening'},{label:'Relocate door'},{label:'Resize door'},{label:'Change door wing only (same frame)'},{label:'Change door and frame'},{label:'Change swing left / right'},{label:'Change swing in / out'},{label:'Pocket door'},{label:'Sliding door'},{label:'Folding door'} ]},
@@ -322,6 +307,18 @@ const DEFAULT_DATA = [
   { title:'PAINTING', subsections:[
     { title:'Ceiling', options:[ {label:'no change'},{label:'paint only'},{label:'skim and paint'},{label:'cornice'} ]},
     { title:'Walls', options:[ {label:'no change'},{label:'paint only'},{label:'skim and paint'} ]},
+  ]},
+  { title:'CEILING', subsections:[
+    { title:'', options:[ {label:'New ceiling'},{label:'Add insulation'},{label:'Subceiling / ceiling drop', hidden:true},{label:'Bulkhead box', hidden:true} ]},
+  ]},
+  { title:'WALLS', subsections:[
+    { title:'', options:[ {label:'New partition wall', hidden:true},{label:'Nib wall', hidden:true},{label:'Block existing opening', hidden:true},{label:'Making good', hidden:true},{label:'Access panel'},{label:'Add insulation boards on external walls'} ]},
+  ]},
+  { title:'BOXES', subsections:[
+    { title:'', options:[ {label:'new corner wall-wall', hidden:true},{label:'new corner floor-wall', hidden:true},{label:'new corner-ceiling (bulkhead)'},{label:'reduce / rebuild existing', hidden:true},{label:'resize existing', hidden:true},{label:'remove if possible with pipes in wall or under floor'} ]},
+  ]},
+  { title:'FLOOR', subsections:[
+    { title:'', options:[ {label:'Floor levelling', hidden:true},{label:'Sub-floor repair leak damages', hidden:true},{label:'Creaking floor', hidden:true},{label:'Platform / raised floor', hidden:true} ]},
   ]},
   { title:'COMPLETION', subsections:[
     { title:'', options:[ {label:'Notes', type:'text'},{label:'Flexible'},{label:'Urgent'} ]},

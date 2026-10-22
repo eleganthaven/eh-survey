@@ -21,6 +21,7 @@ CLIENT
   - black
   - gold
   - brass
+  - any
 
 LAYOUT
   - Same
@@ -43,16 +44,19 @@ DEMOLITION
 
 SHOWER AREA
   == BATHTUB ==
+  Bath:
+  - fit-in
+  - freestanding
+  :
   - Not required
   - Keep same
   - New installation
   - Replace
-  Bath:
-  - fit-in
-  - freestanding
   Position:
   - same place
   - relocated
+  - opposite wall
+  - next wall
   Use:
   - bath only
   - shower above bath
@@ -72,6 +76,7 @@ SHOWER AREA
   - wall
   - overflow
   - floor standing
+  - from the shower
   - pillar taps
   - mixer with hand shower
   - adjustable rod
@@ -81,6 +86,7 @@ SHOWER AREA
   Shower:
   - exposed
   - concealed
+  - electric
   - handset
   - adjustable rail
   - overhead wall
@@ -108,10 +114,6 @@ SHOWER AREA
   - Grab rails
   - Add pipework (H)
   == ENCLOSURE ==
-  - Not required
-  - Keep same
-  - New installation
-  - Replace
   Enclosure:
   - rectangular
   - square
@@ -119,9 +121,16 @@ SHOWER AREA
   - pentagonal
   - alcove
   - wall to wall
+  :
+  - Not required
+  - Keep same
+  - New installation
+  - Replace
   Position:
   - same place
   - relocated
+  - opposite wall
+  - next wall
   Door:
   - hinged
   - sliding
@@ -135,6 +144,7 @@ SHOWER AREA
   Shower:
   - exposed
   - concealed
+  - electric
   - handset
   - adjustable rail
   - overhead wall
@@ -164,19 +174,22 @@ SHOWER AREA
   :
   - Add pipework (H)
   == WALK-IN ==
-  - Not required
-  - Keep same
-  - New installation
-  - Replace
   Glass screen:
   - fixed
   - semi-fixed
   - hinged
   - folding
   - curtain
+  :
+  - Not required
+  - Keep same
+  - New installation
+  - Replace
   Position:
   - same place
   - relocated
+  - opposite wall
+  - next wall
   Floor:
   - shower tray
   - wet room
@@ -184,6 +197,7 @@ SHOWER AREA
   Shower:
   - exposed
   - concealed
+  - electric
   - handset
   - adjustable rail
   - overhead wall
@@ -214,7 +228,6 @@ SHOWER AREA
   - Add pipework (H)
 
 TOILET
-  - Not required
   Type:
   - close-coupled
   - floor-standing
@@ -225,6 +238,7 @@ TOILET
   - old style cistern above
   - toilet + basin combination unit
   :
+  - Not required
   - Keep same
   - New installation
   - Replace
@@ -250,11 +264,11 @@ TOILET
   - Add soil pipe box (H)
 
 VANITY & BASIN
-  - Not required
   Type:
   - vanity
   - basin only
   :
+  - Not required
   - Keep same
   - New installation
   - Replace
@@ -309,14 +323,15 @@ LIGHTS
   - separate (H)
   - new (H)
   - rewiring (H)
+  - extra circuit for the led lights (H)
 
 MIRROR
-  - Not required
   Type:
   - mirror
   - cabinet surface mounted
   - cabinet recessed
   :
+  - Not required
   - Keep same
   - New installation
   - Replace
@@ -335,20 +350,21 @@ MIRROR
   - Recess for cabinet (H)
 
 SHAVER SOCKET
-  - Not required
   - Shaver socket integrated
   - Shaver socket separate
+  - Not required
   - Add wiring (H)
 
 EXTRACTOR FAN
-  - Keep same
-  - New installation
-  - Replace
-  - No fan required
-  New fan:
+  Fan:
   - ceiling
   - wall
   - window
+  :
+  - No fan required
+  - Keep same
+  - New installation
+  - Replace
   Switch:
   - separate switch
   - same as lighting
@@ -358,16 +374,19 @@ EXTRACTOR FAN
   - Add duct work (H)
 
 HEATER
+  Type:
+  - radiator
+  - towel rail
+  - electric
+  - water-fed
+  - dual fuel
+  :
   - Not required
   - Keep same
   - New installation
   - Replace
   - radiator to towel rail
   - towel rail to radiator
-  Type:
-  - electric
-  - water-fed
-  - dual fuel
   Position:
   - same place
   - relocated
@@ -388,34 +407,6 @@ OTHER
   - Isolator / fused spur (H)
   - Storage for washing machine / dryer
   - Convert shower to cupboard or opposite
-
-CEILING
-  - New ceiling
-  - Add insulation
-  - Subceiling / ceiling drop (H)
-  - Bulkhead box (H)
-
-WALLS
-  - New partition wall (H)
-  - Nib wall (H)
-  - Block existing opening (H)
-  - Making good (H)
-  - Access panel
-  - Add insulation boards on external walls
-
-BOXES
-  - new corner wall-wall (H)
-  - new corner floor-wall (H)
-  - new corner-ceiling (bulkhead)
-  - reduce / rebuild existing (H)
-  - resize existing (H)
-  - remove if possible with pipes in wall or under floor
-
-FLOOR
-  - Floor levelling (H)
-  - Sub-floor repair leak damages (H)
-  - Creaking floor (H)
-  - Platform / raised floor (H)
 
 DOORS
   - New door opening
@@ -506,6 +497,34 @@ PAINTING
   - paint only
   - skim and paint
 
+CEILING
+  - New ceiling
+  - Add insulation
+  - Subceiling / ceiling drop (H)
+  - Bulkhead box (H)
+
+WALLS
+  - New partition wall (H)
+  - Nib wall (H)
+  - Block existing opening (H)
+  - Making good (H)
+  - Access panel
+  - Add insulation boards on external walls
+
+BOXES
+  - new corner wall-wall (H)
+  - new corner floor-wall (H)
+  - new corner-ceiling (bulkhead)
+  - reduce / rebuild existing (H)
+  - resize existing (H)
+  - remove if possible with pipes in wall or under floor
+
+FLOOR
+  - Floor levelling (H)
+  - Sub-floor repair leak damages (H)
+  - Creaking floor (H)
+  - Platform / raised floor (H)
+
 COMPLETION
   - Notes [text]
   - Flexible
@@ -527,3 +546,4 @@ TONY
   - free
   - permit needed
   - none
+
