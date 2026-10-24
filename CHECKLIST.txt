@@ -88,8 +88,8 @@ SHOWER AREA
   - electric
   - handset
   - adjustable rail
-  - wall headshower
-  - ceiling headshower
+  - wall overhead
+  - ceiling overhead
   Controls:
   - under head
   - away
@@ -552,4 +552,3 @@ TONY
   - free
   - permit needed
   - none
-

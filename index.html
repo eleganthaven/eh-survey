@@ -6,7 +6,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#2c6e49">
-<title>Elegant Haven Survey V13</title>
+<title>Elegant Haven Survey V14</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <style>
 :root {
@@ -169,7 +169,7 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
 
 <script>
 const PASSWORD = '000';
-const KEY = 'ehSurveyV13';
+const KEY = 'ehSurveyV14';
 
 // option types: 'tick' (default), 'text' (free text field, e.g. name/address), 'ticktext' (tick + small text, e.g. walls)
 const DEFAULT_DATA = [
@@ -198,7 +198,7 @@ const DEFAULT_DATA = [
     { title:'Bath panel', options:[ {label:'tiled'},{label:'plastic'},{label:'wooden'} ]},
     { title:'Bath screen', options:[ {label:'none'},{label:'fixed'},{label:'semi-fixed'},{label:'hinged'},{label:'folding'},{label:'curtain'} ]},
     { title:'Filler', options:[ {label:'deck mounted'},{label:'wall mounted'},{label:'floor mounted'},{label:'from the shower'},{label:'overflow'},{label:'mixer with hand shower'},{label:'pillar taps'},{label:'adjustable rod'},{label:'middle'},{label:'left'},{label:'right'} ]},
-    { title:'Shower', options:[ {label:'exposed'},{label:'concealed'},{label:'electric'},{label:'handset'},{label:'adjustable rail'},{label:'wall headshower'},{label:'ceiling headshower'} ]},
+    { title:'Shower', options:[ {label:'exposed'},{label:'concealed'},{label:'electric'},{label:'handset'},{label:'adjustable rail'},{label:'wall overhead'},{label:'ceiling overhead'} ]},
     { title:'Controls', options:[ {label:'under head'},{label:'away'} ]},
     { title:'Niche', options:[ {label:'tiled'},{label:'prefabricated'},{label:'single'},{label:'stacked', type:'ticktext'},{label:'LED'},{label:'mitred 45° trimless'},{label:'plastic trims'},{label:'metal trims'},{label:'marble / stone trims'},{label:'on stud wall'},{label:'on solid wall'} ]},
     { title:'Boxing', options:[ {label:'half-height', hidden:true},{label:'full-height', hidden:true},{label:'subceiling (overhead shower)', hidden:true},{label:'adjustment box', hidden:true},{label:'along'},{label:'head'},{label:'legs'} ]},
@@ -360,6 +360,7 @@ function load(){
     try{ if(!localStorage.getItem(KEY+'_tonyMoved')){ const i = state.findIndex(x => x.title === 'TONY'); if(i > -1 && i < state.length - 1){ state.push(state.splice(i, 1)[0]); } localStorage.setItem(KEY+'_tonyMoved','1'); } }catch(e){}
     return; } }catch(e){}
   state = normalize(DEFAULT_DATA);
+  state.forEach(s => { s.collapsed = true; s.subsections.forEach(ss => { if(ss.title.trim().startsWith('—')) ss.collapsed = true; }); });
 }
 
 // ---- password & confirm (native dialogs do not work in artifacts) ----
@@ -404,7 +405,7 @@ function setEdit(on){
 // ---- new form: clear ticks/text/notes, keep structure ----
 function newForm(){
   askConfirm('New form? Ticks and text will be cleared. Options stay.', () => {
-    state.forEach(s => { s.note = ''; s.subsections.forEach(ss => ss.options.forEach(o => { o.checked = false; o.text = ''; })); });
+    state.forEach(s => { s.note = ''; s.collapsed = true; s.subsections.forEach(ss => { if(ss.title.trim().startsWith('—')) ss.collapsed = true; ss.options.forEach(o => { o.checked = false; o.text = ''; }); }); });
     render(); toast('New form');
   });
 }
