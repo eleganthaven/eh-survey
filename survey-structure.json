@@ -1,0 +1,2864 @@
+[
+  {
+    "section": "CLIENT",
+    "groups": [
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Name + address",
+            "type": "text",
+            "hidden": false
+          },
+          {
+            "label": "m:",
+            "type": "text",
+            "hidden": false
+          },
+          {
+            "label": "e:",
+            "type": "text",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Property",
+        "band": null,
+        "options": [
+          {
+            "label": "house",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "flat in house",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "flat in block",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "council",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Stairs",
+            "type": "ticktext",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Lift",
+        "band": null,
+        "options": [
+          {
+            "label": "lift",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "no lift",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": null,
+        "band": "WALLS 1 door · 2 left · 3 opposite · 4 right · 5 extra",
+        "options": []
+      },
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Stud walls",
+            "type": "ticktext",
+            "hidden": false
+          },
+          {
+            "label": "Note",
+            "type": "text",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Style",
+        "band": null,
+        "options": [
+          {
+            "label": "modern",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "traditional",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "mixed",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Notes",
+            "type": "ticktext",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Brassware",
+        "band": null,
+        "options": [
+          {
+            "label": "any",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "chrome",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "black",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "gold",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "brass",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "LAYOUT",
+    "groups": [
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Make drawing",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Same",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Relocations",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Bath to shower",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Shower to toilet",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Merge into 1",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Split into 2",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Extension",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "New build (en suite)",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Bedroom to bathroom",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "DEMOLITION",
+    "groups": [
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Full strip out",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Full strip out + partition wall removal",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "None (already demolished)",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "SHOWER AREA",
+    "groups": [
+      {
+        "group": null,
+        "band": "BATHTUB",
+        "options": []
+      },
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Replace",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Keep same",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "New installation",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Bath",
+        "band": null,
+        "options": [
+          {
+            "label": "fit-in",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "freestanding",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Position",
+        "band": null,
+        "options": [
+          {
+            "label": "same place",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "relocated",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "under window",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Use",
+        "band": null,
+        "options": [
+          {
+            "label": "bath only",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "shower above bath",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Bath panel",
+        "band": null,
+        "options": [
+          {
+            "label": "tiled",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "plastic",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "wooden",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Bath screen",
+        "band": null,
+        "options": [
+          {
+            "label": "none",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "fixed",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "semi-fixed",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "hinged",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "folding",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "curtain",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Filler",
+        "band": null,
+        "options": [
+          {
+            "label": "deck mounted",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "wall mounted",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "floor mounted",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "from the shower",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "overflow",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "mixer with hand shower",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "pillar taps",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "adjustable rod",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "middle",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "left",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "right",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Shower",
+        "band": null,
+        "options": [
+          {
+            "label": "exposed",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "concealed",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "electric",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "handset",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "adjustable rail",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "wall overhead",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "ceiling overhead",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Controls",
+        "band": null,
+        "options": [
+          {
+            "label": "under head",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "away",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Niche",
+        "band": null,
+        "options": [
+          {
+            "label": "tiled",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "prefabricated",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "single",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "stacked",
+            "type": "ticktext",
+            "hidden": false
+          },
+          {
+            "label": "LED",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "mitred 45° trimless",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "plastic trims",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "metal trims",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "marble / stone trims",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "on stud wall",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "on solid wall",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Boxing",
+        "band": null,
+        "options": [
+          {
+            "label": "half-height",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "full-height",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "subceiling (overhead shower)",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "adjustment box",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "along",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "head",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "legs",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Grab rails",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Add pipework",
+            "type": "tick",
+            "hidden": true
+          }
+        ]
+      },
+      {
+        "group": null,
+        "band": "ENCLOSURE",
+        "options": []
+      },
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Replace",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Keep same",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "New installation",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Enclosure",
+        "band": null,
+        "options": [
+          {
+            "label": "rectangular",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "square",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "quadrant",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "pentagonal",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "alcove",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "wall to wall",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Position",
+        "band": null,
+        "options": [
+          {
+            "label": "same place",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "relocated",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "opposite wall",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "next wall",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Door",
+        "band": null,
+        "options": [
+          {
+            "label": "hinged",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "sliding",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "pivot",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "folding",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "corner sliding",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Floor",
+        "band": null,
+        "options": [
+          {
+            "label": "shower tray",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "wet room",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "platform for drainage",
+            "type": "tick",
+            "hidden": true
+          }
+        ]
+      },
+      {
+        "group": "Shower",
+        "band": null,
+        "options": [
+          {
+            "label": "exposed",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "concealed",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "electric",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "handset",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "adjustable rail",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "wall headshower",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "ceiling headshower",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Controls",
+        "band": null,
+        "options": [
+          {
+            "label": "under head",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "away",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Niche",
+        "band": null,
+        "options": [
+          {
+            "label": "tiled",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "prefabricated",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "single",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "stacked",
+            "type": "ticktext",
+            "hidden": false
+          },
+          {
+            "label": "LED",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "mitred 45° trimless",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "plastic trims",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "metal trims",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "marble / stone trims",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "on stud wall",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "on solid wall",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Boxing",
+        "band": null,
+        "options": [
+          {
+            "label": "half-height",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "full-height",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "nib wall",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "subceiling (overhead shower)",
+            "type": "tick",
+            "hidden": true
+          }
+        ]
+      },
+      {
+        "group": "Extras",
+        "band": null,
+        "options": [
+          {
+            "label": "grab rails",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "bench",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "folding chair",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Add pipework",
+            "type": "tick",
+            "hidden": true
+          }
+        ]
+      },
+      {
+        "group": null,
+        "band": "WALK-IN",
+        "options": []
+      },
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Replace",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Keep same",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "New installation",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Glass screen",
+        "band": null,
+        "options": [
+          {
+            "label": "fixed",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "semi-fixed",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "hinged",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "folding",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "curtain",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "keep the existing",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Position",
+        "band": null,
+        "options": [
+          {
+            "label": "same place",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "relocated",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "opposite wall",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "next wall",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Floor",
+        "band": null,
+        "options": [
+          {
+            "label": "shower tray",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "wet room",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "platform for drainage",
+            "type": "tick",
+            "hidden": true
+          }
+        ]
+      },
+      {
+        "group": "Shower",
+        "band": null,
+        "options": [
+          {
+            "label": "exposed",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "concealed",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "electric",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "handset",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "adjustable rail",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "wall headshower",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "ceiling headshower",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Controls",
+        "band": null,
+        "options": [
+          {
+            "label": "under head",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "away",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Niche",
+        "band": null,
+        "options": [
+          {
+            "label": "tiled",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "prefabricated",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "single",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "stacked",
+            "type": "ticktext",
+            "hidden": false
+          },
+          {
+            "label": "LED",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "mitred 45° trimless",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "plastic trims",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "metal trims",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "marble / stone trims",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "on stud wall",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "on solid wall",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Boxing",
+        "band": null,
+        "options": [
+          {
+            "label": "half-height",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "full-height",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "nib wall",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "subceiling (overhead shower)",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "along",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "end",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Extras",
+        "band": null,
+        "options": [
+          {
+            "label": "grab rails",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "shower bench",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "folding chair",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Add pipework",
+            "type": "tick",
+            "hidden": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "TOILET",
+    "groups": [
+      {
+        "group": "Type",
+        "band": null,
+        "options": [
+          {
+            "label": "close-coupled",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "floor-standing concealed",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "wall-hung",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "in-wall cistern (no box)",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "smart wc",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "smart seat only",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "old style cistern above",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "toilet + basin combination unit",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Keep same",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "New installation (drilling, soil pipe connections, boxing etc",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Not required",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Position",
+        "band": null,
+        "options": [
+          {
+            "label": "same place",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "relocated",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Bidet",
+        "band": null,
+        "options": [
+          {
+            "label": "bidet shower",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "bidet unit",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Cistern box",
+        "band": null,
+        "options": [
+          {
+            "label": "half-height",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "to ceiling",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "storage above toilet",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "under storage light",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "under toilet LED",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Add cistern box",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Add smart toilet wiring",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Add LED wiring",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Add pipework",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Add soil pipe connection",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Add drilling ext wall for soil pipe",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Add soil pipe box",
+            "type": "tick",
+            "hidden": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "VANITY & BASIN",
+    "groups": [
+      {
+        "group": "Type",
+        "band": null,
+        "options": [
+          {
+            "label": "vanity",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "basin only",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Replace",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Keep same",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "New installation",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Mount",
+        "band": null,
+        "options": [
+          {
+            "label": "wall-hung",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "floor-standing",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Size",
+        "band": null,
+        "options": [
+          {
+            "label": "single",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "double",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Basin",
+        "band": null,
+        "options": [
+          {
+            "label": "pedestal",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "wash stand",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "inset",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "counter-top",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "semi-recessed",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Position",
+        "band": null,
+        "options": [
+          {
+            "label": "same place",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "relocated",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Tap",
+        "band": null,
+        "options": [
+          {
+            "label": "desk mixer tap",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "wall-mounted tap",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "pillar taps",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "under vanity LED",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Add pipework",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Add wiring",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Half-height service box",
+            "type": "tick",
+            "hidden": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "LIGHTS",
+    "groups": [
+      {
+        "group": "Main light",
+        "band": null,
+        "options": [
+          {
+            "label": "no change",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "like for like",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "single to spotlights",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "spotlights to single",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Dimmer",
+        "band": null,
+        "options": [
+          {
+            "label": "dimmable",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "not dimmable",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Other lights",
+        "band": null,
+        "options": [
+          {
+            "label": "wall lights",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "under vanity LED",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "under toilet LED",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "niche LED",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "mirror side lights",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "light above mirror",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "ceiling LED strip",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Switch",
+        "band": null,
+        "options": [
+          {
+            "label": "keep pull cord",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "pull cord to wall switch — tiled wall",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "pull cord to wall switch — painted wall (making good)",
+            "type": "tick",
+            "hidden": true
+          }
+        ]
+      },
+      {
+        "group": "Circuit",
+        "band": null,
+        "options": [
+          {
+            "label": "single",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "add extra circuit for the led lights",
+            "type": "tick",
+            "hidden": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "MIRROR",
+    "groups": [
+      {
+        "group": "Type",
+        "band": null,
+        "options": [
+          {
+            "label": "mirror",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "cabinet surface mounted",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "cabinet recessed",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Not required",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Keep same",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "New installation",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Replace",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Electric",
+        "band": null,
+        "options": [
+          {
+            "label": "electric",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "non-electric",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Position",
+        "band": null,
+        "options": [
+          {
+            "label": "above vanity",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "other wall",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Lights",
+        "band": null,
+        "options": [
+          {
+            "label": "side lights",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "light above",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Add magnifying / extendable",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Add wiring",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Use same wiring",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Add recess for cabinet",
+            "type": "tick",
+            "hidden": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "SHAVER SOCKET",
+    "groups": [
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Shaver socket integrated",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Shaver socket separate",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Not required",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Add wiring",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Use same wiring",
+            "type": "tick",
+            "hidden": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "EXTRACTOR FAN",
+    "groups": [
+      {
+        "group": "Fan",
+        "band": null,
+        "options": [
+          {
+            "label": "ceiling",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "wall",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "window",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "No fan required",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Keep same",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "New installation",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Replace",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Switch",
+        "band": null,
+        "options": [
+          {
+            "label": "Add separate switch",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Add isolator switch with lighting",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Leave connected with lighting without isolator",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Add drilling",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Add wiring + isolator",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Add duct work",
+            "type": "tick",
+            "hidden": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "HEATER",
+    "groups": [
+      {
+        "group": "Type",
+        "band": null,
+        "options": [
+          {
+            "label": "radiator",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "towel rail",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "electric",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "water-fed",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "dual fuel",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Replace",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Keep same",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "New installation",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Not required",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "radiator to towel rail",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "towel rail to radiator",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Position",
+        "band": null,
+        "options": [
+          {
+            "label": "same place",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "relocated",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Add pipework",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Add wiring",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Add pipe conversion floor to wall",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Add pipe conversion wall to floor",
+            "type": "tick",
+            "hidden": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "OTHER",
+    "groups": [
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Underfloor heating standard",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Underfloor heating wifi",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Underfloor heating wiring",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Booster pump",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Boiler",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Macerator",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Isolator / fused spur",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Storage for washing machine / dryer",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Convert shower to cupboard or opposite",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "TILING",
+    "groups": [
+      {
+        "group": null,
+        "band": "WALLS",
+        "options": []
+      },
+      {
+        "group": "Finish",
+        "band": null,
+        "options": [
+          {
+            "label": "tiles",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "panels",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "paint",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "wallpaper",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Tile",
+        "band": null,
+        "options": [
+          {
+            "label": "marble / stone",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Size",
+        "band": null,
+        "options": [
+          {
+            "label": "large",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "medium",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "small",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "brick tiles",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Pattern",
+        "band": null,
+        "options": [
+          {
+            "label": "vertical",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "horizontal",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "herringbone",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "straight",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "brick bond",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Coverage",
+        "band": null,
+        "options": [
+          {
+            "label": "full height all",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "shower area only",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "shower area + mid height rest",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "same as existing",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "splashback",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "toilet box/area",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Feature wall",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": null,
+        "band": "FLOOR",
+        "options": []
+      },
+      {
+        "group": "Finish",
+        "band": null,
+        "options": [
+          {
+            "label": "tiles",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "vinyl",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "wood",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "carpet",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Tile",
+        "band": null,
+        "options": [
+          {
+            "label": "ceramic / porcelain",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "marble / stone",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Size",
+        "band": null,
+        "options": [
+          {
+            "label": "large",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "medium",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "small",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Pattern",
+        "band": null,
+        "options": [
+          {
+            "label": "straight",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "brick bond",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "diagonal",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Waterproofing",
+        "band": null,
+        "options": [
+          {
+            "label": "shower area only",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "full bathroom",
+            "type": "tick",
+            "hidden": true
+          }
+        ]
+      },
+      {
+        "group": "Skirting",
+        "band": null,
+        "options": [
+          {
+            "label": "tiled",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "wooden",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Covings",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "PAINTING",
+    "groups": [
+      {
+        "group": "Ceiling",
+        "band": null,
+        "options": [
+          {
+            "label": "no change",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "paint only",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "skim and paint",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Walls",
+        "band": null,
+        "options": [
+          {
+            "label": "no change",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "paint only",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "skim and paint",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "DOORS",
+    "groups": [
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "New door opening",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Relocate door",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Resize door",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Change door wing only (same frame)",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Change door and frame",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Change swing left / right",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Change swing in / out",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Pocket door",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Sliding door",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Folding door",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "WINDOWS",
+    "groups": [
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "New window opening + lintel",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Replace existing window",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Paint window frame",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Window sill tiled",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Window reveals tiled",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "UNFORESEEN",
+    "groups": [
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Hard wall plaster",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "New plasterboard",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "New floorboards",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "New ceiling",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "CEILING",
+    "groups": [
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "New ceiling",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Add insulation",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Subceiling / ceiling drop",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Bulkhead box",
+            "type": "tick",
+            "hidden": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "WALLS",
+    "groups": [
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "New partition wall",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Nib wall",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Block existing opening",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Add insulation boards on external walls",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Making good",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Access panel",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "FLOOR",
+    "groups": [
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Floor levelling",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Sub-floor repair leak damages",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Creaking floor",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "Platform / raised floor",
+            "type": "tick",
+            "hidden": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "BOXES",
+    "groups": [
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "new corner wall-wall",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "new corner floor-wall",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "new corner-ceiling (bulkhead)",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "reduce / rebuild existing",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "resize existing",
+            "type": "tick",
+            "hidden": true
+          },
+          {
+            "label": "remove if possible and put pipes in wall or under floor",
+            "type": "tick",
+            "hidden": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "ANYTHING ELSE",
+    "groups": [
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Client adds",
+            "type": "text",
+            "hidden": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "FROM US",
+    "groups": [
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Labour",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Rubbish disposal",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Building materials (per proposal list)",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Protection",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "COMPLETION",
+    "groups": [
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Date",
+            "type": "text",
+            "hidden": false
+          },
+          {
+            "label": "Flexible",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "Urgent",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "section": "TONY",
+    "groups": [
+      {
+        "group": null,
+        "band": null,
+        "options": [
+          {
+            "label": "Call after",
+            "type": "text",
+            "hidden": false
+          },
+          {
+            "label": "Win",
+            "type": "slider",
+            "hidden": false,
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "%"
+          },
+          {
+            "label": "Personality",
+            "type": "slider",
+            "hidden": false,
+            "min": 1,
+            "max": 10,
+            "step": 1,
+            "unit": ""
+          },
+          {
+            "label": "Labour estimate",
+            "type": "text",
+            "hidden": false
+          }
+        ]
+      },
+      {
+        "group": "Parking",
+        "band": null,
+        "options": [
+          {
+            "label": "free",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "permit needed",
+            "type": "tick",
+            "hidden": false
+          },
+          {
+            "label": "none",
+            "type": "tick",
+            "hidden": false
+          }
+        ]
+      }
+    ]
+  }
+]
